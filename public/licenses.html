@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="wa-dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stack &amp; licenses · Alex Rivers Concierge</title>
+<meta name="description" content="The full technology stack behind the Alex Rivers AWS re:Invent 2026 concierge, with license and attribution notes for each component.">
+<meta name="theme-color" content="#0f1226">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/styles/themes/default.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/styles/utilities.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/styles/native.css">
+<link rel="stylesheet" href="omniagent-ui.css">
+<link rel="stylesheet" href="app.css">
+<script src="https://kit.fontawesome.com/dd250ad4bd.js" crossorigin="anonymous"></script>
+<script type="module" src="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/webawesome.loader.js" data-fa-kit-code="dd250ad4bd"></script>
+<style>
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--ink); text-decoration: none; font-weight: 600;
+  }
+  .back-link:hover { color: var(--accent); }
+  .licenses-main { max-width: 900px; }
+  .licenses-main h1 { margin: 6px 0 8px; font-size: 1.6rem; }
+  .licenses-intro { color: var(--muted); line-height: 1.55; margin: 0 0 8px; }
+  .stack-section { margin-top: 26px; }
+  .stack-section h2 {
+    font-size: 1.1rem; margin: 0 0 10px;
+    display: flex; align-items: center; gap: 9px;
+  }
+  .stack-list {
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: 12px; padding: 6px 16px; margin: 0;
+  }
+  .stack-list > div {
+    padding: 11px 0; border-bottom: 1px solid var(--panel-border);
+  }
+  .stack-list > div:last-child { border-bottom: none; }
+  .stack-list dt { font-weight: 650; margin: 0 0 3px; }
+  .stack-list dd { margin: 0; color: var(--muted); line-height: 1.5; font-size: 0.94rem; }
+  .stack-list dd .license-note { color: var(--faint); display: block; margin-top: 2px; font-size: 0.88rem; }
+  .closing-note { color: var(--muted); line-height: 1.55; margin-top: 30px; }
+</style>
+</head>
+<body>
+<header class="app-header">
+  <a class="back-link" href="/"><i class="fa-sharp-duotone fa-solid fa-comments"></i> Back to the concierge</a>
+</header>
+
+<main class="app-main licenses-main">
+  <h1>Stack &amp; licenses</h1>
+  <p class="licenses-intro">Everything this app is built with, grouped by role, with the license or attribution note for each piece. This page covers the Alex Rivers AWS re:Invent 2026 concierge, a demo built for the Napster API Ignite Hackathon.</p>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-microphone"></i> Agent and voice</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>Napster API</dt>
+        <dd>Provides the agent, persona, knowledge base, functions, and realtime conversation behind Alex.
+          <span class="license-note">Proprietary service. Used under the "Napster API - For Ignite 2026" Azure Marketplace pay-as-you-go plan taken out for the Ignite hackathon.</span></dd>
+      </div>
+      <div>
+        <dt>Napster Companion Web SDK</dt>
+        <dd>Renders the talking avatar in the browser and carries the voice conversation over WebRTC, with the green-screen silhouette composited over the app background.
+          <span class="license-note">Proprietary SDK, used under the same Napster plan.</span></dd>
+      </div>
+      <div>
+        <dt>Azure OpenAI</dt>
+        <dd>The language model provider behind the agent, reached through Napster.
+          <span class="license-note">Microsoft service, used under the Napster plan's provider configuration.</span></dd>
+      </div>
+      <div>
+        <dt>Napster webhooks and Sessions API</dt>
+        <dd>Session events and stored conversation data. The app uses them to rebuild captured introduction requests and meeting notes if the page is reloaded.
+          <span class="license-note">Part of the Napster API, same plan as above.</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-store"></i> Hosting and code</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>SpaceFast</dt>
+        <dd>Primary hosting for the live demo, including the static app and the serverless functions that mint Napster tokens and proxy the social feeds.
+          <span class="license-note">Commercial hosting service, used under the author's account.</span></dd>
+      </div>
+      <div>
+        <dt>Microsoft Azure Static Web Apps</dt>
+        <dd>A mirror copy of the app, kept in step with the primary site.
+          <span class="license-note">Free tier of the Microsoft service.</span></dd>
+      </div>
+      <div>
+        <dt>GitHub</dt>
+        <dd>Holds the public source repository. Pushes to the main branch redeploy the Azure mirror automatically.
+          <span class="license-note">Commercial service, free tier. The app source itself is the author's own work.</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-hashtag"></i> UI kits</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>Web Awesome Pro 3.15.0</dt>
+        <dd>The component library and theme behind the cards, buttons, switches, and accordion sections.
+          <span class="license-note">Commercial license. Served from the author's project kit, named "Alex Concierge".</span></dd>
+      </div>
+      <div>
+        <dt>Font Awesome Pro 7</dt>
+        <dd>All icons in the app, in the Sharp Duotone style, subset to the 28 icons the app actually uses.
+          <span class="license-note">Commercial license. Served from the author's kit, named "Alex Concierge".</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-map-location-dot"></i> Maps and routing</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>Leaflet 1.9.4</dt>
+        <dd>The interactive map library for the venue and event map.
+          <span class="license-note">Open source, BSD-2-Clause license. Copyright Leaflet contributors.</span></dd>
+      </div>
+      <div>
+        <dt>OpenStreetMap</dt>
+        <dd>The map tiles and geographic data for Las Vegas and the re:Invent campus venues.
+          <span class="license-note">© OpenStreetMap contributors. Data available under the Open Database License (ODbL).</span></dd>
+      </div>
+      <div>
+        <dt>OSRM</dt>
+        <dd>Walking routes drawn on the map, computed with the foot profile.
+          <span class="license-note">Open source, BSD-2-Clause license. Routes come from the public OSRM demo server.</span></dd>
+      </div>
+      <div>
+        <dt>Google Maps and MapQuest</dt>
+        <dd>Not embedded. Buttons in the app link out to directions in these services.
+          <span class="license-note">Outbound links only; each service's own terms apply once you follow them.</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i> Data sources</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>AWS Events API</dt>
+        <dd>The full re:Invent 2026 session catalog used by the agenda and near-me views: 2,869 sessions with times, venues, and rooms.
+          <span class="license-note">Public AWS event data, read only. Session reservations and schedules were not touched.</span></dd>
+      </div>
+      <div>
+        <dt>AWS News Blog RSS</dt>
+        <dd>The AWS News headlines in the Social view.
+          <span class="license-note">Public RSS feed from the AWS News Blog.</span></dd>
+      </div>
+      <div>
+        <dt>Bluesky public API</dt>
+        <dd>Live posts matching the re:Invent hashtags, via api.bsky.app.
+          <span class="license-note">Public API. Posts remain the property of their authors.</span></dd>
+      </div>
+      <div>
+        <dt>X API</dt>
+        <dd>Live posts from X in the Social view, using recent search, plus geo search for posts near the visitor when they share their location.
+          <span class="license-note">Developer tier access under the author's X developer account. Posts remain the property of their authors.</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-id-card"></i> Media and design tools</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>Pexo</dt>
+        <dd>Generated the ambient Las Vegas background video loop that plays behind the avatar.
+          <span class="license-note">AI video generation service, used under the author's paid account.</span></dd>
+      </div>
+      <div>
+        <dt>Adobe Firefly</dt>
+        <dd>A Generative Fill edit added the conference badge to the avatar portrait used in the app header and icons.
+          <span class="license-note">Part of the author's paid Adobe subscription.</span></dd>
+      </div>
+      <div>
+        <dt>Google Stitch</dt>
+        <dd>Used during design to explore the mobile layouts, including the bottom tab bar and the cyberpunk variant.
+          <span class="license-note">Design exploration tool. The shipped interface was hand-built in this codebase, informed by those mockups.</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="stack-section">
+    <h2><i class="fa-sharp-duotone fa-solid fa-brain"></i> AI-use disclosure</h2>
+    <dl class="stack-list">
+      <div>
+        <dt>How this was built</dt>
+        <dd>This app was built for the Napster API Ignite Hackathon (Microsoft Ignite 2026). The concept, research, product decisions, and testing are by Mike "Demo" Demopoulos. Implementation was assisted by Muse, an AI coding agent, working under that direction. This disclosure follows the contest's AI-use rules.
+          <span class="license-note">Persona imagery was generated through Napster and edited with Adobe Firefly. The background video was generated with Pexo.</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <p class="closing-note">Third-party names and trademarks belong to their owners, and mentioning them here does not imply endorsement. Open-source components remain under their respective licenses, noted above. Commercial components are used under the author's paid subscriptions and plans.</p>
+</main>
+</body>
+</html>

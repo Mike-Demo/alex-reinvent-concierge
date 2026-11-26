@@ -114,6 +114,15 @@ a { color: #9fd8ff; }
 .event-item .ev-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .ev-dist { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
 
+/* ---------- Highlight flash (Alex points at content) -------------------- */
+.is-highlighted { animation: highlight-pulse 1.05s ease-in-out 3; }
+@keyframes highlight-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); outline: 2px solid rgba(0, 240, 255, 0); outline-offset: 2px; }
+  50% { box-shadow: 0 0 24px 4px rgba(0, 240, 255, 0.45); outline: 2px solid #00f0ff; outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-highlighted { animation: none; outline: 2px solid #00f0ff; outline-offset: 2px; }
+}
 .feed-acc { display: block; margin-top: 16px; }
 .feed-acc [slot="summary"] {
   display: inline-flex; align-items: center; gap: 8px;

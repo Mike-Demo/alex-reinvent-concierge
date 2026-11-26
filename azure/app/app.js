@@ -429,6 +429,7 @@ async function loadFeeds() {
 // ---------------------------------------------------------- location ------
 let omniInstance = null;
 let pendingLocationText = null;
+let pendingNavText = null;
 function sendLocationContext(text) {
   if (omniInstance) {
     omniInstance.sendCommand({ type: "send_message", data: { role: "system", text, trigger_response: false } });
@@ -597,6 +598,38 @@ function findEvent(query) {
   }
   return bestScore ? best : null;
 }
+/* ---------- Auto-navigation + highlighting ------------------------------ */
+const AUTONAV_KEY = "pc-autonav";
+function autoNavOn() {
+  try { return localStorage.getItem(AUTONAV_KEY) !== "0"; } catch { return true; }
+}
+function flashHighlight(el, scroll = true) {
+  if (!el) return;
+  if (scroll) el.scrollIntoView({ behavior: "smooth", block: "center" });
+  el.classList.remove("is-highlighted");
+  void el.offsetWidth; // restart the pulse if re-triggered
+  el.classList.add("is-highlighted");
+  setTimeout(() => el.classList.remove("is-highlighted"), 3200);
+}
+function findRenderedCard(e) {
+  const cards = document.querySelectorAll("#agenda-list .event-item, #catalog-results .event-item");
+  for (const c of cards) {
+    const h = c.querySelector("h4");
+    if (h && h.textContent.trim() === e.name) return c;
+  }
+  return null;
+}
+function handleShowSocialFeed(args) {
+  const feed = ["bluesky", "x", "x-near", "aws"].includes(args.feed) ? args.feed : "bluesky";
+  switchView("social");
+  const names = { bluesky: "Live from Bluesky", x: "Live from X", "x-near": "Near you on X", aws: "AWS News" };
+  const acc = document.querySelector(`.view-social wa-details[data-feed="${feed}"]`);
+  if (acc) {
+    acc.open = true;
+    setTimeout(() => flashHighlight(acc), 350);
+  }
+  return { ok: true, feed, message: `The Social tab is on screen with the ${names[feed]} feed open and highlighted.` };
+}
 function handleNavigateView(args) {
   const view = ["talk", "map", "agenda", "near", "social"].includes(args.view) ? args.view : "talk";
   switchView(view);
@@ -612,13 +645,17 @@ async function handleShowEvent(args) {
   const dayName = (DAYS.find((d) => d.date === e.date) || {}).name || e.date;
   const when = `${dayName}${e.start ? " at " + fmtTime(e.start) : ""}`;
   if (e.lat == null) {
+    if (!state.events.includes(e)) document.getElementById("catalog-q").value = e.code || e.name;
     state.day = e.date; renderAgenda(); switchView("agenda");
-    return { ok: true, event: e.name, venue: e.venue, when, message: `${e.name} has no fixed map location, so the agenda for ${dayName} is on screen instead.` };
+    setTimeout(() => { const c = findRenderedCard(e); if (c) flashHighlight(c); }, 500);
+    return { ok: true, event: e.name, venue: e.venue, when, message: `${e.name} has no fixed map location, so the agenda for ${dayName} is on screen instead, with the item highlighted.` };
   }
   state.day = e.date;
   switchView("map");
   refreshMap();
   selectEvent(e);
+  flashHighlight(document.getElementById("map"), false);
+  flashHighlight(document.getElementById("event-card"));
   return { ok: true, event: e.name, venue: e.venue, when, message: `${e.name} is now highlighted on the map.` };
 }
 async function handleWalkingDirections(args) {
@@ -636,16 +673,41 @@ async function handleWalkingDirections(args) {
   selectEvent(e);
   await walkTo(e);
   const summary = document.getElementById("route-summary").textContent;
-  return { ok: true, destination: e.name, summary, message: `Walking directions to ${e.name} are on the map. ${summary}` };
+  flashHighlight(document.getElementById("route-card"));
+  return { ok: true, destination: e.name, summary, message: `Walking directions to ${e.name} are on the map, with the route card highlighted. ${summary}` };
 }
-function handleFilterAgenda(args) {
+async function handleFilterAgenda(args) {
   if (DAYS.some((d) => d.date === args.day)) state.day = args.day;
   state.type = typeof args.type === "string" ? args.type : "";
+  let target = null;
+  if (args.highlight) {
+    await loadCatalog();
+    target = findEvent(args.highlight);
+    if (target) {
+      state.day = target.date;
+      if (!state.events.includes(target)) {
+        document.getElementById("catalog-q").value = target.code || target.name;
+      } else if (state.type && target.type !== state.type) {
+        state.type = "";
+      }
+    }
+  }
   renderAgenda();
   switchView("agenda");
   const count = state.events.filter((e) => e.date === state.day && (!state.type || e.type === state.type)).length;
   const dayName = (DAYS.find((d) => d.date === state.day) || {}).name || state.day;
-  return { ok: true, day: dayName, count, message: `The agenda on screen shows ${count} item(s) for ${dayName}${state.type ? " of type " + state.type : ""}.` };
+  let message = `The agenda on screen shows ${count} item(s) for ${dayName}${state.type ? " of type " + state.type : ""}.`;
+  if (args.highlight) {
+    if (target) {
+      setTimeout(() => { const card = findRenderedCard(target); if (card) flashHighlight(card); }, 500);
+      message += ` ${target.name} is highlighted in the agenda.`;
+    } else {
+      message += ` No agenda item matched "${args.highlight}".`;
+    }
+  } else {
+    setTimeout(() => { const first = document.querySelector("#agenda-list .event-item"); if (first) flashHighlight(first); }, 400);
+  }
+  return { ok: true, day: dayName, count, message };
 }
 async function handleData(msg) {
   const ev = msg.event ?? msg.type;
@@ -655,7 +717,10 @@ async function handleData(msg) {
   if (!call_id || !name || seenCalls.has(call_id)) return;
   seenCalls.add(call_id);
   let result;
-  if (name === "capture_intro_request") {
+  const NAV_FUNCTIONS = ["navigate_view", "show_event_on_map", "start_walking_directions", "filter_agenda", "show_social_feed"];
+  if (NAV_FUNCTIONS.includes(name) && !autoNavOn()) {
+    result = { ok: true, navigated: false, message: "Auto-navigation is off, so the app did not switch views or highlight anything. Describe the content in words and invite the visitor to open the tab themselves if they want to see it. Do not claim anything is on their screen." };
+  } else if (name === "capture_intro_request") {
     result = handleIntroRequest(args || {});
   } else if (name === "navigate_view") {
     result = handleNavigateView(args || {});
@@ -664,7 +729,9 @@ async function handleData(msg) {
   } else if (name === "start_walking_directions") {
     result = await handleWalkingDirections(args || {});
   } else if (name === "filter_agenda") {
-    result = handleFilterAgenda(args || {});
+    result = await handleFilterAgenda(args || {});
+  } else if (name === "show_social_feed") {
+    result = handleShowSocialFeed(args || {});
   } else if (name === "log_meeting_note") {
     result = handleMeetingNote(args || {});
   } else {
@@ -673,6 +740,19 @@ async function handleData(msg) {
   if (omniInstance) {
     omniInstance.sendCommand({ type: "send_function_output", data: { call_id, output: result, delay: false } });
   }
+}
+const autonavSwitch = document.getElementById("autonav-switch");
+if (autonavSwitch) {
+  autonavSwitch.checked = autoNavOn();
+  autonavSwitch.addEventListener("change", () => {
+    const on = autonavSwitch.checked;
+    try { localStorage.setItem(AUTONAV_KEY, on ? "1" : "0"); } catch {}
+    const text = on
+      ? "The visitor turned auto-navigation ON. You can switch views and highlight content again with your navigation functions."
+      : "The visitor turned auto-navigation OFF. Do not claim to switch views or put anything on their screen; describe content in words and invite them to open the tab themselves.";
+    if (omniInstance) omniInstance.sendCommand({ type: "send_message", data: { role: "system", text, trigger_response: false } });
+    else pendingNavText = text;
+  });
 }
 window.napsterCompanionApiSDK.init(getToken, {
   layout: { type: "inline", mountContainer: "#omniagent-mount" },
@@ -689,6 +769,10 @@ window.napsterCompanionApiSDK.init(getToken, {
   if (pendingLocationText) {
     omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingLocationText, trigger_response: false } });
     pendingLocationText = null;
+  }
+  if (pendingNavText) {
+    omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingNavText, trigger_response: false } });
+    pendingNavText = null;
   }
 }).catch((error) => {
   console.error("[concierge] init failed", error);

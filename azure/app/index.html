@@ -68,6 +68,12 @@
     </wa-card>
 
     <wa-card class="info-card">
+      <h3><i class="fa-sharp-duotone fa-solid fa-street-view"></i> Let Alex drive the app</h3>
+      <p><wa-switch id="autonav-switch" checked>Auto-navigate and highlight</wa-switch></p>
+      <p class="muted">When this is on, Alex switches tabs and highlights what she's showing you: a social feed, a place on the map, an agenda item. Turn it off and she describes things instead, while you stay on the tab you're on.</p>
+    </wa-card>
+
+    <wa-card class="info-card">
       <h3><i class="fa-sharp-duotone fa-solid fa-handshake"></i> Introduction requests captured in this session</h3>
       <p id="requests-empty" class="muted">None yet. Ask Alex to introduce you to Demo and confirm the details — your request will appear here.</p>
       <ul id="requests-list"></ul>
@@ -166,23 +172,23 @@
 
   <!-- SOCIAL VIEW -->
   <section class="view view-social" data-view-panel="social">
-    <wa-details class="feed-acc" open>
+    <wa-details class="feed-acc" data-feed="bluesky" open>
       <span slot="summary"><i class="fa-brands fa-bluesky"></i> Live from Bluesky</span>
       <div id="feed-bluesky" class="feed"><p class="muted">Loading posts…</p></div>
     </wa-details>
-    <wa-details class="feed-acc">
+    <wa-details class="feed-acc" data-feed="x">
       <span slot="summary"><i class="fa-brands fa-x-twitter"></i> Live from X</span>
       <div id="feed-x" class="feed"><p class="muted">Loading posts…</p></div>
     </wa-details>
-    <wa-details class="feed-acc">
+    <wa-details class="feed-acc" data-feed="x-near">
       <span slot="summary"><i class="fa-sharp-duotone fa-solid fa-location-dot"></i> Near you on X</span>
       <div id="feed-x-near" class="feed"><p class="muted">Share your location in the Talk view and this fills with geo-tagged posts near you. Only a small share of posts carry location, so it can be quiet.</p></div>
     </wa-details>
-    <wa-details class="feed-acc">
+    <wa-details class="feed-acc" data-feed="aws">
       <span slot="summary"><i class="fa-brands fa-aws"></i> AWS News</span>
       <div id="feed-aws" class="feed"><p class="muted">Loading headlines…</p></div>
     </wa-details>
-    <wa-details class="feed-acc">
+    <wa-details class="feed-acc" data-feed="follow">
       <span slot="summary"><i class="fa-sharp-duotone fa-solid fa-hashtag"></i> Follow the week</span>
       <p class="link-outs">
         <a href="https://x.com/search?q=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> #AWSreInvent on X</a> ·
@@ -197,6 +203,7 @@
   Demo built for the Napster API Ignite Hackathon (Microsoft Ignite 2026). Event facts researched Nov 25, 2026
   from AWS's official re:Invent pages and public listings; times are Pacific. In this demo, introduction
   requests are captured in your browser only.
+  <br><a href="licenses.html">Stack &amp; licenses</a> — everything this demo is built with.
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
