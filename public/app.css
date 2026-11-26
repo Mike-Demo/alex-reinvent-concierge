@@ -114,6 +114,13 @@ a { color: #9fd8ff; }
 .event-item .ev-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .ev-dist { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
 
+.feed-acc { display: block; margin-top: 16px; }
+.feed-acc [slot="summary"] {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 1rem;
+}
+.feed-acc .feed { margin-top: 10px; }
+.feed-acc .link-outs { margin: 10px 0 0; }
 .feed { display: grid; gap: 12px; }
 .feed-post { border-top: 1px solid var(--panel-border); padding-top: 10px; }
 .feed-post:first-child { border-top: 0; padding-top: 0; }
@@ -146,7 +153,7 @@ a { color: #9fd8ff; }
 }
 
 /* ---------- Alex panel: minimize / restore ----------------------------- */
-.omniagent-panel { transition: width 220ms ease; }
+.omniagent-panel { transition: width 220ms ease; z-index: 700; }
 .omniagent-header { justify-content: flex-start; }
 .omniagent-status { margin-left: auto; }
 .omniagent-min-btn {

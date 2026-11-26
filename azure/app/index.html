@@ -166,30 +166,30 @@
 
   <!-- SOCIAL VIEW -->
   <section class="view view-social" data-view-panel="social">
-    <wa-card class="info-card">
-      <h3><i class="fa-brands fa-bluesky"></i> Live from Bluesky</h3>
+    <wa-details class="feed-acc" open>
+      <span slot="summary"><i class="fa-brands fa-bluesky"></i> Live from Bluesky</span>
       <div id="feed-bluesky" class="feed"><p class="muted">Loading posts…</p></div>
-    </wa-card>
-    <wa-card class="info-card">
-      <h3><i class="fa-brands fa-x-twitter"></i> Live from X</h3>
+    </wa-details>
+    <wa-details class="feed-acc">
+      <span slot="summary"><i class="fa-brands fa-x-twitter"></i> Live from X</span>
       <div id="feed-x" class="feed"><p class="muted">Loading posts…</p></div>
-    </wa-card>
-    <wa-card class="info-card">
-      <h3><i class="fa-sharp-duotone fa-solid fa-location-dot"></i> Near you on X</h3>
+    </wa-details>
+    <wa-details class="feed-acc">
+      <span slot="summary"><i class="fa-sharp-duotone fa-solid fa-location-dot"></i> Near you on X</span>
       <div id="feed-x-near" class="feed"><p class="muted">Share your location in the Talk view and this fills with geo-tagged posts near you. Only a small share of posts carry location, so it can be quiet.</p></div>
-    </wa-card>
-    <wa-card class="info-card">
-      <h3><i class="fa-brands fa-aws"></i> AWS News</h3>
+    </wa-details>
+    <wa-details class="feed-acc">
+      <span slot="summary"><i class="fa-brands fa-aws"></i> AWS News</span>
       <div id="feed-aws" class="feed"><p class="muted">Loading headlines…</p></div>
-    </wa-card>
-    <wa-card class="info-card">
-      <h3><i class="fa-sharp-duotone fa-solid fa-hashtag"></i> Follow the week</h3>
+    </wa-details>
+    <wa-details class="feed-acc">
+      <span slot="summary"><i class="fa-sharp-duotone fa-solid fa-hashtag"></i> Follow the week</span>
       <p class="link-outs">
         <a href="https://x.com/search?q=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> #AWSreInvent on X</a> ·
         <a href="https://www.linkedin.com/search/results/content/?keywords=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> ·
         <a href="https://bsky.app/search?q=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-bluesky"></i> Bluesky</a>
       </p>
-    </wa-card>
+    </wa-details>
   </section>
 </main>
 
