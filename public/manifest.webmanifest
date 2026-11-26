@@ -1,0 +1,16 @@
+{
+  "name": "Alex Rivers \u2014 AWS re:Invent 2026 Concierge",
+  "short_name": "Alex Concierge",
+  "description": "A face-and-voice re:Invent concierge: agenda, side events, maps, walking directions, and partnership introductions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1226",
+  "theme_color": "#0f1226",
+  "icons": [
+    {
+      "src": "/icon.jpg",
+      "sizes": "480x480",
+      "type": "image/jpeg"
+    }
+  ]
+}

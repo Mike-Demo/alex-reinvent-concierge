@@ -1,0 +1,123 @@
+/* Alex Rivers — re:Invent Concierge app shell */
+:root {
+  --bg: #0f1226;
+  --panel: #171b38;
+  --panel-border: #2a2f52;
+  --ink: #f2f3fa;
+  --muted: #c6c9e0;
+  --faint: #8b90b3;
+  --accent: #d8f24b;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+a { color: #9fd8ff; }
+
+.app-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 16px; border-bottom: 1px solid var(--panel-border);
+  position: sticky; top: 0; background: rgba(15, 18, 38, 0.92); backdrop-filter: blur(8px); z-index: 500;
+}
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+.brand-name { font-weight: 700; font-size: 1.05rem; }
+.brand-sub { color: var(--faint); font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.loc-chip { color: var(--accent); font-size: 0.85rem; }
+
+.view-nav {
+  display: flex; gap: 6px; padding: 10px 16px 0; flex-wrap: wrap;
+}
+.view-btn {
+  background: var(--panel); color: var(--muted); border: 1px solid var(--panel-border);
+  border-radius: 999px; padding: 8px 14px; cursor: pointer; font-size: 0.92rem;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.view-btn.is-active { color: #0c0c0c; background: var(--accent); border-color: var(--accent); font-weight: 600; }
+
+.app-main { padding: 14px 16px 30px; max-width: 1500px; margin: 0 auto; }
+.view { display: none; }
+.view.is-active { display: block; }
+
+.info-card { display: block; margin-top: 16px; }
+.info-card h3 { margin: 0 0 8px; font-size: 1rem; }
+.info-card p { color: var(--muted); line-height: 1.5; }
+.muted { color: var(--faint); }
+#omniagent-error { display: none; margin-top: 16px; background: #3a1730; border: 1px solid #7a2d5e; color: #ffd7ef; border-radius: 10px; padding: 12px 14px; }
+#requests-list { color: var(--muted); line-height: 1.5; }
+
+.map-toolbar { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; margin-bottom: 10px; }
+.map-toolbar label { display: grid; gap: 4px; font-size: 0.8rem; color: var(--faint); }
+.day-select {
+  background: var(--panel); color: var(--ink); border: 1px solid var(--panel-border);
+  border-radius: 8px; padding: 8px 10px; font-size: 0.95rem;
+}
+#map { height: 56vh; min-height: 340px; border-radius: 12px; border: 1px solid var(--panel-border); z-index: 1; }
+.route-card { display: block; margin-top: 14px; }
+.route-head { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.route-head h3 { margin: 0; font-size: 1rem; }
+#route-steps { color: var(--muted); line-height: 1.55; padding-left: 20px; }
+.route-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+.ext-btn {
+  display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+  border: 1px solid var(--panel-border); border-radius: 999px; padding: 8px 13px;
+  color: var(--ink); background: var(--panel); font-size: 0.9rem;
+}
+.ext-btn:hover { border-color: var(--accent); }
+
+.day-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.day-tab {
+  background: var(--panel); color: var(--muted); border: 1px solid var(--panel-border);
+  border-radius: 10px; padding: 8px 12px; cursor: pointer; font-size: 0.9rem;
+}
+.day-tab.is-active { background: var(--accent); color: #0c0c0c; border-color: var(--accent); font-weight: 600; }
+.type-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.type-chip {
+  background: transparent; color: var(--faint); border: 1px solid var(--panel-border);
+  border-radius: 999px; padding: 5px 11px; cursor: pointer; font-size: 0.82rem;
+}
+.type-chip.is-active { color: var(--ink); border-color: var(--accent); }
+
+.event-list { display: grid; gap: 10px; }
+.event-item { display: block; }
+.event-item .ev-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.event-item h4 { margin: 0; font-size: 0.98rem; }
+.event-item .ev-meta { color: var(--faint); font-size: 0.85rem; margin: 4px 0; }
+.event-item .ev-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.45; margin: 4px 0 8px; }
+.event-item .ev-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.ev-dist { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
+
+.feed { display: grid; gap: 12px; }
+.feed-post { border-top: 1px solid var(--panel-border); padding-top: 10px; }
+.feed-post:first-child { border-top: 0; padding-top: 0; }
+.feed-post .fp-head { font-size: 0.85rem; color: var(--faint); }
+.feed-post .fp-head b { color: var(--ink); }
+.feed-post p { margin: 4px 0 0; color: var(--muted); line-height: 1.45; }
+.feed-news a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.feed-news a:hover { color: var(--accent); }
+.link-outs { line-height: 2; }
+
+.app-footer { color: var(--faint); font-size: 0.85rem; line-height: 1.5; padding: 0 16px 90px; max-width: 1500px; margin: 0 auto; }
+
+/* Leaflet dark popups */
+.leaflet-popup-content-wrapper { background: #171b38; color: var(--ink); }
+.leaflet-popup-tip { background: #171b38; }
+.leaflet-popup-content { font-size: 0.9rem; line-height: 1.4; }
+.leaflet-popup-content b { display: block; margin-bottom: 2px; }
+
+/* Desktop app layout: Alex stays on the left, views fill the right pane */
+@media (min-width: 1024px) {
+  .app-main { display: grid; grid-template-columns: 430px 1fr; gap: 18px; align-items: start; }
+  .view-talk { display: block !important; grid-column: 1; position: sticky; top: 86px; }
+  .view:not(.view-talk) { grid-column: 2; }
+  .view-btn[data-view="talk"] { display: none; }
+  #map { height: calc(100vh - 240px); }
+  .app-footer { padding-bottom: 30px; }
+}
+@media (max-width: 1023px) {
+  .brand-sub { display: none; }
+}
