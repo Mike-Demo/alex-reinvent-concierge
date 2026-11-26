@@ -114,7 +114,9 @@ function setAlexMinimized(min, save = true) {
 }
 if (alexMinBtn && alexPanel) {
   alexMinBtn.addEventListener("click", () => setAlexMinimized(!alexPanel.classList.contains("is-minimized")));
-  try { if (localStorage.getItem("pc-alex-min") === "1") setAlexMinimized(true, false); } catch {}
+  // Start small so the Talk view's settings cards are visible first;
+  // a stored choice made with the minimize button still wins.
+  try { const m = localStorage.getItem("pc-alex-min"); if (m === "1" || m === null) setAlexMinimized(true, false); } catch {}
 }
 
 // ------------------------------------------------------------ agenda ------
@@ -432,7 +434,9 @@ async function loadFeeds() {
 let omniInstance = null;
 let pendingLocationText = null;
 let pendingNavText = null;
+let lastLocationText = null;
 function sendLocationContext(text) {
+  lastLocationText = text;
   if (omniInstance) {
     omniInstance.sendCommand({ type: "send_message", data: { role: "system", text, trigger_response: false } });
   } else {
@@ -928,33 +932,89 @@ if (autonavSwitch) {
     else pendingNavText = text;
   });
 }
-if (!window.napsterCompanionApiSDK) {
-  showError("Alex's video could not load, but the agenda, map and feeds below still work.");
+const alexStatus = document.querySelector(".omniagent-status");
+function setAlexStatus(text) { if (alexStatus) alexStatus.textContent = text; }
+function initAlex() {
+  if (!window.napsterCompanionApiSDK) {
+    showError("Alex's video could not load, but the agenda, map and feeds below still work.");
+    return;
+  }
+  let pending;
+  try {
+    pending = window.napsterCompanionApiSDK.init(getToken, {
+      layout: { type: "inline", mountContainer: "#omniagent-mount" },
+      style: { view: "silhouette", className: "omniagent-sdk-root" },
+      onData: handleData,
+      onAvatarReady: (isReady) => { if (isReady) { console.log("[concierge] session live"); setAlexStatus("Live"); } },
+      onError: (error) => {
+        console.error("[concierge]", error);
+        omniInstance = null;
+        setAlexStatus("Ended");
+        showError("The concierge session has ended. Tap Restart in Alex's panel header to bring her back — no need to reload the page.");
+      },
+    });
+  } catch (error) {
+    console.error("[concierge] init threw", error);
+    setAlexStatus("Offline");
+    showError("The concierge could not start. Tap Restart in Alex's panel header to try again.");
+    return;
+  }
+  Promise.resolve(pending).then((instance) => {
+    omniInstance = instance;
+    window.__omniagent = instance; // debugging only
+    if (pendingLocationText) {
+      omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingLocationText, trigger_response: false } });
+      pendingLocationText = null;
+    }
+    if (pendingNavText) {
+      omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingNavText, trigger_response: false } });
+      pendingNavText = null;
+    }
+  }).catch((error) => {
+    console.error("[concierge] init failed", error);
+    setAlexStatus("Offline");
+    showError("The concierge could not start. Tap Restart in Alex's panel header to try again.");
+  });
 }
-window.napsterCompanionApiSDK && window.napsterCompanionApiSDK.init(getToken, {
-  layout: { type: "inline", mountContainer: "#omniagent-mount" },
-  style: { view: "silhouette", className: "omniagent-sdk-root" },
-  onData: handleData,
-  onAvatarReady: (isReady) => { if (isReady) console.log("[concierge] session live"); },
-  onError: (error) => {
-    console.error("[concierge]", error);
-    showError("The concierge session hit a problem and closed. Reload the page to try again.");
-  },
-}).then((instance) => {
-  omniInstance = instance;
-  window.__omniagent = instance; // debugging only
-  if (pendingLocationText) {
-    omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingLocationText, trigger_response: false } });
-    pendingLocationText = null;
+// Bring Alex back after a hang-up or a dead session, without a page
+// reload: tear the SDK root out of the mount, re-queue the visitor's
+// location and auto-nav context, and start a fresh session. Memory is
+// keyed to the visitor's identity, so Alex still remembers them.
+let alexRestarting = false;
+function restartAlex() {
+  if (alexRestarting) return;
+  alexRestarting = true;
+  const btn = document.getElementById("alex-restart-btn");
+  if (btn) btn.disabled = true;
+  const err = document.getElementById("omniagent-error");
+  if (err) { err.textContent = ""; err.style.display = "none"; }
+  const old = omniInstance;
+  omniInstance = null;
+  if (old) {
+    for (const m of ["destroy", "disconnect", "close", "stop"]) {
+      try { if (typeof old[m] === "function") old[m](); } catch {}
+    }
   }
-  if (pendingNavText) {
-    omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingNavText, trigger_response: false } });
-    pendingNavText = null;
+  const mount = document.getElementById("omniagent-mount");
+  if (mount) {
+    for (const child of [...mount.children]) {
+      if (!child.classList.contains("mount-bg")) child.remove();
+    }
   }
-}).catch((error) => {
-  console.error("[concierge] init failed", error);
-  showError("The concierge could not start. Reload the page to try again.");
-});
+  if (lastLocationText) pendingLocationText = lastLocationText;
+  pendingNavText = autoNavOn()
+    ? "The visitor turned auto-navigation ON. You can switch views and highlight content again with your navigation functions."
+    : "The visitor turned auto-navigation OFF. Do not claim to switch views or put anything on their screen; describe content in words and invite them to open the tab themselves.";
+  setAlexStatus("Restarting…");
+  initAlex();
+  setTimeout(() => {
+    alexRestarting = false;
+    if (btn) btn.disabled = false;
+  }, 3000);
+}
+const alexRestartBtn = document.getElementById("alex-restart-btn");
+if (alexRestartBtn) alexRestartBtn.addEventListener("click", restartAlex);
+initAlex();
 
 // --------------------------------------------------------------- boot -----
 (async function boot() {

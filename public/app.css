@@ -203,6 +203,7 @@ wa-switch:not(:defined), wa-details:not(:defined) { visibility: hidden; }
   font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .omniagent-panel.is-minimized .omniagent-status { display: none; }
+.omniagent-panel.is-minimized .omniagent-restart-btn { display: none; }
 .omniagent-panel.is-minimized .omniagent-min-btn { margin-left: auto; }
 .omniagent-panel.is-minimized .omniagent-mount { flex: none; height: 148px; }
 .omniagent-panel.is-minimized .omniagent-footer { display: none; }
