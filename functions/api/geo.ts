@@ -50,8 +50,33 @@ type GeoBody = {
 const cache = new Map<string, { at: number; body: GeoBody }>();
 const TTL_MS = 10 * 60 * 1000;
 
+const VEGAS_METRO = new Set([
+  "las vegas", "paradise", "winchester", "spring valley", "enterprise",
+  "summerlin south", "henderson", "north las vegas", "sunrise manor",
+  "whitney", "boulder city",
+]);
+const REGION_NAMES: Record<string, string> = { NV: "Nevada", CA: "California", AZ: "Arizona", UT: "Utah" };
+
 const handler = async (request: Request): Promise<Response> => {
   const h = request.headers;
+  // SpaceFast's edge supplies inferred geo headers (verified live
+  // 2026-11-26): city name + subdivision + country, no client IP.
+  // Values can arrive JSON-quoted (an empty inference is the string
+  // '""'), so strip quotes and treat empty as missing.
+  const clean = (v: string | null) => (v ?? "").replace(/^"+|"+$/g, "").trim();
+  const inferredCity = clean(h.get("x-inferred-city-name"));
+  if (inferredCity) {
+    const sub = clean(h.get("x-inferred-subdivision-code")).toUpperCase();
+    const body: GeoBody = {
+      found: true,
+      city: inferredCity,
+      region: REGION_NAMES[sub] ?? sub,
+      country: clean(h.get("x-inferred-country-code")) || clean(h.get("cf-ipcountry")) || undefined,
+      nearVegas: VEGAS_METRO.has(inferredCity.toLowerCase()),
+      source: "edge-inferred",
+    };
+    return Response.json(body, { headers: { "Cache-Control": "private, max-age=300" } });
+  }
   // Platform-provided geo headers, when the host supplies them.
   const platLat = Number(h.get("cf-iplatitude"));
   const platLng = Number(h.get("cf-iplongitude"));
