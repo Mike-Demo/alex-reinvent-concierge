@@ -587,7 +587,7 @@ window.napsterCompanionApiSDK.init(getToken, {
     clearTimeout(debounce);
     debounce = setTimeout(renderCatalogSearch, 250);
   });
-  const bgv = document.querySelector(".talk-bg");
+  const bgv = document.querySelector(".panel-bg");
   if (bgv && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     bgv.removeAttribute("autoplay");
     bgv.pause();
