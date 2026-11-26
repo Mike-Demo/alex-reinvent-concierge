@@ -756,7 +756,10 @@ if (autonavSwitch) {
     else pendingNavText = text;
   });
 }
-window.napsterCompanionApiSDK.init(getToken, {
+if (!window.napsterCompanionApiSDK) {
+  showError("Alex's video could not load, but the agenda, map and feeds below still work.");
+}
+window.napsterCompanionApiSDK && window.napsterCompanionApiSDK.init(getToken, {
   layout: { type: "inline", mountContainer: "#omniagent-mount" },
   style: { view: "silhouette", className: "omniagent-sdk-root" },
   onData: handleData,
