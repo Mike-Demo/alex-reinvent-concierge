@@ -439,43 +439,122 @@ function sendLocationContext(text) {
     pendingLocationText = text;
   }
 }
+// GPS sharing with smoothing. A single indoor fix can jump hundreds of
+// meters, so this keeps a watch running and averages the fixes, each
+// weighted by 1/(accuracy^2), with outlier rejection. The first commit
+// waits for a few fixes (or one good one, or a few seconds); after that
+// the position refines silently as the visitor moves, and Alex gets a
+// refreshed context only on material moves.
+let gpsWatchId = null;
+let gpsFixes = [];
+let gpsStartedAt = 0;
+let gpsCommitted = false;
+let gpsLastContextAt = 0;
+let gpsErrorHandled = false;
+
+function stopGpsWatch() {
+  if (gpsWatchId !== null && "geolocation" in navigator) navigator.geolocation.clearWatch(gpsWatchId);
+  gpsWatchId = null;
+}
+function smoothedFix() {
+  let sw = 0, slat = 0, slng = 0;
+  for (const f of gpsFixes) { slat += f.lat * f.w; slng += f.lng * f.w; sw += f.w; }
+  if (!sw) return null;
+  return { lat: slat / sw, lng: slng / sw, accuracy: Math.sqrt(1 / sw), count: gpsFixes.length };
+}
+function commitGpsLocation(s, announce) {
+  state.userLoc = { lat: s.lat, lng: s.lng, accuracy: s.accuracy, source: "gps", fixes: s.count };
+  const ranked = VENUES
+    .map((v) => ({ ...v, miles: distanceMiles(s.lat, s.lng, v.lat, v.lng) }))
+    .sort((a, b) => a.miles - b.miles);
+  const nearest = ranked[0];
+  if (announce) {
+    const list = ranked.map((v) => `${v.name}: ${v.miles.toFixed(2)} mi`).join("; ");
+    sendLocationContext(
+      `Visitor location context: the visitor has shared their location ` +
+      `(latitude ${s.lat.toFixed(5)}, longitude ${s.lng.toFixed(5)}). It is a smoothed average of ${s.count} GPS fixes ` +
+      `with an estimated accuracy of about ${Math.max(5, Math.round(s.accuracy))} meters. ` +
+      `Nearest re:Invent campus venue: ${nearest.name}, about ${nearest.miles.toFixed(2)} miles away (straight-line). ` +
+      `Straight-line distances to campus venues: ${list}. ` +
+      `Use this when the visitor asks what is near them, how far a venue or event is, or for walking directions, ` +
+      `and combine it with the walking times, routes, shuttle, and Monorail details in your knowledge base. ` +
+      `Do not read the raw coordinates aloud unless the visitor asks.`
+    );
+    gpsLastContextAt = Date.now();
+    const status = document.getElementById("location-status");
+    if (status) status.textContent = `Location shared — you're near ${nearest.name} (~${nearest.miles.toFixed(1)} mi), smoothed from ${s.count} GPS readings. It keeps refining as you move; Alex knows where you are.`;
+  }
+  const chip = document.getElementById("loc-chip");
+  chip.hidden = false;
+  document.getElementById("loc-chip-text").textContent = `Near ${nearest.name.split(" (")[0]}`;
+  markUser();
+  renderAgenda();
+  renderNear();
+  if (announce) loadFeeds();
+}
+function onGpsFix(pos) {
+  const { latitude, longitude, accuracy } = pos.coords;
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return;
+  const acc = Number.isFinite(accuracy) && accuracy > 0 ? accuracy : 100;
+  // Outlier rejection: once a few fixes exist, ignore a new one landing
+  // implausibly far from the running average (indoor multipath jumps).
+  if (gpsFixes.length >= 3) {
+    const s = smoothedFix();
+    const jumpMeters = distanceMiles(s.lat, s.lng, latitude, longitude) * 1609.34;
+    if (jumpMeters > Math.max(3 * acc, 120)) return;
+  }
+  gpsFixes.push({ lat: latitude, lng: longitude, w: 1 / (acc * acc) });
+  if (gpsFixes.length > 30) gpsFixes = gpsFixes.slice(-30);
+  const s = smoothedFix();
+  const elapsed = Date.now() - gpsStartedAt;
+  if (!gpsCommitted) {
+    if ((gpsFixes.length >= 3 && elapsed >= 2500) || s.accuracy <= 20 || elapsed >= 7000) {
+      gpsCommitted = true;
+      commitGpsLocation(s, true);
+    } else {
+      const status = document.getElementById("location-status");
+      if (status) status.textContent = `Locating… refining the fix (${gpsFixes.length} readings so far)`;
+    }
+    return;
+  }
+  const movedMeters = distanceMiles(state.userLoc.lat, state.userLoc.lng, s.lat, s.lng) * 1609.34;
+  if (movedMeters > 15) {
+    commitGpsLocation(s, movedMeters > 40 && Date.now() - gpsLastContextAt > 45000);
+  }
+}
 function shareLocation() {
   const status = document.getElementById("location-status");
   if (!("geolocation" in navigator)) {
     status.textContent = "This browser doesn't support location sharing. You can still tell Alex where you are.";
     return;
   }
+  stopGpsWatch();
+  gpsFixes = [];
+  gpsCommitted = false;
+  gpsErrorHandled = false;
+  gpsStartedAt = Date.now();
   status.textContent = "Locating…";
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      const { latitude, longitude, accuracy } = pos.coords;
-      state.userLoc = { lat: latitude, lng: longitude, accuracy };
-      const ranked = VENUES
-        .map((v) => ({ ...v, miles: distanceMiles(latitude, longitude, v.lat, v.lng) }))
-        .sort((a, b) => a.miles - b.miles);
-      const nearest = ranked[0];
-      const list = ranked.map((v) => `${v.name}: ${v.miles.toFixed(2)} mi`).join("; ");
-      sendLocationContext(
-        `Visitor location context: the visitor has shared their precise location ` +
-        `(latitude ${latitude.toFixed(5)}, longitude ${longitude.toFixed(5)}, GPS accuracy about ${Math.round(accuracy)} meters). ` +
-        `Nearest re:Invent campus venue: ${nearest.name}, about ${nearest.miles.toFixed(2)} miles away (straight-line). ` +
-        `Straight-line distances to campus venues: ${list}. ` +
-        `Use this when the visitor asks what is near them, how far a venue or event is, or for walking directions, ` +
-        `and combine it with the walking times, routes, shuttle, and Monorail details in your knowledge base. ` +
-        `Do not read the raw coordinates aloud unless the visitor asks.`
-      );
-      status.textContent = `Location shared — you're near ${nearest.name} (~${nearest.miles.toFixed(1)} mi). Alex now knows where you are.`;
-      const chip = document.getElementById("loc-chip");
-      chip.hidden = false;
-      document.getElementById("loc-chip-text").textContent = `Near ${nearest.name.split(" (")[0]}`;
-      markUser();
-      renderAgenda();
-      renderNear();
-      loadFeeds();
+  gpsWatchId = navigator.geolocation.watchPosition(
+    onGpsFix,
+    () => {
+      // Errors after a successful commit are usually transient indoor
+      // signal loss; only the pre-fix failure (denied permission, no
+      // provider) falls back to the IP hint.
+      if (gpsCommitted || gpsErrorHandled) return;
+      gpsErrorHandled = true;
+      stopGpsWatch();
+      ipFallback();
     },
-    () => { ipFallback(); },
-    { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    { enableHighAccuracy: true, timeout: 12000, maximumAge: 5000 }
   );
+  // No fix at all within 12 seconds: fall back instead of spinning.
+  setTimeout(() => {
+    if (!gpsCommitted && gpsWatchId !== null && !gpsErrorHandled) {
+      gpsErrorHandled = true;
+      stopGpsWatch();
+      ipFallback();
+    }
+  }, 12000);
 }
 document.getElementById("share-location").addEventListener("click", shareLocation);
 
@@ -497,6 +576,7 @@ function renderVenueChips() {
   }
 }
 function setVenueLocation(v) {
+  stopGpsWatch(); // a manual pick wins over the live GPS watch
   state.userLoc = { lat: v.lat, lng: v.lng, accuracy: null, source: "venue" };
   const short = v.name.split(" (")[0];
   const list = VENUES

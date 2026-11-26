@@ -114,6 +114,12 @@ a { color: #9fd8ff; }
 .event-item .ev-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .ev-dist { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
 
+/* ---------- Official floor plans (Map view) ----------------------------- */
+.floorplans-card { display: block; margin-top: 14px; }
+.floorplans-card h3 { margin: 0 0 6px; font-size: 1rem; }
+.plan-links { margin: 8px 0 0; padding-left: 20px; }
+.plan-links li { margin: 7px 0; }
+
 /* ---------- Venue picker (Near view) ------------------------------------ */
 .venue-pick-card { display: block; margin-bottom: 14px; }
 .venue-pick-card h3 { margin: 0 0 6px; font-size: 1rem; }
