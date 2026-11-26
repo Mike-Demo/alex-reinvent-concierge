@@ -110,13 +110,13 @@ function setAlexMinimized(min, save = true) {
     alexMinBtn.setAttribute("aria-expanded", String(!min));
     alexMinBtn.setAttribute("aria-label", min ? "Expand Alex video" : "Minimize Alex video");
   }
-  if (save) { try { localStorage.setItem("pc-alex-min", min ? "1" : "0"); } catch {} }
+  if (save) { try { localStorage.setItem("pc-alex-min-v2", min ? "1" : "0"); } catch {} }
 }
 if (alexMinBtn && alexPanel) {
   alexMinBtn.addEventListener("click", () => setAlexMinimized(!alexPanel.classList.contains("is-minimized")));
   // Start small so the Talk view's settings cards are visible first;
   // a stored choice made with the minimize button still wins.
-  try { const m = localStorage.getItem("pc-alex-min"); if (m === "1" || m === null) setAlexMinimized(true, false); } catch {}
+  try { const m = localStorage.getItem("pc-alex-min-v2"); if (m === "1" || m === null) setAlexMinimized(true, false); } catch {}
 }
 
 // ------------------------------------------------------------ agenda ------
