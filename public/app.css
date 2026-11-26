@@ -7,6 +7,9 @@
   --muted: #c6c9e0;
   --faint: #8b90b3;
   --accent: #d8f24b;
+  --fa-primary-color: #00f0ff;
+  --fa-secondary-color: #c724ff;
+  --fa-secondary-opacity: 0.45;
 }
 * { box-sizing: border-box; }
 body {

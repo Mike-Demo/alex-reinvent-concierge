@@ -15,10 +15,10 @@ const TYPES = [
   ["side-event", "Side events"], ["social", "Socials"], ["meetup", "Meetup"], ["logistics", "Logistics"],
 ];
 const TYPE_ICON = {
-  keynote: "fa-solid fa-microphone", session: "fa-solid fa-chalkboard-user",
-  expo: "fa-solid fa-store", "side-event": "fa-solid fa-champagne-glasses",
-  social: "fa-solid fa-people-group", meetup: "fa-solid fa-mug-hot",
-  logistics: "fa-solid fa-id-card",
+  keynote: "fa-sharp-duotone fa-solid fa-microphone", session: "fa-sharp-duotone fa-solid fa-chalkboard-user",
+  expo: "fa-sharp-duotone fa-solid fa-store", "side-event": "fa-sharp-duotone fa-solid fa-champagne-glasses",
+  social: "fa-sharp-duotone fa-solid fa-people-group", meetup: "fa-sharp-duotone fa-solid fa-mug-hot",
+  logistics: "fa-sharp-duotone fa-solid fa-id-card",
 };
 // Coordinates geocoded from the venues' published street addresses.
 const VENUES = [
@@ -124,7 +124,7 @@ function eventCard(e, showDistance) {
   const dist = showDistance && state.userLoc && e.lat != null
     ? `<span class="ev-dist">${distanceMiles(state.userLoc.lat, state.userLoc.lng, e.lat, e.lng).toFixed(1)} mi</span>` : "";
   card.innerHTML = `
-    <div class="ev-head"><h4><i class="${TYPE_ICON[e.type] || "fa-solid fa-calendar"}"></i> ${esc(e.name)}</h4>${dist}</div>
+    <div class="ev-head"><h4><i class="${TYPE_ICON[e.type] || "fa-sharp-duotone fa-solid fa-calendar"}"></i> ${esc(e.name)}</h4>${dist}</div>
     <p class="ev-meta">${esc(time)} · ${esc(e.venue)}${e.cost ? " · " + esc(e.cost) : ""}</p>
     <p class="ev-desc">${esc(e.description)}</p>
     <div class="ev-actions"></div>`;
@@ -132,7 +132,7 @@ function eventCard(e, showDistance) {
   if (e.lat != null) {
     const walk = document.createElement("wa-button");
     walk.size = "small"; walk.variant = "brand";
-    walk.innerHTML = `<i class="fa-solid fa-person-walking" slot="start"></i>Walk here`;
+    walk.innerHTML = `<i class="fa-sharp-duotone fa-solid fa-person-walking" slot="start"></i>Walk here`;
     walk.addEventListener("click", () => { selectEvent(e); switchView("map"); walkTo(e); });
     actions.appendChild(walk);
     const g = document.createElement("a");
@@ -141,13 +141,13 @@ function eventCard(e, showDistance) {
     actions.appendChild(g);
     const mq = document.createElement("a");
     mq.className = "ext-btn"; mq.target = "_blank"; mq.rel = "noopener"; mq.href = mapquestUrl(e);
-    mq.innerHTML = `<i class="fa-solid fa-map-pin"></i> MapQuest`;
+    mq.innerHTML = `<i class="fa-sharp-duotone fa-solid fa-map-pin"></i> MapQuest`;
     actions.appendChild(mq);
   }
   if (e.url) {
     const r = document.createElement("a");
     r.className = "ext-btn"; r.target = "_blank"; r.rel = "noopener"; r.href = e.url;
-    r.innerHTML = `<i class="fa-solid fa-ticket"></i> RSVP / info`;
+    r.innerHTML = `<i class="fa-sharp-duotone fa-solid fa-ticket"></i> RSVP / info`;
     actions.appendChild(r);
   }
   return card;
@@ -183,7 +183,7 @@ function sessionCard(e) {
   if (e.lat != null) {
     const walk = document.createElement("wa-button");
     walk.size = "small"; walk.variant = "brand";
-    walk.innerHTML = `<i class="fa-solid fa-person-walking" slot="start"></i>Walk here`;
+    walk.innerHTML = `<i class="fa-sharp-duotone fa-solid fa-person-walking" slot="start"></i>Walk here`;
     walk.addEventListener("click", () => { selectEvent(e); switchView("map"); walkTo(e); });
     actions.appendChild(walk);
     const g = document.createElement("a");
@@ -360,7 +360,7 @@ async function walkTo(e) {
 function feedPostHtml(p) {
   return `
         <div class="feed-post">
-          <div class="fp-head"><b>${esc(p.author)}</b> @${esc(p.handle)}${p.place ? ` · <i class="fa-solid fa-location-dot"></i> ${esc(p.place)}` : ""}</div>
+          <div class="fp-head"><b>${esc(p.author)}</b> @${esc(p.handle)}${p.place ? ` · <i class="fa-sharp-duotone fa-solid fa-location-dot"></i> ${esc(p.place)}` : ""}</div>
           <p>${esc(p.text)}</p>
           <div class="fp-head"><a href="${esc(p.url)}" target="_blank" rel="noopener">View post</a></div>
         </div>`;

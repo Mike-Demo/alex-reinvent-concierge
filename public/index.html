@@ -7,14 +7,13 @@
 <meta name="description" content="Alex Rivers is a face-and-voice AWS re:Invent 2026 concierge: agenda, side events, sponsors, maps, walking directions, and partnership introductions.">
 <meta name="theme-color" content="#0f1226">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/styles/themes/default.css">
-<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/styles/utilities.css">
-<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/styles/native.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/styles/themes/default.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/styles/utilities.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/styles/native.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="omniagent-ui.css">
 <link rel="stylesheet" href="app.css">
-<script src="https://kit.fontawesome.com/d5d88f7356.js" crossorigin="anonymous"></script>
-<script type="module" src="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/webawesome.loader.js"></script>
+<script type="module" src="https://ka-p.webawesome.com/kit/e0016c056fab4db2/webawesome@3.15.0/webawesome.loader.js" data-fa-kit-code="dd250ad4bd"></script>
 </head>
 <body>
 <header class="app-header">
@@ -26,19 +25,19 @@
     </div>
   </div>
   <div class="header-actions">
-    <span id="loc-chip" class="loc-chip" hidden><i class="fa-solid fa-location-dot"></i> <span id="loc-chip-text"></span></span>
+    <span id="loc-chip" class="loc-chip" hidden><i class="fa-sharp-duotone fa-solid fa-location-dot"></i> <span id="loc-chip-text"></span></span>
     <wa-button id="share-location" variant="brand" size="small">
-      <i class="fa-solid fa-location-crosshairs" slot="start"></i>Share my location
+      <i class="fa-sharp-duotone fa-solid fa-location-crosshairs" slot="start"></i>Share my location
     </wa-button>
   </div>
 </header>
 
 <nav class="view-nav" aria-label="Views">
-  <button data-view="talk" class="view-btn is-active"><i class="fa-solid fa-comments"></i><span>Talk to Alex</span></button>
-  <button data-view="map" class="view-btn"><i class="fa-solid fa-map-location-dot"></i><span>Map</span></button>
-  <button data-view="agenda" class="view-btn"><i class="fa-solid fa-calendar-days"></i><span>Agenda</span></button>
-  <button data-view="near" class="view-btn"><i class="fa-solid fa-street-view"></i><span>Near me</span></button>
-  <button data-view="social" class="view-btn"><i class="fa-solid fa-hashtag"></i><span>Social</span></button>
+  <button data-view="talk" class="view-btn is-active"><i class="fa-sharp-duotone fa-solid fa-comments"></i><span>Talk to Alex</span></button>
+  <button data-view="map" class="view-btn"><i class="fa-sharp-duotone fa-solid fa-map-location-dot"></i><span>Map</span></button>
+  <button data-view="agenda" class="view-btn"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i><span>Agenda</span></button>
+  <button data-view="near" class="view-btn"><i class="fa-sharp-duotone fa-solid fa-street-view"></i><span>Near me</span></button>
+  <button data-view="social" class="view-btn"><i class="fa-sharp-duotone fa-solid fa-hashtag"></i><span>Social</span></button>
 </nav>
 
 <main class="app-main">
@@ -60,20 +59,20 @@
     <div id="omniagent-error" role="alert"></div>
 
     <wa-card class="info-card">
-      <h3><i class="fa-solid fa-location-dot"></i> Location-aware help</h3>
+      <h3><i class="fa-sharp-duotone fa-solid fa-location-dot"></i> Location-aware help</h3>
       <p>Share your precise location and Alex answers with where you actually are — what's near you,
       how far the venues are, and the best way around. Your location is used only in this session and never stored.</p>
       <p id="location-status" class="muted"></p>
     </wa-card>
 
     <wa-card class="info-card">
-      <h3><i class="fa-solid fa-handshake"></i> Introduction requests captured in this session</h3>
+      <h3><i class="fa-sharp-duotone fa-solid fa-handshake"></i> Introduction requests captured in this session</h3>
       <p id="requests-empty" class="muted">None yet. Ask Alex to introduce you to Demo and confirm the details — your request will appear here.</p>
       <ul id="requests-list"></ul>
     </wa-card>
 
     <wa-card class="info-card">
-      <h3><i class="fa-solid fa-brain"></i> Alex remembers you</h3>
+      <h3><i class="fa-sharp-duotone fa-solid fa-brain"></i> Alex remembers you</h3>
       <p>Opt in and Alex will remember your past conversations on this device — who you've met, what you're looking for, your plans. Memory is stored by Napster with your sessions and applies from your next conversation.</p>
       <div id="memory-off">
         <p><input id="mem-name" type="text" placeholder="Your name" autocomplete="name"></p>
@@ -85,7 +84,7 @@
     </wa-card>
 
     <wa-card class="info-card">
-      <h3><i class="fa-solid fa-note-sticky"></i> Meeting notes</h3>
+      <h3><i class="fa-sharp-duotone fa-solid fa-note-sticky"></i> Meeting notes</h3>
       <p id="notes-empty" class="muted">None yet. After you meet someone, tell Alex about it and ask her to log a note — it will appear here.</p>
       <ul id="notes-list"></ul>
     </wa-card>
@@ -109,33 +108,33 @@
           <option value="logistics">Logistics</option>
         </select>
       </label>
-      <wa-button id="map-near-me" size="small" variant="neutral"><i class="fa-solid fa-location-crosshairs" slot="start"></i>Center on me</wa-button>
+      <wa-button id="map-near-me" size="small" variant="neutral"><i class="fa-sharp-duotone fa-solid fa-location-crosshairs" slot="start"></i>Center on me</wa-button>
     </div>
     <div id="map" role="application" aria-label="Map of re:Invent venues and events"></div>
     <wa-card id="route-card" class="route-card" hidden>
       <div class="route-head">
         <h3 id="route-title">Walking directions</h3>
-        <wa-button id="route-close" size="small" appearance="plain"><i class="fa-solid fa-xmark"></i></wa-button>
+        <wa-button id="route-close" size="small" appearance="plain"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></wa-button>
       </div>
       <p id="route-summary" class="muted"></p>
       <ol id="route-steps"></ol>
       <div class="route-actions">
         <a id="route-google" class="ext-btn" target="_blank" rel="noopener"><i class="fa-brands fa-google"></i> Google Maps</a>
-        <a id="route-mapquest" class="ext-btn" target="_blank" rel="noopener"><i class="fa-solid fa-map-pin"></i> MapQuest</a>
+        <a id="route-mapquest" class="ext-btn" target="_blank" rel="noopener"><i class="fa-sharp-duotone fa-solid fa-map-pin"></i> MapQuest</a>
       </div>
     </wa-card>
     <wa-card id="event-card" class="route-card" hidden>
       <div class="route-head">
         <h3 id="event-card-title"></h3>
-        <wa-button id="event-close" size="small" appearance="plain"><i class="fa-solid fa-xmark"></i></wa-button>
+        <wa-button id="event-close" size="small" appearance="plain"><i class="fa-sharp-duotone fa-solid fa-xmark"></i></wa-button>
       </div>
       <p id="event-card-meta" class="muted"></p>
       <p id="event-card-desc"></p>
       <div class="route-actions">
-        <wa-button id="event-walk" size="small" variant="brand"><i class="fa-solid fa-person-walking" slot="start"></i>Walk here</wa-button>
+        <wa-button id="event-walk" size="small" variant="brand"><i class="fa-sharp-duotone fa-solid fa-person-walking" slot="start"></i>Walk here</wa-button>
         <a id="event-google" class="ext-btn" target="_blank" rel="noopener"><i class="fa-brands fa-google"></i> Google Maps</a>
-        <a id="event-mapquest" class="ext-btn" target="_blank" rel="noopener"><i class="fa-solid fa-map-pin"></i> MapQuest</a>
-        <a id="event-rsvp" class="ext-btn" target="_blank" rel="noopener" hidden><i class="fa-solid fa-ticket"></i> RSVP / info</a>
+        <a id="event-mapquest" class="ext-btn" target="_blank" rel="noopener"><i class="fa-sharp-duotone fa-solid fa-map-pin"></i> MapQuest</a>
+        <a id="event-rsvp" class="ext-btn" target="_blank" rel="noopener" hidden><i class="fa-sharp-duotone fa-solid fa-ticket"></i> RSVP / info</a>
       </div>
     </wa-card>
   </section>
@@ -145,7 +144,7 @@
     <div class="day-tabs" id="day-tabs" role="tablist" aria-label="Conference days"></div>
     <div class="type-chips" id="type-chips"></div>
     <div class="catalog-search">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-sharp-duotone fa-solid fa-magnifying-glass"></i>
       <input id="catalog-q" type="search" placeholder="Search all 2,869 re:Invent sessions — try a topic, service, session code, or speaker" aria-label="Search the full session catalog">
     </div>
     <p id="catalog-status" class="muted"></p>
@@ -156,7 +155,7 @@
   <!-- NEAR VIEW -->
   <section class="view view-near" data-view-panel="near">
     <wa-callout variant="neutral" id="near-noloc">
-      <i class="fa-solid fa-location-dot" slot="icon"></i>
+      <i class="fa-sharp-duotone fa-solid fa-location-dot" slot="icon"></i>
       Share your location to see what's closest to you right now, sorted by distance.
     </wa-callout>
     <div class="day-tabs" id="near-day-tabs" role="tablist" aria-label="Conference days"></div>
@@ -174,7 +173,7 @@
       <div id="feed-x" class="feed"><p class="muted">Loading posts…</p></div>
     </wa-card>
     <wa-card class="info-card">
-      <h3><i class="fa-solid fa-location-dot"></i> Near you on X</h3>
+      <h3><i class="fa-sharp-duotone fa-solid fa-location-dot"></i> Near you on X</h3>
       <div id="feed-x-near" class="feed"><p class="muted">Share your location in the Talk view and this fills with geo-tagged posts near you. Only a small share of posts carry location, so it can be quiet.</p></div>
     </wa-card>
     <wa-card class="info-card">
@@ -182,7 +181,7 @@
       <div id="feed-aws" class="feed"><p class="muted">Loading headlines…</p></div>
     </wa-card>
     <wa-card class="info-card">
-      <h3><i class="fa-solid fa-hashtag"></i> Follow the week</h3>
+      <h3><i class="fa-sharp-duotone fa-solid fa-hashtag"></i> Follow the week</h3>
       <p class="link-outs">
         <a href="https://x.com/search?q=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> #AWSreInvent on X</a> ·
         <a href="https://www.linkedin.com/search/results/content/?keywords=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> ·
