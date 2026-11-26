@@ -156,10 +156,15 @@ a { color: #9fd8ff; }
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 .omniagent-min-btn:hover { background: rgba(255, 255, 255, 0.18); }
-.omniagent-min-btn svg { width: 16px; height: 16px; display: block; }
-.omniagent-min-btn .ic-max { display: none; }
-.omniagent-panel.is-minimized .omniagent-min-btn .ic-min { display: none; }
-.omniagent-panel.is-minimized .omniagent-min-btn .ic-max { display: block; }
+.omniagent-min-btn .chev {
+  display: block; width: 9px; height: 9px;
+  border-right: 2.4px solid currentColor; border-bottom: 2.4px solid currentColor;
+  transform: rotate(45deg) translate(-1px, -1px);
+  transition: transform 200ms ease;
+}
+.omniagent-panel.is-minimized .omniagent-min-btn .chev {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
 .omniagent-panel.is-minimized { width: 148px; height: auto; }
 .omniagent-panel.is-minimized .omniagent-header { height: 38px; padding: 0 6px 0 12px; }
 .omniagent-panel.is-minimized .omniagent-title {

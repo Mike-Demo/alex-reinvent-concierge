@@ -91,8 +91,11 @@ function switchView(name) {
     const on = v.dataset.viewPanel === name || (isDesktop() && v.dataset.viewPanel === "talk");
     v.classList.toggle("is-active", on);
   });
-  if (name === "map") { initMap(); setTimeout(() => map && map.invalidateSize(), 60); }
   if (name !== "talk" && !isDesktop()) setAlexMinimized(true, false);
+  if (name === "map") {
+    try { initMap(); setTimeout(() => map && map.invalidateSize(), 60); }
+    catch (e) { console.error("[concierge] map init failed", e); }
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 document.querySelectorAll(".view-btn").forEach((b) => b.addEventListener("click", () => switchView(b.dataset.view)));
