@@ -33,12 +33,24 @@ const VENUES = [
 
 const state = {
   events: [],
+  catalog: null, // full AWS Events API session catalog, lazy-loaded
   day: defaultDay(),
   nearDay: defaultDay(),
   type: "",
   userLoc: null, // {lat, lng, accuracy}
   selected: null,
 };
+let catalogPromise = null;
+function loadCatalog() {
+  if (state.catalog) return Promise.resolve(state.catalog);
+  if (!catalogPromise) {
+    catalogPromise = fetch("catalog.json")
+      .then((r) => r.json())
+      .then((data) => { state.catalog = data; return data; })
+      .catch(() => { state.catalog = []; return []; });
+  }
+  return catalogPromise;
+}
 
 function defaultDay() {
   const now = new Date();
@@ -150,6 +162,54 @@ function renderAgenda() {
     .sort((a, b) => (a.start || "99") < (b.start || "99") ? -1 : 1);
   if (!items.length) list.innerHTML = `<p class="muted">Nothing scheduled in this view.</p>`;
   for (const e of items) list.appendChild(eventCard(e, true));
+  renderCatalogSearch();
+}
+function sessionCard(e) {
+  const card = document.createElement("wa-card");
+  card.className = "event-item";
+  const time = e.start ? `${fmtTime(e.start)}${e.end ? " – " + fmtTime(e.end) : ""}` : "";
+  const dist = state.userLoc && e.lat != null
+    ? `<span class="ev-dist">${distanceMiles(state.userLoc.lat, state.userLoc.lng, e.lat, e.lng).toFixed(1)} mi</span>` : "";
+  const meta = [e.code, e.type, e.level].filter(Boolean).join(" · ");
+  const tags = [...(e.topics || []), ...(e.services || [])].slice(0, 4).join(" · ");
+  card.innerHTML = `
+    <div class="ev-head"><h4>${esc(e.name)}</h4>${dist}</div>
+    <p class="ev-meta">${esc(meta)}</p>
+    <p class="ev-meta">${esc(time)} · ${esc(e.venue)}${e.room ? " — " + esc(e.room) : ""}</p>
+    ${e.speakers && e.speakers.length ? `<p class="ev-meta">${esc(e.speakers.join(", "))}</p>` : ""}
+    ${tags ? `<p class="ev-meta">${esc(tags)}</p>` : ""}
+    <div class="ev-actions"></div>`;
+  const actions = card.querySelector(".ev-actions");
+  if (e.lat != null) {
+    const walk = document.createElement("wa-button");
+    walk.size = "small"; walk.variant = "brand";
+    walk.innerHTML = `<i class="fa-solid fa-person-walking" slot="start"></i>Walk here`;
+    walk.addEventListener("click", () => { selectEvent(e); switchView("map"); walkTo(e); });
+    actions.appendChild(walk);
+    const g = document.createElement("a");
+    g.className = "ext-btn"; g.target = "_blank"; g.rel = "noopener"; g.href = googleDirUrl(e);
+    g.innerHTML = `<i class="fa-brands fa-google"></i> Google`;
+    actions.appendChild(g);
+  }
+  return card;
+}
+async function renderCatalogSearch() {
+  const q = document.getElementById("catalog-q").value.trim().toLowerCase();
+  const box = document.getElementById("catalog-results");
+  const status = document.getElementById("catalog-status");
+  box.innerHTML = "";
+  if (q.length < 2) { status.textContent = ""; return; }
+  const catalog = await loadCatalog();
+  const hits = catalog.filter((e) => e.date === state.day &&
+    (e.name.toLowerCase().includes(q) || e.code.toLowerCase().includes(q) ||
+     (e.topics || []).join(" ").toLowerCase().includes(q) ||
+     (e.services || []).join(" ").toLowerCase().includes(q) ||
+     (e.speakers || []).join(" ").toLowerCase().includes(q)))
+    .sort((a, b) => (a.start || "") < (b.start || "") ? -1 : 1);
+  status.textContent = hits.length
+    ? `${hits.length} session${hits.length === 1 ? "" : "s"} match "${q}" on the selected day${hits.length > 60 ? " — showing the first 60" : ""}.`
+    : `No sessions match "${q}" on the selected day — try another day tab.`;
+  for (const e of hits.slice(0, 60)) box.appendChild(sessionCard(e));
 }
 function renderNear() {
   dayTabs(document.getElementById("near-day-tabs"), state.nearDay, (d) => { state.nearDay = d; renderNear(); });
@@ -165,6 +225,21 @@ function renderNear() {
     .slice(0, 20);
   if (!items.length) list.innerHTML = `<p class="muted">No mappable events that day.</p>`;
   for (const { e } of items) list.appendChild(eventCard(e, true));
+  loadCatalog().then((catalog) => {
+    if (!state.userLoc || !catalog.length) return;
+    const sessions = catalog
+      .filter((e) => e.date === state.nearDay && e.lat != null)
+      .map((e) => ({ e, d: distanceMiles(state.userLoc.lat, state.userLoc.lng, e.lat, e.lng) }))
+      .sort((a, b) => a.d - b.d || (a.e.start || "") < (b.e.start || "") ? -1 : 1)
+      .slice(0, 15);
+    if (sessions.length) {
+      const h = document.createElement("h3");
+      h.textContent = "Catalog sessions nearest you";
+      h.style.margin = "18px 0 4px";
+      list.appendChild(h);
+      for (const { e } of sessions) list.appendChild(sessionCard(e));
+    }
+  });
 }
 
 // --------------------------------------------------------------- map ------
@@ -387,7 +462,7 @@ function handleIntroRequest(args) {
 function findEvent(query) {
   const q = String(query || "").toLowerCase().trim();
   if (!q) return null;
-  const evs = state.events;
+  const evs = state.catalog ? state.events.concat(state.catalog) : state.events;
   let hit = evs.find((e) => e.name.toLowerCase() === q);
   if (hit) return hit;
   hit = evs.find((e) => e.name.toLowerCase().includes(q) || q.includes(e.name.toLowerCase()));
@@ -411,7 +486,8 @@ function handleNavigateView(args) {
   }
   return { ok: true, view, message: `The ${view} view is now on the visitor's screen.` };
 }
-function handleShowEvent(args) {
+async function handleShowEvent(args) {
+  await loadCatalog();
   const e = findEvent(args.event_name);
   if (!e) return { ok: false, error: "not_found", message: `No event matched "${args.event_name}". Offer the agenda view instead.` };
   const dayName = (DAYS.find((d) => d.date === e.date) || {}).name || e.date;
@@ -427,6 +503,7 @@ function handleShowEvent(args) {
   return { ok: true, event: e.name, venue: e.venue, when, message: `${e.name} is now highlighted on the map.` };
 }
 async function handleWalkingDirections(args) {
+  await loadCatalog();
   const e = findEvent(args.destination);
   if (!e) return { ok: false, error: "not_found", message: `No event or venue matched "${args.destination}".` };
   if (e.lat == null) return { ok: false, error: "no_location", message: `${e.name} has no fixed location to route to.` };
@@ -464,7 +541,7 @@ async function handleData(msg) {
   } else if (name === "navigate_view") {
     result = handleNavigateView(args || {});
   } else if (name === "show_event_on_map") {
-    result = handleShowEvent(args || {});
+    result = await handleShowEvent(args || {});
   } else if (name === "start_walking_directions") {
     result = await handleWalkingDirections(args || {});
   } else if (name === "filter_agenda") {
@@ -505,7 +582,13 @@ window.napsterCompanionApiSDK.init(getToken, {
   } catch {
     state.events = [];
   }
+  let debounce = null;
+  document.getElementById("catalog-q").addEventListener("input", () => {
+    clearTimeout(debounce);
+    debounce = setTimeout(renderCatalogSearch, 250);
+  });
   renderAgenda();
   renderNear();
   loadFeeds();
+  setTimeout(loadCatalog, 2500); // idle preload of the full session catalog
 })();

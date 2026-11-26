@@ -1,0 +1,15 @@
+# AWS re:Invent 2026 session catalog — Sunday, Nov 29 (12 sessions)
+Source: AWS Events API (api.awsevents.com), pulled Nov 25, 2026. Times are Pacific. Format: CODE | Title | Time | Venue — Room | Level | Topics | Services | Speakers
+
+SVC004-D0 | Lactation room | 10:00–20:00 | Venue not listed — Various Locations | No Level |  |  | 
+SVC003-D0 | Reflection room | 10:00–20:00 | Venue not listed — Various Locations | No Level |  |  | 
+ACT004-R | AWS Merch Store | 10:00–18:00 | The Venetian — Level 1 | Expo Lower Foyer | No Level |  |  | 
+ACT009-R | Datadog Observaball | 10:00–18:00 | The Venetian — Level 1 | Casanova Foyer | No Level |  |  | 
+ACT073 | Hydrate & Help | 10:00–20:00 | The Venetian — Level 2 | Hall C | No Level | Open Source |  | 
+ACT012-R5 | Attendee Experience Desk | 10:00–18:00 | The Venetian — Level 2 | Artist Foyer | No Level |  |  | 
+ACT014-R | Wishing Booths | 10:00–18:00 | The Venetian — Level 1 | Expo Upper Foyer | No Level |  |  | 
+ACT068-R | re:Invent SWAG | 10:00–18:00 | The Venetian — Level 2 | Hall C | SWAG | No Level |  |  | 
+ACT061-R | Customer Showcase | 11:30–18:00 | Caesars Forum — Level 1 | Summit 216 | Customer Showcase | No Level |  |  | 
+ACT008-R | Kiro Galaxy Run | 12:00–18:00 | Caesars Forum — Level 1 | Forum Pre-Function 2 | No Level |  |  | 
+ACT059 | Road to re:Invent | 12:00–18:00 | Caesars Forum — Level 1 | Summit 216 | Showcase Theater | No Level |  |  | 
+AWS123 | New to re:Invent: Maximizing your time | 16:00–17:00 | The Venetian — Level 2 | Ballroom F | Content Hub | Red Theater | 100 – Foundational |  |  | 
