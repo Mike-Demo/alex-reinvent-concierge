@@ -1,0 +1,1 @@
+{"globalHeaders":{"X-Content-Type-Options":"nosniff"},"mimeTypes":{".webmanifest":"application/manifest+json"},"navigationFallback":{"exclude":["/api/*","/*.{css,js,json,txt,jpg,jpeg,png,gif,svg,ico,webmanifest,woff,woff2}"],"rewrite":"/index.html"}}

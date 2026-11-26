@@ -1,0 +1,163 @@
+# AWS re:Invent 2026 — Maps & Directions Companion
+
+**Date researched:** November 25, 2026 (pages opened Nov 25–26, 2026)
+**Event:** AWS re:Invent 2026, Las Vegas, NV — Mon Nov 30 – Fri Dec 4, 2026 (badge pickup and kickoff activities start Sun Nov 29)
+**Purpose:** Companion to `reinvent-venues-transport.md`. That file already covers venue addresses, campus clusters, shuttle hours, basic walking times, and badge-pickup/Expo/re:Play locations — none of that is repeated here. This doc adds depth in three areas only: **official venue maps**, **step-by-step walking directions**, and **Monorail fares/stations in depth**. Every fact block carries its source URL. Facts that could not be verified from an opened page are marked "not listed."
+
+---
+
+## 1. Official venue maps
+
+### The Venetian / Venetian Expo
+- **Official map page:** "Resort Map & Parking" — https://www.venetianlasvegas.com/resort/maps-and-parking.html
+- **Downloadable property map:** The Venetian's official Parking & Transportation FAQs answer "Do you have a map of the property available?" with "Yes, you can download our property map here." The property map is a numbered-location map of the combined Venetian + Palazzo resort: casino floors, restaurants, retail, theaters, pools, parking garages, and the Venetian Convention & Expo Center entrance and ground transportation lobby — the same map the resort's venue pages reference with "View Property Map (Location NNN)" numbers. A Strip map is also available in person at the Concierge desks at The Venetian and The Palazzo.
+- The Venetian Rewards app also offers an interactive map with step-by-step directions inside the resort (per the resort's official F1 "Know Before You Go" page).
+*Sources: https://www.venetianlasvegas.com/resort/maps-and-parking.html ; https://www.venetianlasvegas.com/resort/maps-and-parking/parking-transportation-faqs.html ; property-map contents as mirrored at https://www.scribd.com/document/663384689/lasvegas-venetian-hotel-map*
+
+### Caesars Forum
+- **Official floor plans page:** the "CAESARS FORUM Conference Center Floor Plans" section of Caesars Entertainment's official venue page — https://www.caesars.com/meetings/locations/las-vegas/caesars-forum
+- **What it shows:** a room-by-room floor-plan/capacity chart for the whole (single-level) conference center — Forum Ballroom and Summit Ballroom (110,000 sq ft each), Academy and Alliance ballrooms, breakout rooms 101–139, and the boardrooms — with dimensions, ceiling heights, and theater/classroom/reception capacities. The same page notes the Entry Hall is reached via the Sky Bridge and that meeting spaces are conveniently located on one level.
+*Source: https://www.caesars.com/meetings/locations/las-vegas/caesars-forum*
+
+### Caesars Palace
+- **Official floor plans page:** the "Caesars Palace Conference Center Floor Plans" section of Caesars Entertainment's official venue page — https://www.caesars.com/meetings/locations/las-vegas/caesars-palace?rd=clv_hotel_lander_lvm-meetings_cta
+- **What it shows:** a room-by-room chart for the two-story Conference Center — the pillarless Octavius and Julius ballrooms (51,000 sq ft each), Roman, Florentine, Neopolitan and Pompeian ballrooms, and the smaller meeting rooms and boardrooms — with dimensions and capacities. (A graphical property map PDF is referenced in Caesars Palace's convention planning guide under "MAPS — Property Map," but the PDF itself is hosted off caesars.com and was not opened; treat the floor-plans chart above as the confirmed official source.)
+*Source: https://www.caesars.com/meetings/locations/las-vegas/caesars-palace?rd=clv_hotel_lander_lvm-meetings_cta*
+
+### MGM Grand
+- **Official property map (PDF):** https://mgmgrand.mgmresorts.com/content/dam/MGM/mgm-grand/property-maps/mgm-grand-property-map.pdf — linked as "MGM Grand Property Map — View PDF" from MGM Grand's official meetings Document Library: https://mgmgrand.mgmresorts.com/en/meetings-groups/document-library.html
+- **What it shows:** a full numbered property map of the resort — casino, Grand Garden Arena, KÀ and other theaters, Grand Pool Complex, the towers, The District, The Underground, self-parking, rideshare pickup (1st floor), and the locations of the **Conference Center / Marquee Ballroom** and the **Monorail** station on the east side of the property.
+*Sources: https://mgmgrand.mgmresorts.com/content/dam/MGM/mgm-grand/property-maps/mgm-grand-property-map.pdf ; https://mgmgrand.mgmresorts.com/en/meetings-groups/document-library.html*
+
+### Wynn
+- **Official resort maps page:** https://www.wynnlasvegas.com/meetings/resort-maps — links the combined "Resort Map" PDF plus Wynn and Encore capacity charts.
+- **Resort Map PDF:** https://cdn.wynnresorts.com/image/upload/visitwynn_pdfs_files/PropertyMap.pdf
+- **What it shows:** one combined map covering **both** Wynn and Encore — casino floors, theaters, restaurants and retail (including Wynn Plaza Shops and Urth Caffé), the Upper and Lower Convention Promenades, meeting rooms and ballrooms (Lafite, Latour, Cristal, Encore Ballroom, etc.), registration desks, pools, and the Las Vegas Boulevard frontage. Wynn's official Directions and Hotel Information pages also link this same property map ("Q: Where can I find a map of the resort? A: …map of the resort property").
+*Sources: https://www.wynnlasvegas.com/meetings/resort-maps ; https://cdn.wynnresorts.com/image/upload/visitwynn_pdfs_files/PropertyMap.pdf ; https://www.wynnlasvegas.com/about-us/directions*
+
+### Encore
+- Encore has **no separate official map** — it is covered by the same combined Wynn + Encore Resort Map PDF above (Encore casino, Encore Ballroom, Encore Esplanade to Wynn, convention promenades, and registration areas all appear on it), linked from the same official resort-maps page. The Wynn Resorts mobile app also offers a map of the Wynn and Encore properties.
+*Sources: https://www.wynnlasvegas.com/meetings/resort-maps ; https://cdn.wynnresorts.com/image/upload/visitwynn_pdfs_files/PropertyMap.pdf ; https://www.wynnlasvegas.com/app*
+
+### Also useful
+- The **AWS Events app** has interactive re:Invent campus maps and wayfinding (per AWS), and re:Invent ambassadors are stationed across campus for directions.
+*Source: https://aws.amazon.com/events/reinvent/faqs/*
+
+---
+
+## 2. Step-by-step walking directions
+
+General Strip rule for all routes below: you cannot cross Las Vegas Boulevard at street level at the big intersections — you use the pedestrian bridges (escalators/elevators/stairs), and each bridge crossing adds roughly 3–5 minutes. AWS's own guidance stands: allow 30–45 minutes when walking between or within venues.
+*Sources: https://www.casinocompassapp.com/transportation/walking-the-strip ; https://aws.amazon.com/resources/analyst-summit/*
+
+### Wynn / Encore ↔ The Venetian (10–15 min door-to-door, ~0.5 mi)
+The only outdoor stretch is the bridge itself (~5 min); everything else is indoors through Palazzo. There is **no street-level crosswalk at Sands Avenue** — every walking route uses this bridge.
+
+**Venetian → Wynn:**
+1. From the Venetian casino floor, head toward Palazzo — through the Grand Canal Shoppes or the connecting walkway near the Palazzo Waterfall Atrium.
+2. On the Palazzo casino floor, head to the **north-west corner**; the exit doors sit past a row of restaurants and are easy to miss (interior signs point to the "LV Bridge").
+3. Take the short escalators up.
+4. Exit through Palazzo's north doors onto the elevated pedestrian bridge.
+5. Cross the bridge over Sands Avenue (level deck the whole way).
+6. The bridge lands on the south side of Wynn by the Wynn Plaza retail area; step inside and continue to the Wynn casino floor.
+7. For Encore, continue another 5–10 minutes through the Esplanade shopping corridor that links Wynn to Encore.
+
+**Wynn → Venetian (reverse):** head south inside Wynn toward Wynn Plaza, follow signs for the pedestrian bridge/Palazzo, cross, take the escalators down into Palazzo's north-west casino area, then walk south through Palazzo and the Grand Canal Shoppes into The Venetian. Starting deep in Encore adds 5–10 minutes. Wheelchair users: the Palazzo-side bridge approach defaults to escalators — ask Palazzo guest services for the elevator route to bridge level; the bridge deck itself is level.
+*Source: https://www.casinocompassapp.com/connections/venetian-to-wynn*
+
+### The Venetian ↔ Caesars Forum (15–20 min)
+- **During Expo hours only**, AWS provides a **temporary walkway linking Caesars Forum and The Venetian** — this is also why there is no shuttle on this pair. AWS publishes the walkway's existence and hours restriction but **no turn-by-turn routing** in the sources opened, so follow re:Invent signage and ambassadors on the day. (Trade-press coverage of other shows describes the equivalent link as a custom-built pedestrian sky bridge reached from the Venetian Expo's Level 2 exhibit floor.)
+- **Fallback street route (works any time):** exit The Venetian to Las Vegas Boulevard, walk south to the LINQ Promenade entrance (between The LINQ Hotel and Flamingo), walk east through the Promenade toward the High Roller, then take the connector bridge entrance to Caesars Forum located under the High Roller. Reverse for Caesars Forum → The Venetian. (The Promenade + connector-bridge segment is the published Caesars Palace → Caesars Forum walking route; see next section.)
+*Sources: https://aws.amazon.com/resources/analyst-summit/ ; https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here ; https://hoteltiplasvegas.com/hotels-near-venetian-expo/ ; https://www.lasvegashowto.com/caesars-forum*
+
+### Caesars Forum ↔ Caesars Palace (0.4 mi; 10–15 min depending on source)
+There is **no direct indoor link** between Caesars Forum and Caesars Palace — they are different buildings on opposite sides of Las Vegas Boulevard.
+
+**Caesars Palace → Caesars Forum (published route):**
+1. Exit Caesars Palace's main entrance and cross Las Vegas Boulevard (use the Flamingo Road pedestrian bridges — no street-level crossing).
+2. Walk east through the LINQ Promenade.
+3. Take the connector bridge entrance to Caesars Forum, located under the High Roller observation wheel.
+
+**Caesars Forum → Caesars Palace (reverse, via the Sky Bridge):**
+1. From Caesars Forum's Entry Hall, take the **FORUM Sky Bridge** into Harrah's Las Vegas or The LINQ (completely covered, ~5 minutes; the bridge also connects Flamingo).
+2. Exit Harrah's/The LINQ to the Strip and walk south to the Flamingo Road corner.
+3. Cross Las Vegas Boulevard on the pedestrian bridges into Caesars Palace.
+
+Times: LasVegasHowTo's Caesars Forum page quotes 15 minutes for the Promenade route; its Strip walking chart quotes Caesars Palace → Caesars Forum at 10 minutes and Harrah's → Caesars Forum at 5 minutes. Caesars Entertainment confirms the Sky Bridge gives direct pedestrian access between Caesars Forum and Harrah's, The LINQ, and Flamingo, into the Forum's Entry Hall/Lobby/Foyer.
+*Sources: https://www.lasvegashowto.com/caesars-forum ; https://www.lasvegashowto.com/las-vegas-walking-map ; https://www.caesars.com/meetings/meeting-insights/how-to-plan-a-multi-property-meeting-in-las-vegas-with-caesars ; https://www.caesars.com/meetings/locations/las-vegas/caesars-forum*
+
+### The Venetian ↔ Caesars Palace (12–18 min, under 1 mi; no direct connection)
+**Recommended — east side of the Strip (avoids the Mirage/Hard Rock construction on the west side):**
+1. Exit Caesars Palace through the main entrance on the Las Vegas Boulevard (east) side.
+2. Walk south to the Flamingo Road corner and cross Las Vegas Boulevard on the pedestrian bridge; it lands at The Vanderpump Hotel (formerly The Cromwell) on the east side.
+3. Walk north along the Strip sidewalk, passing Flamingo, the LINQ Promenade entrance, and The LINQ Hotel.
+4. Continue past Harrah's.
+5. The Venetian's main entrance is ahead on your right — enter through the Strip-facing entrance by the tower and replica bridge.
+Total: 12–15 minutes at a steady pace, plus indoor navigation at each end. Reverse the steps for Venetian → Caesars Palace.
+
+**Alternative — west side via Treasure Island:** exit Caesars Palace's north side, walk north on the west-side sidewalk past the fenced Mirage/Hard Rock construction site, and at the south end of Treasure Island take the pedestrian bridge across Las Vegas Boulevard into The Venetian (it lands near the poker room). 12–18 minutes; the west-side sidewalk is open but less pleasant during construction (the former Mirage is closed and being rebuilt as Hard Rock, reopening late 2027).
+*Source: https://www.casinocompassapp.com/connections/caesars-palace-to-venetian*
+
+### Center cluster (Caesars Forum / Caesars Palace) ↔ MGM Grand — walking the Strip
+AWS does **not** recommend walking this pair (shuttle ~20–25 min from Center; Monorail ~2 stops) and publishes no walking route. If you do walk it, the route is the Strip itself:
+1. From Caesars Palace, cross to the east side of Las Vegas Boulevard on the Flamingo Road pedestrian bridges (from Caesars Forum, first take the Sky Bridge to Harrah's/The LINQ or walk out via the LINQ Promenade).
+2. Walk south on the east-side Strip sidewalk, passing Horseshoe/Paris and Planet Hollywood.
+3. Cross Harmon Avenue on its pedestrian bridges.
+4. Continue south past the Showcase Mall / Park MGM area to Tropicana Avenue.
+5. MGM Grand is on the north-east corner of Las Vegas Boulevard & Tropicana Avenue; the Tropicana bridge cluster also links MGM Grand with New York-New York and Excalibur if you need the west side.
+Published times: Caesars Palace → MGM Grand ≈ 25 minutes (LasVegasHowTo Strip walking chart); The Venetian → MGM Grand ≈ 40 minutes. Budget more at peak crowd times, and note two of the Tropicana-corner bridges (to the former Tropicana site, now A's ballpark construction) were reported closed in 2026 — the MGM Grand corner itself remains connected.
+*Sources: https://www.lasvegashowto.com/las-vegas-walking-map ; https://places.vegas/blog/las-vegas-strip-walking-distances/ ; https://hoteltiplasvegas.com/walking-the-las-vegas-strip/ ; shuttle times per https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here*
+
+---
+
+## 3. Las Vegas Monorail in depth
+
+### Fares and passes (official, from lvmonorail.com)
+All passes are unlimited-ride for one person. The discounted **eTicket** price applies only to mobile tickets bought online; paper tickets at station vending machines and customer service booths are full fare.
+
+| Ticket | Full fare (station) | eTicket (online) |
+|---|---|---|
+| One-ride | $6.25 | $5.75 |
+| 1-day pass | $15.50 | $13.95 |
+| 2-day pass | $27.00 | $24.45 |
+| 3-day pass | $33.00 | $30.85 |
+| 4-day pass | $40.00 | $38.10 |
+| 5-day pass | $48.25 | $45.85 |
+| 7-day pass | $64.00 | $59.95 |
+
+How it works (official ticket page): buy the mobile ticket online (in advance or after arriving), receive an e-ticket by email, and scan the QR code on your phone at the fare gates; printed e-tickets also scan. Trains arrive every 4–8 minutes. Ticket vending machines near all seven station entrances sell full-price paper tickets with no card service fee. A day pass pays for itself on the third ride (3 × $5.75 = $17.25 vs. $13.95).
+*Sources: https://www.lvmonorail.com/ticket-information/ ; https://www.lvmonorail.com/discount-eticket-fares/*
+
+### The re:Invent badge deal
+- **For re:Invent attendees the Monorail is free**: AWS's official FAQ states "Badge holders can also take the Las Vegas Monorail for free by showing their badges at the entrance," and AWS's Analyst Summit page repeats that "your conference pass includes complimentary monorail service." You do **not** need to buy any of the passes above during re:Invent week.
+- A re:Invent-specific fare product or deal page on lvmonorail.com itself: **not listed** — the arrangement is published on the AWS side, not the operator's ticket pages. (lvmonorail.com does run a separate event "ticket integration" program for organizers, but no re:Invent offer appears on the pages opened.)
+*Sources: https://aws.amazon.com/events/reinvent/faqs/ ; https://aws.amazon.com/resources/analyst-summit/ ; https://www.lvmonorail.com/ticket-information/*
+
+### re:Invent-week service notes (from the operator)
+The Monorail's own operations page posts a "System Notice – Early Closure" for the conference window: **Nov 29 – Dec 2, 2026: 7 AM – midnight; Dec 3, 2026: 7 AM – 1 AM** (earlier than the regular Tue–Thu 2 AM close). AWS's campus pages list the Monorail as accessible at four stations for re:Invent: MGM Station, Horseshoe/Paris Station, Flamingo/Caesars Palace Station, and Harrah's/The LINQ Station (labeled for Caesars Forum).
+*Sources: https://www.lvmonorail.com/operations/ ; https://aws.amazon.com/resources/analyst-summit/*
+
+### Station-by-station: which station for which campus venue
+Line order south → north: **MGM Grand → Horseshoe/Paris → Flamingo/Caesars Palace → Harrah's/The LINQ → Boingo Station at Las Vegas Convention Center → Westgate → SAHARA Las Vegas**. All stations are on the east side of the Strip, and most platforms sit at the back of a resort, reached through the casino — follow the in-resort Monorail signs.
+
+| Station | Campus venue it serves | Getting from the platform to the venue |
+|---|---|---|
+| **MGM Grand** | **MGM Grand** (in-resort station, southern terminus) | The station is inside MGM Grand on its east side (the official MGM Grand property map labels "MONORAIL" beside the Conference Center/self-parking side). Two entrances: one in The District near the Grand Garden Arena, and one in the MGM Underground past Brad Garrett's Comedy Club. From the Strip entrance/lobby, escalators by the Bell Desk lead down toward the station level. |
+| **Horseshoe / Paris** | No campus venue (nearest stop for the south-center Strip) | Station is in the lower level of the Horseshoe, past the Avenue Shops, food court and sportsbook; no street entrance. From Paris, walk through Le Boulevard into the Horseshoe. |
+| **Flamingo / Caesars Palace** | **Caesars Palace** | Despite the name, the station entrance is **inside the Flamingo** (east side): walk through the Flamingo casino toward the hotel lobby/parking garage, then up the escalator to the connector walkway. For Caesars Palace, exit the Flamingo to the Strip and cross Las Vegas Boulevard on the Flamingo Road pedestrian bridges, then walk through the Caesars Palace complex to the Conference Center side. |
+| **Harrah's / The LINQ** | **Caesars Forum** (primary) and **The Venetian** (nearest station) | For **Caesars Forum**: the station connects to Caesars Forum via the FORUM Sky Bridge (~5 min, covered) — the station sits between Harrah's and The LINQ behind the resorts; from The LINQ side, follow signs past the front desk toward self-parking and up two escalators to the 2nd floor; from Harrah's, take the atrium elevator to the 4th floor of the garage. For **The Venetian**: this is the station the Monorail itself lists for The Venetian Expo — it is a walk, not a connection: exit to the Strip side and walk north past Harrah's to The Venetian (~10 min by published Strip walking times). |
+| **Boingo Station at LVCC** | No campus venue (Las Vegas Convention Center) | — |
+| **Westgate** | No campus venue | — |
+| **SAHARA Las Vegas** | No campus venue (northern terminus) | — |
+
+There is **no Monorail station at The Venetian, Wynn, or Encore** — for Wynn/Encore, ride to Harrah's/The LINQ, walk to The Venetian, then take the Sands Avenue bridge (Section 2), or use the campus shuttle.
+*Sources: station list and campus-station labeling — https://aws.amazon.com/resources/analyst-summit/ ; platform-access details as compiled from the Monorail's station pages — https://vegasvisitorguide.com/las-vegas-monorail/ and https://hoteltiplasvegas.com/las-vegas-monorail/ ; MGM Grand station placement — https://mgmgrand.mgmresorts.com/content/dam/MGM/mgm-grand/property-maps/mgm-grand-property-map.pdf ; Venetian Expo station listing — https://lasvegasconventionguide.com/shows/aws-reinvent-2026 ; Harrah's → Venetian walk time — https://www.lasvegashowto.com/las-vegas-walking-map*
+
+---
+
+## Known gaps (not listed / not verified)
+- **Venetian ↔ Caesars Forum temporary walkway:** AWS confirms it exists and is Expo-hours-only, but no source opened publishes its exact entry points or turn-by-turn steps; on-site signage/ambassadors are the authority during the event.
+- **Individual lvmonorail.com station pages** were not opened directly (their URLs did not surface in search); station platform-access details above come from current guides that compile those official station pages, cross-checked against AWS's campus pages.
+- **No re:Invent-specific deal on lvmonorail.com:** free-with-badge is documented by AWS only; the operator's site lists no re:Invent fare product on the pages opened.
+- **Caesars Forum / Caesars Palace "floor plans"** on caesars.com are capacity/spec charts within the venue pages rather than standalone graphical map PDFs on the pages opened.
+- **Center ↔ MGM Grand walking time** varies by source and start point (≈25 min from Caesars Palace; ≈40 min from The Venetian); AWS publishes no walking time for this pair and recommends the shuttle or Monorail instead.

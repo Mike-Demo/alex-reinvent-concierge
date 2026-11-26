@@ -1,0 +1,406 @@
+# AWS re:Invent 2026 — Side Events Research
+
+**Date researched:** November 25, 2026
+**Conference:** AWS re:Invent 2026, Las Vegas, Mon Nov 30 – Fri Dec 4, 2026
+**Scope:** Parties, concerts, receptions, socials, and partner/community events outside the main conference program. A few official AWS social events (Expo reception, re:Play) are included because attendees consistently treat them as part of the social calendar.
+
+**Sources used (all opened and read on Nov 25, 2026):**
+- Echelon — "AWS re:Invent 2026 Parties, Side Events & Happy Hours" (232 events listed, updated Nov 23, 2026): https://echelonai.com/reinvent/planner
+- Exa — "AWS re:Invent 2026 Parties & Side Events" (checked Nov 18, 2026): https://exa.ai/events/aws-reinvent-2026-parties
+- Conference Parties — "AWS re:Invent Parties 2026": https://conferenceparties.com/reinvent2026/
+- Reinvent Radar: https://reinventradar.io/ and https://www.reinventradar.com/schedule
+- Luma — AWS re:Invent events calendar: https://luma.com/aws-re-invent?k=c
+- ControlMonkey — "10 Best Networking Events at re:Invent 2026": https://controlmonkey.io/resource/reinvent-events/
+- Raidan Dev — "AWS re:Invent 2026 parties and events, Las Vegas": https://raidandev.org/vegas/reinvent-2026/
+- Tech.Vegas event calendar: https://tech.vegas/calendar/list/page/6/?tribe-bar-date=2026-11-08
+- EventAfter event pages (e.g., AI Trivia Night, New Stack/Hydrolix reception)
+- Individual host/Eventbrite pages: ClickHouse House Party, Eventbrite listings for the New Stack & Hydrolix reception and Cloud & Cocktails at PLAY
+
+**Conventions:** All times are Pacific Time (PT) as listed by the sources. "Cost: not listed" means none of the pages opened stated a price. Where aggregators disagreed on a detail, the entry follows the majority/newest source and the disagreement is noted. Many events are host-approved or invite-only even when the RSVP page is public — the entry says so where a source states it.
+
+---
+
+## Sunday, November 29, 2026 (pre-conference day)
+
+### Kubernetes Automation Day
+- **Organizer:** KubeAuto Day
+- **Date/time:** Sun, Nov 29, 2:30 PM – 7:00 PM PT
+- **Venue:** Rockhouse, Grand Canal Shoppes, The Venetian
+- **Description:** Free community event with practitioner talks on Kubernetes automation, platform engineering, and FinOps, ending with a happy hour.
+- **Cost:** Free (RSVP required)
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (RSVP link out to kubeauto.day)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### 2026 FinOps Leaders Dinner
+- **Organizer:** ProsperOps and Flexera
+- **Date/time:** Sun, Nov 29, 5:30 PM – 8:00 PM PT
+- **Venue:** Delmonico Steakhouse, The Venetian Resort
+- **Description:** Executive dinner for cloud finance and operations leaders to compare cost-optimization practices.
+- **Cost:** Not listed (organizer confirms invitations by email)
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://exa.ai/events/aws-reinvent-2026-parties (Exa lists the venue only as "The Venetian Resort"; Echelon and Conference Parties name Delmonico Steakhouse)
+
+### Undrgrnd Social — Vegas Edition
+- **Organizer:** Undrgrnd Social
+- **Date/time:** Sun, Nov 29, 9:00 PM – 2:00 AM PT
+- **Venue:** Penthouse suite, The Cosmopolitan of Las Vegas
+- **Description:** Off-the-record penthouse gathering for enterprise leaders with a live DJ; suite and check-in details sent to approved guests the day before.
+- **Cost:** Paid ticket, host approval required
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (ticket request via Luma)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+---
+
+## Monday, November 30, 2026
+
+### Web Agencies Coffee Meetup
+- **Organizer:** Mike "Demo" Demopoulos
+- **Date/time:** Mon, Nov 30, 7:30 AM – 9:00 AM PT (runs daily Mon–Fri of re:Invent week)
+- **Venue:** Urth Caffé, Wynn Plaza Shops, Las Vegas
+- **Description:** Morning coffee meetup for web agencies and partners attending re:Invent.
+- **Cost:** Not listed (Luma registration, host approval)
+- **RSVP/info:** https://luma.com/wvy3qxfa
+- **Verified on:** https://reinventradar.io/
+
+### Stripe Day Party @ re:Invent
+- **Organizer:** Stripe
+- **Date/time:** Mon, Nov 30, 8:00 AM – 2:00 PM PT
+- **Venue:** Mon Ami Gabi, Paris Las Vegas
+- **Description:** Stripe's daytime party/hangout at Mon Ami Gabi, running alongside its developer breakfast at the same venue.
+- **Cost:** Not listed (request an invite per Conference Parties)
+- **RSVP/info:** https://luma.com/aws-re-invent?k=c
+- **Verified on:** https://echelonai.com/reinvent/planner and https://luma.com/aws-re-invent?k=c
+
+### New Relic Jet Lag Drinks & Darts
+- **Organizer:** New Relic
+- **Date/time:** Mon, Nov 30, 1:00 PM – 4:00 PM PT
+- **Venue:** Flight Club, Grand Canal Shoppes, The Palazzo
+- **Description:** Social darts and an open bar with New Relic and fellow attendees to shake off travel.
+- **Cost:** Not listed (RSVP required)
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (RSVP link out to newrelic.com)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### AWS & Partners Welcome Reception (Expo Welcome Reception)
+- **Organizer:** AWS
+- **Date/time:** Mon, Nov 30, 4:00 PM – 7:00 PM PT
+- **Venue:** Expo Hall, The Venetian Expo
+- **Description:** AWS's official welcome reception on the Expo floor — an early look around the Expo and a first meet-up with fellow attendees.
+- **Cost:** Free — included with your conference badge
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://exa.ai/events/aws-reinvent-2026-parties
+
+### Catalyst Pre-Party at AWS re:Invent
+- **Organizer:** Partnership Leaders
+- **Date/time:** Mon, Nov 30, 4:00 PM – 6:30 PM PT
+- **Venue:** Las Vegas — location shared with confirmed guests
+- **Description:** Pre-party for the partnership-leader community ahead of the evening's receptions.
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://echelonai.com/reinvent/planner
+
+### AWS re:Invent 2026 Kickoff Party
+- **Organizer:** Rootly (with Logz.io per EventAfter)
+- **Date/time:** Mon, Nov 30, 6:00 PM – 9:00 PM PT
+- **Venue:** Rockhouse, Grand Canal Shoppes (Echelon); Exa lists the location as shared with confirmed guests
+- **Description:** Kickoff party for cloud architects, engineers, and AWS practitioners; open bar and bar bites, entry first come, first served until capacity.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://exa.ai/events/aws-reinvent-2026-parties
+
+### Datadog Welcome Happy Hour (Data + AI Welcome Happy Hour)
+- **Organizer:** Datadog, Databricks, and Confluent
+- **Date/time:** Mon, Nov 30, 6:00 PM – 8:30 PM PT
+- **Venue:** Bazaar Meat by José Andrés, The Palazzo
+- **Description:** Welcome happy hour for data and AI practitioners hosted by Datadog with Databricks and Confluent.
+- **Cost:** Not listed (RSVP required)
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (RSVP link out to events.datadoghq.com)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://echelonai.com/reinvent/planner
+
+### re:Invent Reception with The New Stack & Hydrolix
+- **Organizer:** The New Stack and Hydrolix
+- **Date/time:** Mon, Nov 30, 6:00 PM – 8:00 PM PT
+- **Venue:** Delmonico Steakhouse, The Venetian (3355 S Las Vegas Blvd)
+- **Description:** Kickoff reception with elevated bites and drinks, mingling with VIPs and The New Stack's editorial team.
+- **Cost:** Free (Eventbrite ticket listed at $0)
+- **RSVP/info:** https://www.eventbrite.com/e/reinvent-reception-with-the-new-stack-hydrolix-tickets-2003796176304
+- **Verified on:** https://www.eventbrite.com/e/reinvent-reception-with-the-new-stack-hydrolix-tickets-2003796176304
+
+### Darktrace After Dark — Holiday Party
+- **Organizer:** Darktrace
+- **Date/time:** Mon, Nov 30, 7:00 PM – 9:00 PM PT
+- **Venue:** Clique Bar & Lounge, The Cosmopolitan of Las Vegas
+- **Description:** Holiday mixer for security and tech attendees with a DJ and a live Santa Elvis appearance.
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### House of Kube @ AWS re:Invent
+- **Organizer:** Platform Engineering (with partners incl. Tailscale, Plural, Qodo, Temporal per EventAfter)
+- **Date/time:** Mon, Nov 30, 7:00 PM – 1:00 AM PT
+- **Venue:** The INDUSTRIAL Event Space, 2330 S Industrial Rd (off-Strip)
+- **Description:** Community party for cloud-native builders and platform engineers with house/techno music, complimentary bites and drinks.
+- **Cost:** Free (Exa states admission is free; a re:Invent pass is optional)
+- **RSVP/info:** https://luma.com/aws-re-invent?k=c
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://echelonai.com/reinvent/planner
+
+### Harness After-Hours Party
+- **Organizer:** Harness
+- **Date/time:** Mon, Nov 30, 8:00 PM – 11:00 PM PT
+- **Venue:** Flight Club, Grand Canal Shoppes, The Palazzo
+- **Description:** Darts and drinks with engineering peers; open to attendees while space lasts.
+- **Cost:** Not listed (RSVP required)
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (RSVP link out to harness.io)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+---
+
+## Tuesday, December 1, 2026
+
+### No Cold Starts with LangChain
+- **Organizer:** Baseten and LangChain
+- **Date/time:** Tue, Dec 1, 7:00 AM – 11:00 AM PT
+- **Venue:** Dandelion Chocolate, The Venetian
+- **Description:** Drop-in coffee lounge with pastries, coffee, and hot chocolate before the keynotes or between morning sessions (the No Cold Starts lounge runs all week with rotating co-hosts).
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### Sinch and ElevenLabs Networking Reception
+- **Organizer:** Sinch and ElevenLabs
+- **Date/time:** Tue, Dec 1, 4:30 PM – 7:30 PM PT
+- **Venue:** Mon Ami Gabi, Paris Las Vegas
+- **Description:** Reception for leaders working on conversational AI and customer experience, with light bites and drinks.
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### Pit Stop: Hydrolix & Monad at F1 Arcade
+- **Organizer:** Hydrolix and Monad
+- **Date/time:** Tue, Dec 1, 4:30 PM – 6:30 PM PT
+- **Venue:** F1 Arcade, The Forum Shops at Caesars
+- **Description:** F1 racing simulators plus conversation about operational data at scale.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://exa.ai/events/aws-reinvent-2026-parties
+
+### Cloud & Cocktails at PLAY
+- **Organizer:** Lucid Software, Cortex, Crash Override, incident.io, Miggo, and Tailscale
+- **Date/time:** Tue, Dec 1, 6:00 PM – 8:00 PM PT
+- **Venue:** Play Playground, Luxor (3900 S Las Vegas Blvd)
+- **Description:** Happy hour with drinks, bites, and free games for platform engineering, DevOps, cloud architecture, and incident-response folks; 21+, first come, first served.
+- **Cost:** Not listed (RSVP via Eventbrite)
+- **RSVP/info:** https://www.eventbrite.com/e/cloud-cocktails-at-play-tickets-1997894868333?aff=ebdssbthingstodo
+- **Verified on:** https://www.eventbrite.com/e/cloud-cocktails-at-play-tickets-1997894868333?aff=ebdssbthingstodo
+
+### Startups After Dark: The AWS re:Invent Rooftop Party
+- **Organizer:** Automat-it (AIT) and AWS
+- **Date/time:** Tue, Dec 1, 7:00 PM – 10:00 PM PT
+- **Venue:** OMNIA Nightclub Terrace, Caesars Palace
+- **Description:** Rooftop party for the startup community at OMNIA; register with the host.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://reinventradar.io/
+
+### Datadog Off Leash — Datadog Community Appreciation Party
+- **Organizer:** Datadog
+- **Date/time:** Tue, Dec 1, 7:00 PM – 10:00 PM PT
+- **Venue:** Brooklyn Bowl, The LINQ Promenade
+- **Description:** Datadog's community party — bowling, live music, and limited-edition swag.
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://echelonai.com/reinvent/planner
+
+### AI Trivia Night at re:Invent
+- **Organizer:** Sanity, Temporal, and Mastra
+- **Date/time:** Tue, Dec 1, 7:00 PM – 11:00 PM PT
+- **Venue:** Smelly Cat Karaoke Bar, Horseshoe Las Vegas (address shown after approval)
+- **Description:** Trivia night for people shipping AI products; 21+ with ID.
+- **Cost:** Free on Luma, with host approval
+- **RSVP/info:** https://luma.com/TriviaDec26
+- **Verified on:** https://www.eventafter.com/aws-reinvent-2026/ai-trivia-night-at-re-invent
+
+### Agents After Dark at AWS re:Invent
+- **Organizer:** Vercel (sponsored by Notion and Anthropic)
+- **Date/time:** Tue, Dec 1, 7:00 PM – 10:00 PM PT
+- **Venue:** CUT by Wolfgang Puck, The Palazzo
+- **Description:** Build an agent and hear a live DJ at Vercel's evening party, with craft cocktails.
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://echelonai.com/reinvent/planner
+
+### Somewhere Over the PR: An AI SDLC Evening at Sphere
+- **Organizer:** Kiro and Hud
+- **Date/time:** Tue, Dec 1, 6:30 PM – 9:30 PM PT
+- **Venue:** Sphere (private suite), 255 Sands Ave
+- **Description:** Discussion of reviewing agent-written code, then The Wizard of Oz from a private Sphere suite; limited to 28 confirmed guests.
+- **Cost:** Not listed (confirmed guests only)
+- **RSVP/info:** https://reinventradar.io/
+- **Verified on:** https://reinventradar.io/ and https://exa.ai/events/aws-reinvent-2026-parties
+
+### House Party Featuring The Chainsmokers (ClickHouse)
+- **Organizer:** ClickHouse
+- **Date/time:** Tue, Dec 1, 9:00 PM – 12:00 AM PT
+- **Venue:** Intrigue Nightclub, Wynn Las Vegas
+- **Description:** The week's biggest concert party — a late-night Chainsmokers set at Intrigue, back for a third year, with open bar.
+- **Cost:** Paid — invite-only, ticketed event (interested guests may request a General Admission ticket on the host page)
+- **RSVP/info:** https://clickhouse.com/houseparty/reinvent?loc=banner
+- **Verified on:** https://clickhouse.com/houseparty/reinvent?loc=banner and https://echelonai.com/reinvent/planner
+
+### Midnight Serverless Rave
+- **Organizer:** Lambda Labs
+- **Date/time:** Tue, Dec 1, 10:00 PM – 2:00 AM PT
+- **Venue:** OMNIA Nightclub, Caesars Palace
+- **Description:** Late-night rave listed on Reinvent Radar's schedule.
+- **Cost:** Not listed
+- **RSVP/info:** https://reinventradar.io/
+- **Verified on:** https://reinventradar.io/ (single-source listing — no second aggregator confirmed it as of Nov 25)
+
+---
+
+## Wednesday, December 2, 2026
+
+### GitHub Social Club
+- **Organizer:** GitHub
+- **Date/time:** Wed, Dec 2, 8:00 AM – 4:00 PM PT (Exa; Echelon lists 8:00 AM – 5:00 PM)
+- **Venue:** El Segundo Sol, Fashion Show Las Vegas
+- **Description:** Build with GitHub experts, program a badge with Copilot, or take a break and charge devices; walk-ins welcome.
+- **Cost:** Free (pre-register on Luma for faster check-in)
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (pre-register link out to luma.com)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### AWS & Partners Expo Happy Hour
+- **Organizer:** AWS
+- **Date/time:** Wed, Dec 2, 4:30 PM – 6:00 PM PT
+- **Venue:** Expo Hall, The Venetian Expo
+- **Description:** Official Expo happy hour with AWS experts and fellow attendees; complimentary snacks and drinks.
+- **Cost:** Free — included with your conference badge
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://exa.ai/events/aws-reinvent-2026-parties
+
+### A Cut Above The Rest Reception (Elastic & AWS)
+- **Organizer:** Elastic and AWS
+- **Date/time:** Wed, Dec 2, 6:00 PM – 9:00 PM PT
+- **Venue:** CUT by Wolfgang Puck, The Palazzo (3325 S Las Vegas Blvd)
+- **Description:** Elastic and AWS reception at CUT; as of the Echelon listing the event was full, with a waitlist on the host's page.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner/a-cut-above-the-rest
+- **Verified on:** https://echelonai.com/reinvent/planner/a-cut-above-the-rest
+
+### 2026 AWS re:Invent Networking Reception (Atos & BMC)
+- **Organizer:** Atos and BMC
+- **Date/time:** Wed, Dec 2, 6:00 PM – 8:00 PM PT
+- **Venue:** Cañonita, The Venetian Resort (3377 S Las Vegas Blvd)
+- **Description:** Networking reception hosted by Atos and BMC; register through the host's page to get on the list.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner/aws-reinvent-networking-reception
+- **Verified on:** https://echelonai.com/reinvent/planner/aws-reinvent-networking-reception
+
+### A Night at the Sphere with Bird
+- **Organizer:** Bird
+- **Date/time:** Wed, Dec 2, 6:00 PM – 10:00 PM PT
+- **Venue:** Sphere, Las Vegas
+- **Description:** Drinks and the immersive Sphere show with Bird; register with the host.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner
+
+### AWS re:Invent 2026 Social Hour
+- **Organizer:** Twingate, Rootly, and Logz.io
+- **Date/time:** Wed, Dec 2, 6:00 PM – 9:00 PM PT
+- **Venue:** The INDUSTRIAL Event Space, Las Vegas
+- **Description:** Mid-week social with music, lounge seating, full dinner, and an open bar for engineering peers; ticket holders enter first come, first served.
+- **Cost:** Not listed
+- **RSVP/info:** https://luma.com/i99nfjls
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://tech.vegas/calendar/list/page/6/?tribe-bar-date=2026-11-08
+
+### Cloudflare Region: Earth — After Dark (Cloudflare After Dark)
+- **Organizer:** Cloudflare
+- **Date/time:** Wed, Dec 2, 7:00 PM – 10:00 PM PT
+- **Venue:** Brooklyn Bowl, The LINQ Promenade
+- **Description:** Bowling, food, and drinks at Brooklyn Bowl for Cloudflare's re:Invent after-dark party; register with Cloudflare.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner
+
+### Duckbill / Last Week in AWS + RedMonk at re:Invent 2026 (Atomic Liquors meetup)
+- **Organizer:** Duckbill, Last Week in AWS, Heavybit, and RedMonk
+- **Date/time:** Wed, Dec 2, 7:00 PM – 12:00 AM PT
+- **Venue:** Atomic Liquors, Fremont East, Downtown Las Vegas
+- **Description:** Informal downtown meetup with Corey Quinn and the Duckbill / Last Week in AWS / RedMonk crowd — an escape from the Strip madness.
+- **Cost:** Not listed
+- **RSVP/info:** https://luma.com/pre1zzw3
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties and https://tech.vegas/calendar/list/page/6/?tribe-bar-date=2026-11-08
+
+### Wiz Party
+- **Organizer:** Wiz
+- **Date/time:** Wed, Dec 2, 7:00 PM – 10:00 PM PT
+- **Venue:** Electra Cocktail Club, The Palazzo
+- **Description:** Cloud security peers over drinks and bites with Wiz and its partners.
+- **Cost:** Not listed (RSVP required)
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties (RSVP link out to wiz.io)
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties
+
+### Mission Cloud IGNITE
+- **Organizer:** Mission Cloud, AMD, Nutanix, and Wiz
+- **Date/time:** Wed, Dec 2, 9:00 PM – 1:00 AM PT
+- **Venue:** OMNIA Nightclub, Caesars Palace
+- **Description:** Late-night party at OMNIA with a live performance by Nelly.
+- **Cost:** Not listed
+- **RSVP/info:** https://exa.ai/events/aws-reinvent-2026-parties
+- **Verified on:** https://exa.ai/events/aws-reinvent-2026-parties (ControlMonkey's roundup also lists a Mission Cloud OMNIA party on Dec 2, 9 PM – 1 AM)
+
+---
+
+## Thursday, December 3, 2026
+
+### PCAN.cloud AWS PALs re:Invent Networking Brunch
+- **Organizer:** PCAN.cloud
+- **Date/time:** Thu, Dec 3, 9:00 AM – 11:00 AM PT
+- **Venue:** The Venetian Resort
+- **Description:** Networking brunch for AWS partner/PALs community members.
+- **Cost:** Not listed
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner
+
+### Recovery Cocktail: Private Happy Hour at Flight Club (ControlMonkey)
+- **Organizer:** ControlMonkey
+- **Date/time:** Thu, Dec 3, 5:30 PM – 8:00 PM PT
+- **Venue:** The Pavilion at Flight Club, Grand Canal Shoppes, The Venetian
+- **Description:** Private happy hour for cloud and security leaders — cocktails, bites, and social darts in a private lounge with four dart lanes.
+- **Cost:** Not listed (register on Luma)
+- **RSVP/info:** https://luma.com/3jy18etl
+- **Verified on:** https://controlmonkey.io/resource/reinvent-events/ and https://echelonai.com/reinvent/planner
+
+### AWS re:Play
+- **Organizer:** AWS
+- **Date/time:** Thu, Dec 3, 6:30 PM – 10:30 PM PT
+- **Venue:** Allegiant Stadium
+- **Description:** The official re:Invent closing party. Shuttles run from the re:Invent hotels 6:15 PM – 11:00 PM; bring your badge.
+- **Cost:** Included with a full conference pass; guest passes are sold separately
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner
+
+---
+
+## Friday, December 4, 2026
+
+### Transform Your Coffee
+- **Organizer:** Datafy
+- **Date/time:** Fri, Dec 4, 7:30 AM – 8:30 AM PT (also listed on other mornings of the week)
+- **Venue:** The Coffee Bean & Tea Leaf, Grand Canal Shoppes, The Venetian
+- **Description:** Morning coffee meetup to close out the week.
+- **Cost:** Not listed (request an invite per Conference Parties)
+- **RSVP/info:** https://echelonai.com/reinvent/planner
+- **Verified on:** https://echelonai.com/reinvent/planner and https://conferenceparties.com/reinvent2026/
+
+---
+
+## Notes, discrepancies, and things that could NOT be verified
+
+- **Friday, Dec 4 is thin.** Aggregators list only a handful of Friday side events, and several (e.g., "Breakfast – Final Connections," "Dinner – The Next Move" on Echelon) show "Venue TBD" with no public RSVP detail beyond the aggregator listing, so they were not given full entries.
+- **Aggregator disagreements exist.** Examples: the FinOps Leaders Dinner venue (Delmonico Steakhouse per Echelon/Conference Parties vs. just "The Venetian Resort" per Exa); the Rootly Kickoff Party venue (Rockhouse per Echelon vs. "shared with confirmed guests" per Exa); GitHub Social Club end time (4 PM per Exa vs. 5 PM per Echelon); the HabileLabs Kickoff Night start (6 PM per Echelon/Exa vs. 7 PM per Raidan Dev). Entries follow the majority source.
+- **Pier Racing 2026** (Sun, Nov 29, 6–10 PM, SpeedVegas, hosted by Pier Cloud) is real and listed everywhere, but Exa reported registration and the waitlist already closed, so it was left out of the main list.
+- **Mentioned but not verified on a 2026 event page:** ControlMonkey's roundup name-checks parties from MongoDB and Snowflake among the week's best, but no specific MongoDB or Snowflake party (name/date/venue) appeared on the aggregator pages opened, so none is listed. Echelon's FAQ likewise references "Agent Afters" (Superfrico, Wed 8 PM – 12 AM per its schedule) — it does appear in Echelon's own schedule as "Agent Afters – The Best Night Out of AWS re:Invent," but no host or RSVP detail was shown on the pages opened.
+- **re:Play performer:** No headline performer for AWS re:Play 2026 was announced on any page opened as of Nov 25, 2026.
+- **Counts for context:** Echelon lists 232 events, Reinvent Radar (reinventradar.com) claims 321, Reinvent Radar (.io) lists 42, and Conference Parties lists 67 — the aggregators overlap heavily and none is official. AWS's own official social events (Welcome Reception, Expo Happy Hour, re:Play) require only a badge.
+- All details were captured Nov 25, 2026; hosts routinely change venues, times, and capacity, so the RSVP page is the final word before attending.

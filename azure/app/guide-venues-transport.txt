@@ -1,0 +1,189 @@
+# AWS re:Invent 2026 — Venues, Maps & Transportation Facts
+
+**Date researched:** 2026-11-25
+**Event:** AWS re:Invent 2026, Las Vegas, NV — Mon Nov 30 – Fri Dec 4, 2026 (badge pickup and kickoff activities start Sun Nov 29)
+**Purpose:** Knowledge-base facts for the Partnerships Concierge agent. Every fact block carries its source URL. Facts that could not be verified from an opened page are marked "not listed."
+
+**Sources opened for this file:**
+- AWS re:Invent FAQ — https://aws.amazon.com/events/reinvent/faqs/
+- AWS re:Invent agenda — https://aws.amazon.com/events/reinvent/agenda/
+- AWS Analyst Summit at re:Invent page — https://aws.amazon.com/resources/analyst-summit/ (note: page header is dated Dec 1–3, 2025; its campus shuttle/monorail/walking section describes the standard re:Invent campus transport system — flagged where used)
+- AWS Builder Center, "AWS re:Invent 2026: The Attendee Playbook" (published Nov 12, 2026; session data re-checked against the official catalog Nov 11, 2026) — https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here
+- Fractivo re:Invent 2026 guide (independent attendee guide, checked Oct 28, 2026) — https://www.fractivo.com/reinvent
+- Las Vegas Monorail official site — https://www.lvmonorail.com/
+- Venue official sites / brand listings for street addresses (venetianlasvegas.com, wynnlasvegas.com, Caesars Entertainment listings)
+
+---
+
+## 1. The re:Invent campus — six venues
+
+AWS re:Invent 2026 runs across **six venues** on the Las Vegas Strip: **Caesars Forum, Caesars Palace, Encore, MGM Grand, The Venetian, and Wynn**. Mandalay Bay and Aria are **not** re:Invent 2026 campus venues.
+*Source: https://aws.amazon.com/events/reinvent/faqs/ ; corroborated by the Attendee Playbook ("six venues along the Strip") — https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here*
+
+AWS groups the campus into three clusters:
+
+| Cluster | Venues | What lives there |
+|---|---|---|
+| **North** | The Venetian / Palazzo, Wynn / Encore | All five keynotes, the Expo and Builder Zone, Venetian Content Hub; Wynn hosts Thursday's security focus day |
+| **Center** | Caesars Forum, Caesars Palace | Caesars Forum: Content Hub theaters, Academy rooms, Customer Showcase (Summit Ballroom), Certification Lounge (Academy 407). Caesars Palace: migration, Microsoft and modernization content |
+| **South** | MGM Grand | Deep AI/agent workshops (AgentCore, Bedrock), CFM, many 400-level chalk talks |
+
+*Source: https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here*
+
+### The Venetian
+- **Address:** 3355 S Las Vegas Blvd, Las Vegas, NV 89109
+- **What happens there:** All five keynotes (Ballroom E), the Expo (incl. Builder Zone), badge pickup, Expo Welcome Reception, evening networking receptions, Content Hub. Sessions run at The Venetian every day including Friday morning.
+- The attached **Palazzo** tower (3325 Las Vegas Blvd S, Las Vegas, NV 89109) is part of the same resort complex and is grouped with The Venetian in the North cluster.
+*Sources: https://www.venetianlasvegas.com/ (address); agenda and keynote/Expo placement — https://aws.amazon.com/events/reinvent/agenda/ and the Attendee Playbook (above).*
+
+**Keynotes — all at The Venetian (Ballroom E), all streamed:**
+- Developer Keynote — Mon Nov 30, 7:30–8:45 PM
+- CEO Keynote (Matt Garman) — Tue Dec 1, 8:30–10:30 AM
+- Data & AI Keynote — Wed Dec 2, 8:30–10:00 AM
+- Partner Keynote (Dr. Ruba Borno) — Wed Dec 2, 3:00–4:00 PM
+- Technology Innovation Keynote — Thu Dec 3, 8:30–10:00 AM
+
+*Source: Attendee Playbook keynote table — https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here*
+
+### Caesars Forum
+- **Address:** 3911 Koval Lane, Las Vegas, NV 89109 — a dedicated conference center east of the Strip, behind The LINQ Promenade / High Roller, connected by Sky Bridge to Harrah's and The LINQ Hotel.
+- **What happens there:** Content Hub theaters, Academy rooms, Customer Showcase (Summit Ballroom), Certification Lounge (Academy 407), help desk, Sunday kickoff activities.
+- ⚠️ **Caesars Forum is NOT Caesars Palace** — they are separate properties, about 0.4 miles apart. Do not confuse Caesars Forum with the Forum Shops at Caesars Palace (3500 S Las Vegas Blvd), which is a shopping mall.
+*Sources: Caesars Entertainment brand listings (address); Attendee Playbook (contents, 0.4 mi separation); agenda — https://aws.amazon.com/events/reinvent/agenda/*
+
+### Caesars Palace
+- **Address:** 3570 Las Vegas Blvd S, Las Vegas, NV 89109
+- **What happens there:** Breakout sessions (much of the migration, Microsoft and modernization content), self-paced learning, help desk, Tuesday and Wednesday evening networking receptions.
+*Sources: venue address listings; Attendee Playbook; agenda — https://aws.amazon.com/events/reinvent/agenda/*
+
+### Wynn Las Vegas
+- **Address:** 3131 Las Vegas Blvd S, Las Vegas, NV 89109
+- **What happens there:** Sessions, help desk, and **Thursday Dec 3 is the re:Inforce security focus day at Wynn (8:00 AM–5:30 PM)**. Sessions also run at Wynn | Encore on Friday morning. Wynn and Encore are connected internally.
+*Sources: https://www.wynnlasvegas.com/ (address); FAQ/agenda — https://aws.amazon.com/events/reinvent/faqs/ , https://aws.amazon.com/events/reinvent/agenda/*
+
+### Encore
+- **Address:** 3121 Las Vegas Blvd S, Las Vegas, NV 89109 (Encore's own listings use 3121; Wynn's site also publishes the shared resort address 3131 Las Vegas Blvd S for "Wynn and Encore" — the two towers are one connected resort).
+- **What happens there:** Treated as one venue with Wynn ("Wynn | Encore") for sessions, help desk, and Wednesday's networking reception.
+*Sources: Encore property listings; agenda — https://aws.amazon.com/events/reinvent/agenda/*
+
+### MGM Grand
+- **Address:** 3799 Las Vegas Blvd S, Las Vegas, NV 89109
+- **What happens there:** Sessions — deep AI/agent workshops (AgentCore, Bedrock), CFM, many 400-level chalk talks — plus badge pickup. It is the southernmost campus venue and the farthest from The Venetian.
+*Sources: venue address listings; Attendee Playbook; Fractivo venue notes — https://www.fractivo.com/reinvent*
+
+---
+
+## 2. Distances, adjacency & walking
+
+Verified walking/transport estimates between clusters (AWS's own Attendee Playbook labels these "estimates — plan with them, then check the AWS Events app"):
+
+- **The Venetian ↔ Wynn/Encore:** 10–15 min walk
+- **The Venetian ↔ Caesars Forum:** 15–20 min
+- **Caesars Forum ↔ Caesars Palace:** 5–10 min (0.4 mi apart, different buildings)
+- **Center (Caesars) ↔ MGM Grand:** ~20–25 min by shuttle
+- **North (Venetian/Wynn) ↔ MGM Grand:** 30+ min by shuttle
+- **General AWS guidance:** allow **30–45 minutes** when walking between or within venues; never plan North → South in under 45 minutes.
+
+*Source: https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here ; 30–45 min guidance also on https://aws.amazon.com/resources/analyst-summit/*
+
+**Three direct walking routes connect the campus:**
+1. **Encore and Wynn are connected internally** (indoors).
+2. **A bridge connects Wynn and The Venetian.**
+3. **A temporary walkway links Caesars Forum and The Venetian** — available during Expo hours only.
+
+re:Invent ambassadors are stationed throughout the campus for wayfinding help, and the **AWS Events app has interactive maps and wayfinding**.
+*Sources: https://aws.amazon.com/resources/analyst-summit/ ; https://aws.amazon.com/events/reinvent/faqs/*
+
+---
+
+## 3. Getting around
+
+### re:Invent campus shuttles (free with badge)
+- Shuttles travel between the campus properties and **run continuously during conference hours**. A **valid re:Invent badge is required** to ride.
+- **Daily shuttle hours (from the official agenda):**
+  - Sun Nov 29: limited service 9:30 AM–8:30 PM (Caesars Forum, MGM Grand, The Venetian)
+  - Mon Nov 30: 6:00 AM–9:15 PM
+  - Tue Dec 1: 6:00 AM–8:30 PM
+  - Wed Dec 2: 6:00 AM–8:30 PM
+  - Thu Dec 3: 6:00 AM–5:45 PM; **re:Play shuttle service 6:15–11:00 PM**
+  - Fri Dec 4: limited service 6:30 AM–1:00 PM (The Venetian and Wynn | Encore only)
+- **Two pairs have NO shuttle service — walk instead:** Wynn ↔ The Venetian (use the bridge) and Caesars Forum ↔ The Venetian (use the temporary walkway during Expo hours). *(Per the AWS Analyst Summit campus-transport page and the Fractivo guide, which notes this was also the case in 2025.)*
+- Real-time shuttle travel estimates are in the AWS Events mobile app.
+- **Accessible transportation:** contact the transportation supervisor at **+1 619-727-1908**, at least 1 hour before your desired pickup, during shuttle operating hours.
+*Sources: https://aws.amazon.com/events/reinvent/faqs/ ; https://aws.amazon.com/events/reinvent/agenda/ ; https://aws.amazon.com/resources/analyst-summit/ ; https://www.fractivo.com/reinvent*
+
+### Las Vegas Monorail (free with re:Invent badge)
+- The Monorail is **free for re:Invent attendees — show your badge** to ride.
+- 3.9-mile route on the east side of the Strip, seven stations south → north: **MGM Grand → Horseshoe/Paris → Flamingo/Caesars Palace → Harrah's/The LINQ → Boingo Station at Las Vegas Convention Center → Westgate → SAHARA Las Vegas**. Trains run every ~4–8 minutes.
+- **Stations serving the campus:** MGM Grand station (MGM Grand); Flamingo/Caesars Palace station (Caesars Palace); Harrah's/The LINQ station (Caesars Forum, and the closest station for The Venetian). **There is no Monorail station at Wynn/Encore or The Venetian** — walk via the Wynn–Venetian bridge.
+- **Modified hours for re:Invent week (posted by the Monorail):** Nov 29 – Dec 2, 2026: 7:00 AM – midnight; Dec 3, 2026: 7:00 AM – 1:00 AM. (Regular hours: Mon 7 AM–midnight, Tue–Thu 7 AM–2 AM, Fri–Sun 7 AM–3 AM.)
+*Sources: https://aws.amazon.com/events/reinvent/faqs/ ; https://aws.amazon.com/resources/analyst-summit/ ; https://www.lvmonorail.com/ ; nearest-station mapping per https://www.fractivo.com/reinvent*
+
+### Rideshare & taxi
+- Rideshare pickups at the big resorts are in garages, not at the front door: at **MGM Grand, first floor of the self-parking garage**; at **The Venetian, second level of the parking ramp (back wall)**. Pickup spots can move — ask staff.
+- Expect surge pricing at session breaks and reception let-out times; taxis queue at main entrances and can be faster/cheaper than a surged rideshare.
+- Rideshares between north and south campus venues run roughly $12–$20 at busy times.
+*Source: https://www.fractivo.com/reinvent (independent guide — prices are estimates, not official rates)*
+
+### Harry Reid International Airport (LAS) → the Strip
+- **Airport address:** 5757 Wayne Newton Blvd, Las Vegas, NV 89119. Badge pickup is at **Terminal 1 and Terminal 3**.
+- Caesars Forum's brand listing states the venue is **approximately 3.2 miles from Harry Reid International Airport**.
+- By road: **~15–25 minutes by rideshare (roughly $20–35, more with surge) or taxi (roughly $25–40)**.
+- An official airport-published distance/drive-time figure for "the Strip" generally: **not listed**.
+*Sources: Caesars Forum brand listing (3.2 mi); https://www.fractivo.com/reinvent (times/fares)*
+
+### Vegas Loop (optional)
+- The underground Vegas Loop has a station at **Encore**; there is no Loop station at The Venetian, Caesars Forum, Caesars Palace, MGM Grand, or Allegiant Stadium. Per an independent guide (vegasdailydrop.com, rechecked Nov 16, 2026), the Convention Center & Encore stations are closed Sun Nov 29–Mon Nov 30, then open Tue Dec 1, 7:30 AM–5:30 PM and Wed Dec 2–Fri Dec 4, 7:30 AM–7:00 PM.
+*Source: https://vegasdailydrop.com (independent guide — not an official re:Invent source)*
+
+---
+
+## 4. Key attendee locations
+
+### Badge pickup / registration
+Government-issued photo ID required; uploading your photo to the attendee portal in advance speeds pickup. Your badge is required for sessions, shuttles, and the Monorail.
+
+- **Sun Nov 29:** Harry Reid Airport Terminals 1 & 3, 7:00 AM–11:59 PM; MGM Grand and The Venetian, 10:00 AM–8:00 PM.
+- **Mon Nov 30:** The Venetian 6:30 AM–5:30 PM; MGM Grand 6:30 AM–9:00 PM; Airport T1 & T3 7:00 AM–11:59 PM.
+- **Tue Dec 1:** badge pickup/help desk 6:30 AM–8:00 PM at MGM Grand and The Venetian; 6:30 AM–7:00 PM at Caesars Forum, Caesars Palace, and Wynn | Encore.
+- MGM Grand and The Venetian keep badge pickup open through Thursday (per Fractivo). Per-day badge-pickup hours for Wed–Fri are **not listed** on the official agenda page (help-desk hours are; see below).
+- **Help desks:** Mon 6:30 AM–8:00 PM at Caesars Forum, Caesars Palace, Wynn | Encore (Sun: Caesars Forum 10:00 AM–6:00 PM); Tue 6:30 AM–8:00 PM (MGM Grand, The Venetian) and 6:30 AM–7:00 PM (Caesars Forum, Caesars Palace, Wynn | Encore).
+*Sources: https://aws.amazon.com/events/reinvent/agenda/ ; https://www.fractivo.com/reinvent*
+
+### Expo — The Venetian
+- **Location: The Venetian** (Expo Welcome Reception is in Hall B per the session catalog).
+- **Hours:** Welcome Reception Mon Nov 30, 4:00–7:00 PM; Tue Dec 1 and Wed Dec 2, 10:00 AM–6:00 PM; Expo Happy Hour Wed 4:30–6:00 PM; final day Thu Dec 3, 10:00 AM–4:00 PM.
+- **Size:** AWS's FAQ describes the Expo as 450+ AWS Partners; the Attendee Playbook says 420+ sponsors. Both figures are AWS-published; the exact count is **not listed** consistently.
+- Notable stops: AWS Village kiosks, AWS for Industries Zone (Booth 111), Partner Advantage Zone, AWS Marketplace booth, Builder Zone.
+*Sources: https://aws.amazon.com/events/reinvent/agenda/ ; https://aws.amazon.com/events/reinvent/faqs/ ; Attendee Playbook (above)*
+
+### re:Play — Allegiant Stadium
+- **Thu Dec 3, 6:30–10:30 PM at Allegiant Stadium** (3333 Al Davis Way, Las Vegas, NV 89118) — the one-night closing party for all re:Invent attendees: live music, curated food, interactive games. Included with a full conference pass; a guest pass costs $350 (per Fractivo).
+- **re:Play shuttles run 6:15–11:00 PM** (regular campus shuttles stop at 5:45 PM on Thursday).
+*Sources: https://aws.amazon.com/events/reinvent/agenda/ ; https://www.fractivo.com/reinvent ; stadium address from venue listings*
+
+### Web Agencies Coffee Meetup — Urth Caffé, Wynn Plaza Shops
+- **Location: Urth Caffé, Wynn Plaza Shops** (inside the Wynn resort, 3131 Las Vegas Blvd S) — given, not researched.
+- Daily during re:Invent week, Mon Nov 30 – Fri Dec 4, 7:30–9:00 AM PT, hosted by Mike "Demo" Demopoulos. Registration via Luma (host-approved, capacity 20/day, 12 on Wednesday; waitlist enabled):
+  - Mon Nov 30: https://luma.com/wvy3qxfa
+  - Tue Dec 1: https://luma.com/u4j42t47
+  - Wed Dec 2: https://luma.com/daklxcxc
+  - Thu Dec 3: https://luma.com/8coxstzn
+  - Fri Dec 4: https://luma.com/pwiq641v
+
+### Other agenda anchors
+- **Sunday kickoff activities:** Sun Nov 29, 10:00 AM–6:00 PM at Caesars Forum and The Venetian; Customer Showcase at Caesars Forum 11:30 AM–6:00 PM.
+- **Sessions:** Mon–Thu 8:00 AM–5:30 PM across all venues (Tue sessions start 11:30 AM after the CEO Keynote); Fri Dec 4, 8:00 AM–12:30 PM at The Venetian and Wynn | Encore only.
+- **Networking receptions (6:00–8:00 PM):** Tue at Caesars Palace and The Venetian; Wed at Caesars Palace, The Venetian, and Wynn | Encore.
+- **Meals:** breakfast and lunch are served at the venues on full conference days (Mon–Thu); Friday has limited service at The Venetian and Wynn | Encore until ~1:00 PM.
+- Note: the official agenda page labels times "PDT"; the Attendee Playbook notes December is actually PST (UTC−8) and the session catalog's UTC timestamps confirm UTC−8.
+*Sources: https://aws.amazon.com/events/reinvent/agenda/ ; Attendee Playbook (above)*
+
+---
+
+## Known gaps (not listed / not verified)
+- Per-day badge-pickup hours for Wed Dec 2 – Fri Dec 4 are not separately listed on the official agenda page (only Sun/Mon are fully broken out; Tue shows combined badge pickup/help desk hours).
+- No official AWS page lists per-route shuttle stop sequences; stops and live times are in the AWS Events app.
+- No official airport-published "distance to the Strip" figure was found; the 3.2-mile figure is specific to Caesars Forum from its brand listing, and road times/fares come from an independent guide.
+- Expo size is stated inconsistently by AWS itself (450+ partners in the FAQ vs. 420+ sponsors in the Playbook).
+- The AWS Analyst Summit page used for shuttle-gap/walking-route detail is dated 2025 in its header; its campus-transport content is corroborated for 2026 by the FAQ, agenda, and Fractivo guide, but AWS has not published a separate 2026 campus-transport page that was found.

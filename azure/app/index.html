@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="wa-dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Rivers — AWS re:Invent 2026 Concierge</title>
+<meta name="description" content="Alex Rivers is a face-and-voice AWS re:Invent 2026 concierge: agenda, side events, sponsors, maps, walking directions, and partnership introductions.">
+<meta name="theme-color" content="#0f1226">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/styles/themes/default.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/styles/utilities.css">
+<link rel="stylesheet" href="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/styles/native.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="omniagent-ui.css">
+<link rel="stylesheet" href="app.css">
+<script src="https://kit.fontawesome.com/d5d88f7356.js" crossorigin="anonymous"></script>
+<script type="module" src="https://ka-p.webawesome.com/kit/22309e9795d74ba2/webawesome@3.14.0/webawesome.loader.js"></script>
+</head>
+<body>
+<header class="app-header">
+  <div class="brand">
+    <img class="brand-avatar" src="icon.jpg" alt="Alex Rivers avatar">
+    <div>
+      <div class="brand-name">Alex Rivers</div>
+      <div class="brand-sub">AWS re:Invent 2026 Concierge · Nov 30 – Dec 4 · Las Vegas</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <span id="loc-chip" class="loc-chip" hidden><i class="fa-solid fa-location-dot"></i> <span id="loc-chip-text"></span></span>
+    <wa-button id="share-location" variant="brand" size="small">
+      <i class="fa-solid fa-location-crosshairs" slot="start"></i>Share my location
+    </wa-button>
+  </div>
+</header>
+
+<nav class="view-nav" aria-label="Views">
+  <button data-view="talk" class="view-btn is-active"><i class="fa-solid fa-comments"></i><span>Talk to Alex</span></button>
+  <button data-view="map" class="view-btn"><i class="fa-solid fa-map-location-dot"></i><span>Map</span></button>
+  <button data-view="agenda" class="view-btn"><i class="fa-solid fa-calendar-days"></i><span>Agenda</span></button>
+  <button data-view="near" class="view-btn"><i class="fa-solid fa-street-view"></i><span>Near me</span></button>
+  <button data-view="social" class="view-btn"><i class="fa-solid fa-hashtag"></i><span>Social</span></button>
+</nav>
+
+<main class="app-main">
+  <!-- TALK VIEW -->
+  <section class="view view-talk is-active" data-view-panel="talk">
+    <div class="omniagent-panel" id="omniagent-panel">
+      <header class="omniagent-header">
+        <h2 class="omniagent-title">Alex Rivers — re:Invent Concierge</h2>
+        <span class="omniagent-status">Live</span>
+      </header>
+      <div class="omniagent-mount" id="omniagent-mount"></div>
+      <a class="omniagent-footer" href="https://developers.napster.com" target="_blank" rel="noopener noreferrer" aria-label="Powered by Napster">
+        <span>Powered by</span><span class="omniagent-footer__brand">Napster</span>
+      </a>
+    </div>
+    <div id="omniagent-error" role="alert"></div>
+
+    <wa-card class="info-card">
+      <h3><i class="fa-solid fa-location-dot"></i> Location-aware help</h3>
+      <p>Share your precise location and Alex answers with where you actually are — what's near you,
+      how far the venues are, and the best way around. Your location is used only in this session and never stored.</p>
+      <p id="location-status" class="muted"></p>
+    </wa-card>
+
+    <wa-card class="info-card">
+      <h3><i class="fa-solid fa-handshake"></i> Introduction requests captured in this session</h3>
+      <p id="requests-empty" class="muted">None yet. Ask Alex to introduce you to Demo and confirm the details — your request will appear here.</p>
+      <ul id="requests-list"></ul>
+    </wa-card>
+  </section>
+
+  <!-- MAP VIEW -->
+  <section class="view view-map" data-view-panel="map">
+    <div class="map-toolbar">
+      <label>Day
+        <select id="map-day" class="day-select"></select>
+      </label>
+      <label>Type
+        <select id="map-type" class="day-select">
+          <option value="">Everything</option>
+          <option value="keynote">Keynotes</option>
+          <option value="session">Sessions</option>
+          <option value="expo">Expo</option>
+          <option value="side-event">Side events</option>
+          <option value="social">Socials</option>
+          <option value="meetup">Coffee meetup</option>
+          <option value="logistics">Logistics</option>
+        </select>
+      </label>
+      <wa-button id="map-near-me" size="small" variant="neutral"><i class="fa-solid fa-location-crosshairs" slot="start"></i>Center on me</wa-button>
+    </div>
+    <div id="map" role="application" aria-label="Map of re:Invent venues and events"></div>
+    <wa-card id="route-card" class="route-card" hidden>
+      <div class="route-head">
+        <h3 id="route-title">Walking directions</h3>
+        <wa-button id="route-close" size="small" appearance="plain"><i class="fa-solid fa-xmark"></i></wa-button>
+      </div>
+      <p id="route-summary" class="muted"></p>
+      <ol id="route-steps"></ol>
+      <div class="route-actions">
+        <a id="route-google" class="ext-btn" target="_blank" rel="noopener"><i class="fa-brands fa-google"></i> Google Maps</a>
+        <a id="route-mapquest" class="ext-btn" target="_blank" rel="noopener"><i class="fa-solid fa-map-pin"></i> MapQuest</a>
+      </div>
+    </wa-card>
+    <wa-card id="event-card" class="route-card" hidden>
+      <div class="route-head">
+        <h3 id="event-card-title"></h3>
+        <wa-button id="event-close" size="small" appearance="plain"><i class="fa-solid fa-xmark"></i></wa-button>
+      </div>
+      <p id="event-card-meta" class="muted"></p>
+      <p id="event-card-desc"></p>
+      <div class="route-actions">
+        <wa-button id="event-walk" size="small" variant="brand"><i class="fa-solid fa-person-walking" slot="start"></i>Walk here</wa-button>
+        <a id="event-google" class="ext-btn" target="_blank" rel="noopener"><i class="fa-brands fa-google"></i> Google Maps</a>
+        <a id="event-mapquest" class="ext-btn" target="_blank" rel="noopener"><i class="fa-solid fa-map-pin"></i> MapQuest</a>
+        <a id="event-rsvp" class="ext-btn" target="_blank" rel="noopener" hidden><i class="fa-solid fa-ticket"></i> RSVP / info</a>
+      </div>
+    </wa-card>
+  </section>
+
+  <!-- AGENDA VIEW -->
+  <section class="view view-agenda" data-view-panel="agenda">
+    <div class="day-tabs" id="day-tabs" role="tablist" aria-label="Conference days"></div>
+    <div class="type-chips" id="type-chips"></div>
+    <div class="catalog-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="catalog-q" type="search" placeholder="Search all 2,869 re:Invent sessions — try a topic, service, session code, or speaker" aria-label="Search the full session catalog">
+    </div>
+    <p id="catalog-status" class="muted"></p>
+    <div id="catalog-results" class="event-list"></div>
+    <div id="agenda-list" class="event-list"></div>
+  </section>
+
+  <!-- NEAR VIEW -->
+  <section class="view view-near" data-view-panel="near">
+    <wa-callout variant="neutral" id="near-noloc">
+      <i class="fa-solid fa-location-dot" slot="icon"></i>
+      Share your location to see what's closest to you right now, sorted by distance.
+    </wa-callout>
+    <div class="day-tabs" id="near-day-tabs" role="tablist" aria-label="Conference days"></div>
+    <div id="near-list" class="event-list"></div>
+  </section>
+
+  <!-- SOCIAL VIEW -->
+  <section class="view view-social" data-view-panel="social">
+    <wa-card class="info-card">
+      <h3><i class="fa-brands fa-bluesky"></i> Live from Bluesky</h3>
+      <div id="feed-bluesky" class="feed"><p class="muted">Loading posts…</p></div>
+    </wa-card>
+    <wa-card class="info-card">
+      <h3><i class="fa-brands fa-aws"></i> AWS News</h3>
+      <div id="feed-aws" class="feed"><p class="muted">Loading headlines…</p></div>
+    </wa-card>
+    <wa-card class="info-card">
+      <h3><i class="fa-solid fa-hashtag"></i> Follow the week</h3>
+      <p class="link-outs">
+        <a href="https://x.com/search?q=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> #AWSreInvent on X</a> ·
+        <a href="https://www.linkedin.com/search/results/content/?keywords=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> ·
+        <a href="https://bsky.app/search?q=%23AWSreInvent" target="_blank" rel="noopener"><i class="fa-brands fa-bluesky"></i> Bluesky</a>
+      </p>
+    </wa-card>
+  </section>
+</main>
+
+<footer class="app-footer">
+  Demo built for the Napster API Ignite Hackathon (Microsoft Ignite 2026). Event facts researched Nov 25, 2026
+  from AWS's official re:Invent pages and public listings; times are Pacific. In this demo, introduction
+  requests are captured in your browser only.
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@touchcastllc/napster-companion-api@2/lib/index.standalone.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

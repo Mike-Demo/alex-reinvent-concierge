@@ -1,0 +1,1 @@
+{"dependencies":{"@azure/functions":"^4.5.0"},"description":"API for Alex Rivers — AWS re:Invent 2026 Concierge (Azure Static Web Apps managed functions)","engines":{"node":">=20"},"main":"src/functions/*.js","name":"alex-concierge-api","private":true,"scripts":{},"version":"1.0.0"}
