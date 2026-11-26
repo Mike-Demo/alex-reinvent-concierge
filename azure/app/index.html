@@ -71,6 +71,24 @@
       <p id="requests-empty" class="muted">None yet. Ask Alex to introduce you to Demo and confirm the details — your request will appear here.</p>
       <ul id="requests-list"></ul>
     </wa-card>
+
+    <wa-card class="info-card">
+      <h3><i class="fa-solid fa-brain"></i> Alex remembers you</h3>
+      <p>Opt in and Alex will remember your past conversations on this device — who you've met, what you're looking for, your plans. Memory is stored by Napster with your sessions and applies from your next conversation.</p>
+      <div id="memory-off">
+        <p><input id="mem-name" type="text" placeholder="Your name" autocomplete="name"></p>
+        <p><input id="mem-company" type="text" placeholder="Company (optional)" autocomplete="organization"></p>
+        <wa-button id="mem-enable" variant="brand" size="small">Remember me on this device</wa-button>
+      </div>
+      <p id="memory-on" class="muted" hidden></p>
+      <p><wa-button id="mem-forget" variant="neutral" size="small" hidden>Forget me</wa-button></p>
+    </wa-card>
+
+    <wa-card class="info-card">
+      <h3><i class="fa-solid fa-note-sticky"></i> Meeting notes</h3>
+      <p id="notes-empty" class="muted">None yet. After you meet someone, tell Alex about it and ask her to log a note — it will appear here.</p>
+      <ul id="notes-list"></ul>
+    </wa-card>
   </section>
 
   <!-- MAP VIEW -->

@@ -24,6 +24,23 @@ app.http("token", {
       };
     }
 
+    // Optional cross-session memory: a stable externalClientId (+ small
+    // profile) from the client; Napster scopes memory to persona + ID.
+    let client = {};
+    try {
+      client = await request.json();
+    } catch {}
+    const payload = { channelType: "webrtc" };
+    const extId = typeof client.externalClientId === "string" ? client.externalClientId : "";
+    if (/^[A-Za-z0-9_-]{1,32}$/.test(extId)) {
+      payload.externalClientId = extId;
+      const prof = client.profile ?? {};
+      const profile = {};
+      if (typeof prof.name === "string" && prof.name) profile.name = prof.name.slice(0, 80);
+      if (typeof prof.company === "string" && prof.company) profile.company = prof.company.slice(0, 80);
+      if (Object.keys(profile).length) payload.externalClientProfile = profile;
+    }
+
     let upstream;
     try {
       upstream = await fetch(
@@ -38,7 +55,7 @@ app.http("token", {
             "User-Agent":
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
           },
-          body: JSON.stringify({ channelType: "webrtc" }),
+          body: JSON.stringify(payload),
         },
       );
     } catch {

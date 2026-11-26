@@ -8,7 +8,7 @@
 const AGENT_ID = "54b8d70a-416f-450d-b449-04169a52f6cb";
 
 const handler = async (
-  _request: Request,
+  request: Request,
   context: { env: Record<string, unknown> },
 ): Promise<Response> => {
   const env = context?.env ?? {};
@@ -18,6 +18,24 @@ const handler = async (
       { error: "NAPSTER_API_KEY is not configured on the server" },
       { status: 500 },
     );
+  }
+
+  // Optional cross-session memory: the client may send a stable
+  // externalClientId (+ a small profile). Napster scopes its memory to
+  // persona + client ID, so the same ID recalls past conversations.
+  let client: Record<string, unknown> = {};
+  try {
+    client = (await request.json()) as Record<string, unknown>;
+  } catch {}
+  const payload: Record<string, unknown> = { channelType: "webrtc" };
+  const extId = typeof client.externalClientId === "string" ? client.externalClientId : "";
+  if (/^[A-Za-z0-9_-]{1,32}$/.test(extId)) {
+    payload.externalClientId = extId;
+    const prof = (client.profile ?? {}) as Record<string, unknown>;
+    const profile: Record<string, string> = {};
+    if (typeof prof.name === "string" && prof.name) profile.name = prof.name.slice(0, 80);
+    if (typeof prof.company === "string" && prof.company) profile.company = prof.company.slice(0, 80);
+    if (Object.keys(profile).length) payload.externalClientProfile = profile;
   }
 
   let upstream: Response;
@@ -34,7 +52,7 @@ const handler = async (
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
         },
-        body: JSON.stringify({ channelType: "webrtc" }),
+        body: JSON.stringify(payload),
       },
     );
   } catch {

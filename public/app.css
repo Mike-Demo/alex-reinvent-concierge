@@ -69,6 +69,11 @@ a { color: #9fd8ff; }
 }
 .ext-btn:hover { border-color: var(--accent); }
 
+.info-card input[type="text"] {
+  width: 100%; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06); color: inherit; font: inherit;
+}
 .omniagent-panel { overflow: hidden; }
 .omniagent-mount { background: transparent; }
 .mount-bg {

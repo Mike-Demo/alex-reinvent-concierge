@@ -437,8 +437,30 @@ function shareLocation() {
 document.getElementById("share-location").addEventListener("click", shareLocation);
 
 // ------------------------------------------------------------ Napster -----
+const IDENTITY_KEY = "pc-identity";
+function loadIdentity() {
+  try { return JSON.parse(localStorage.getItem(IDENTITY_KEY) || "null"); } catch { return null; }
+}
+function saveIdentity(idn) {
+  try {
+    if (idn) localStorage.setItem(IDENTITY_KEY, JSON.stringify(idn));
+    else localStorage.removeItem(IDENTITY_KEY);
+  } catch {}
+}
+function newClientId() {
+  const u = crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + String(Math.random());
+  return "u_" + u.replace(/[^a-zA-Z0-9]/g, "").slice(0, 20);
+}
 async function getToken() {
-  const res = await fetch("api/token", { method: "POST" });
+  const idn = loadIdentity();
+  const init = { method: "POST", headers: { "Content-Type": "application/json" } };
+  if (idn && idn.id) {
+    init.body = JSON.stringify({
+      externalClientId: idn.id,
+      profile: { name: idn.name || "", company: idn.company || "" },
+    });
+  }
+  const res = await fetch("api/token", init);
   if (!res.ok) throw new Error("Token request failed: " + res.status);
   const data = await res.json();
   return data.token;
@@ -458,6 +480,61 @@ function handleIntroRequest(args) {
   li.textContent = parts.join(" — ");
   list.appendChild(li);
   return { ok: true, recorded: true, message: "Introduction request recorded. Demo will follow up personally." };
+}
+const NOTES_KEY = "pc-notes";
+function loadNotes() {
+  try { return JSON.parse(localStorage.getItem(NOTES_KEY) || "[]"); } catch { return []; }
+}
+function renderNotes() {
+  const list = document.getElementById("notes-list");
+  const empty = document.getElementById("notes-empty");
+  if (!list) return;
+  list.innerHTML = "";
+  const notes = loadNotes();
+  if (empty) empty.style.display = notes.length ? "none" : "";
+  for (const n of notes) {
+    const li = document.createElement("li");
+    const head = [n.person, n.company].filter(Boolean).join(" — ");
+    li.textContent = head + (n.notes ? ": " + n.notes : "") + (n.follow_up ? " Follow-up: " + n.follow_up : "");
+    list.appendChild(li);
+  }
+}
+function handleMeetingNote(args) {
+  const notes = loadNotes();
+  notes.push({
+    person: args.person || "",
+    company: args.company || "",
+    notes: args.notes || "",
+    follow_up: args.follow_up || "",
+    at: new Date().toISOString(),
+  });
+  try { localStorage.setItem(NOTES_KEY, JSON.stringify(notes)); } catch {}
+  renderNotes();
+  return { ok: true, recorded: true, message: "Meeting note logged. It is saved on this device and in the session record." };
+}
+function wireMemory() {
+  const off = document.getElementById("memory-off");
+  const on = document.getElementById("memory-on");
+  const forget = document.getElementById("mem-forget");
+  if (!off || !on || !forget) return;
+  const paint = () => {
+    const idn = loadIdentity();
+    off.hidden = !!idn;
+    forget.hidden = !idn;
+    on.hidden = !idn;
+    if (idn) {
+      on.textContent = `Remembering you as ${idn.name}${idn.company ? " (" + idn.company + ")" : ""}. Alex will pick up your past conversations from your next visit.`;
+    }
+  };
+  document.getElementById("mem-enable").addEventListener("click", () => {
+    const nameEl = document.getElementById("mem-name");
+    const name = nameEl.value.trim();
+    if (!name) { nameEl.focus(); return; }
+    saveIdentity({ id: newClientId(), name, company: document.getElementById("mem-company").value.trim() });
+    paint();
+  });
+  forget.addEventListener("click", () => { saveIdentity(null); paint(); });
+  paint();
 }
 function findEvent(query) {
   const q = String(query || "").toLowerCase().trim();
@@ -546,6 +623,8 @@ async function handleData(msg) {
     result = await handleWalkingDirections(args || {});
   } else if (name === "filter_agenda") {
     result = handleFilterAgenda(args || {});
+  } else if (name === "log_meeting_note") {
+    result = handleMeetingNote(args || {});
   } else {
     result = { ok: false, error: "unknown_function" };
   }
@@ -592,6 +671,8 @@ window.napsterCompanionApiSDK.init(getToken, {
     bgv.removeAttribute("autoplay");
     bgv.pause();
   }
+  wireMemory();
+  renderNotes();
   renderAgenda();
   renderNear();
   loadFeeds();
