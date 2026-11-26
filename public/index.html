@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Rivers — AWS re:Invent 2026 Concierge</title>
+<link rel="stylesheet" href="omniagent-ui.css">
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0; background: #0f1226; color: #f2f3fa; }
+  main { max-width: 880px; margin: 0 auto; padding: 32px 20px 56px; }
+  h1 { font-size: 1.7rem; margin: 0 0 6px; }
+  .lede { color: #c6c9e0; margin: 0 0 22px; line-height: 1.5; }
+  .requests { margin-top: 28px; background: #171b38; border: 1px solid #2a2f52; border-radius: 12px; padding: 16px 18px; }
+  .requests h2 { font-size: 1.05rem; margin: 0 0 8px; }
+  .requests p, .requests li { color: #c6c9e0; line-height: 1.5; }
+  .requests ul { margin: 8px 0 0; padding-left: 18px; }
+  .fineprint { margin-top: 22px; font-size: 0.85rem; color: #8b90b3; line-height: 1.5; }
+  #omniagent-error { display: none; margin-top: 16px; background: #3a1730; border: 1px solid #7a2d5e; color: #ffd7ef; border-radius: 10px; padding: 12px 14px; }
+  .location, .getting-around { margin-top: 28px; background: #171b38; border: 1px solid #2a2f52; border-radius: 12px; padding: 16px 18px; }
+  .location h2, .getting-around h2 { font-size: 1.05rem; margin: 0 0 8px; }
+  .location p, .getting-around p { color: #c6c9e0; line-height: 1.5; }
+  .getting-around a { color: #9fd8ff; }
+  #share-location { background: #d8f24b; color: #0c0c0c; border: 0; border-radius: 999px; padding: 10px 18px; font-weight: 600; cursor: pointer; }
+  #share-location:hover { filter: brightness(1.08); }
+  #location-status { min-height: 1.2em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Meet Alex, your AWS re:Invent 2026 concierge</h1>
+  <p class="lede">
+    Alex knows the week: keynotes and session hours, the Expo and its 420+ sponsors,
+    badge pickup and shuttles, the six campus venues and how to get between them, and
+    39 verified side events — parties, concerts, and socials. Ask what's on tonight,
+    where things are, or how long it takes to get there. Alex can also capture an
+    introduction request for the Web Agencies Coffee Meetup host that Demo follows up
+    on personally. Tap the microphone and just talk.
+  </p>
+
+  <div class="omniagent-panel" id="omniagent-panel">
+    <header class="omniagent-header">
+      <h2 class="omniagent-title">Alex Rivers — re:Invent Concierge</h2>
+      <span class="omniagent-status">Live</span>
+    </header>
+
+    <div class="omniagent-mount" id="omniagent-mount"></div>
+
+    <a class="omniagent-footer"
+       href="https://developers.napster.com"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Powered by Napster">
+      <span>Powered by</span><span class="omniagent-footer__brand">Napster</span>
+    </a>
+  </div>
+
+  <div id="omniagent-error" role="alert"></div>
+
+  <section class="location" aria-live="polite">
+    <h2>Location-aware help</h2>
+    <p>
+      Share your precise location and Alex will answer with where you actually are —
+      what's near you, how far the venues are, and the best way to get around.
+      Your location is used only in this session and is never stored.
+    </p>
+    <button id="share-location" type="button">Share my location</button>
+    <p id="location-status"></p>
+  </section>
+
+  <section class="getting-around">
+    <h2>Getting around re:Invent</h2>
+    <p>
+      Campus maps and directions:
+      <a href="https://www.google.com/maps/search/?api=1&query=The+Venetian+Expo+Las+Vegas" target="_blank" rel="noopener">The Venetian &amp; Expo</a> ·
+      <a href="https://www.google.com/maps/search/?api=1&query=Caesars+Forum+Las+Vegas" target="_blank" rel="noopener">Caesars Forum</a> ·
+      <a href="https://www.google.com/maps/search/?api=1&query=Caesars+Palace+Las+Vegas" target="_blank" rel="noopener">Caesars Palace</a> ·
+      <a href="https://www.google.com/maps/search/?api=1&query=MGM+Grand+Las+Vegas" target="_blank" rel="noopener">MGM Grand</a> ·
+      <a href="https://www.google.com/maps/search/?api=1&query=Wynn+Las+Vegas" target="_blank" rel="noopener">Wynn &amp; Encore</a> ·
+      <a href="https://www.google.com/maps/search/?api=1&query=Allegiant+Stadium+Las+Vegas" target="_blank" rel="noopener">Allegiant Stadium (re:Play)</a>
+    </p>
+    <p>
+      The Las Vegas Monorail is free with your re:Invent badge —
+      <a href="https://www.lvmonorail.com" target="_blank" rel="noopener">stations, hours, and passes</a>.
+      Ask Alex for walking directions between venues, shuttle hours, or which Monorail
+      station serves your hotel.
+    </p>
+  </section>
+
+  <section class="requests" aria-live="polite">
+    <h2>Introduction requests captured in this session</h2>
+    <p id="requests-empty">None yet. Ask Alex to introduce you to Demo and confirm the details — your request will appear here.</p>
+    <ul id="requests-list"></ul>
+  </section>
+
+  <p class="fineprint">
+    Demo built for the Napster API Ignite Hackathon (Microsoft Ignite 2026). In this demo,
+    introduction requests are captured in your browser only and shown above; nothing is
+    transmitted or stored elsewhere.
+  </p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@touchcastllc/napster-companion-api@2/lib/index.standalone.js"></script>
+<script>
+  async function getToken() {
+    const res = await fetch("api/token", { method: "POST" });
+    if (!res.ok) throw new Error("Token request failed: " + res.status);
+    const data = await res.json();
+    return data.token;
+  }
+
+  const seenCalls = new Set();
+  let omniInstance = null;
+
+  function showError(message) {
+    const box = document.getElementById("omniagent-error");
+    box.textContent = message;
+    box.style.display = "block";
+  }
+
+  function handleIntroRequest(args) {
+    const list = document.getElementById("requests-list");
+    const empty = document.getElementById("requests-empty");
+    if (empty) empty.remove();
+    const li = document.createElement("li");
+    const parts = [args.name, args.company, args.looking_for, args.contact, args.preferred_day].filter(Boolean);
+    li.textContent = parts.join(" — ");
+    list.appendChild(li);
+    return { ok: true, recorded: true, message: "Introduction request recorded. Demo will follow up personally." };
+  }
+
+  async function handleData(msg) {
+    const ev = msg.event ?? msg.type;
+    if (ev === "function_call_timeout") { console.warn("tool timeout", msg.data); return; }
+    if (ev !== "function_implicitly_called") return;
+    const { call_id, name, arguments: args } = msg.data || {};
+    if (!call_id || !name || seenCalls.has(call_id)) return;
+    seenCalls.add(call_id);
+    let result;
+    if (name === "capture_intro_request") {
+      result = handleIntroRequest(args || {});
+    } else {
+      result = { ok: false, error: "unknown_function" };
+    }
+    if (omniInstance) {
+      omniInstance.sendCommand({ type: "send_function_output", data: { call_id, output: result, delay: false } });
+    }
+  }
+
+  // --- Precise location context -------------------------------------------
+  // Coordinates geocoded from the venues' published street addresses.
+  const VENUES = [
+    { name: "The Venetian (Expo, keynotes, badge pickup)", lat: 36.12215, lng: -115.16981 },
+    { name: "Caesars Forum", lat: 36.11837, lng: -115.16628 },
+    { name: "Caesars Palace", lat: 36.11601, lng: -115.17474 },
+    { name: "MGM Grand", lat: 36.10228, lng: -115.16579 },
+    { name: "Wynn Las Vegas (Urth Caffé coffee meetup is in Wynn Plaza Shops)", lat: 36.12655, lng: -115.16455 },
+    { name: "Encore at Wynn", lat: 36.12971, lng: -115.16441 },
+    { name: "Allegiant Stadium (re:Play, Thursday night)", lat: 36.09086, lng: -115.18313 },
+  ];
+
+  function distanceMiles(aLat, aLng, bLat, bLng) {
+    const R = 3958.8, rad = Math.PI / 180;
+    const dLat = (bLat - aLat) * rad, dLng = (bLng - aLng) * rad;
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(aLat * rad) * Math.cos(bLat * rad) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+
+  let pendingLocationText = null;
+
+  function sendLocationContext(text) {
+    if (omniInstance) {
+      omniInstance.sendCommand({ type: "send_message", data: { role: "system", text, trigger_response: false } });
+    } else {
+      pendingLocationText = text;
+    }
+  }
+
+  document.getElementById("share-location").addEventListener("click", () => {
+    const status = document.getElementById("location-status");
+    if (!("geolocation" in navigator)) {
+      status.textContent = "This browser doesn't support location sharing. You can still tell Alex where you are.";
+      return;
+    }
+    status.textContent = "Locating…";
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        const ranked = VENUES
+          .map((v) => ({ ...v, miles: distanceMiles(latitude, longitude, v.lat, v.lng) }))
+          .sort((a, b) => a.miles - b.miles);
+        const nearest = ranked[0];
+        const list = ranked.map((v) => `${v.name}: ${v.miles.toFixed(2)} mi`).join("; ");
+        sendLocationContext(
+          `Visitor location context: the visitor has shared their precise location ` +
+          `(latitude ${latitude.toFixed(5)}, longitude ${longitude.toFixed(5)}, GPS accuracy about ${Math.round(accuracy)} meters). ` +
+          `Nearest re:Invent campus venue: ${nearest.name}, about ${nearest.miles.toFixed(2)} miles away (straight-line). ` +
+          `Straight-line distances to campus venues: ${list}. ` +
+          `Use this when the visitor asks what is near them, how far a venue or event is, or for walking directions, ` +
+          `and combine it with the walking times, routes, shuttle, and Monorail details in your knowledge base. ` +
+          `Do not read the raw coordinates aloud unless the visitor asks.`
+        );
+        status.textContent = `Location shared — you're near ${nearest.name} (~${nearest.miles.toFixed(1)} mi). Alex now knows where you are; ask "what's near me?"`;
+      },
+      () => {
+        status.textContent = "Location wasn't shared. No problem — just tell Alex which venue or hotel you're at.";
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    );
+  });
+
+  window.napsterCompanionApiSDK.init(getToken, {
+    layout: { type: "inline", mountContainer: "#omniagent-mount" },
+    style: { view: "rectangle", className: "omniagent-sdk-root" },
+    onData: handleData,
+    onAvatarReady: (isReady) => { if (isReady) console.log("[concierge] session live"); },
+    onError: (error) => {
+      console.error("[concierge]", error);
+      showError("The concierge session hit a problem and closed. Reload the page to try again.");
+    },
+  }).then((instance) => {
+    omniInstance = instance;
+    window.__omniagent = instance; // debugging only
+    if (pendingLocationText) {
+      omniInstance.sendCommand({ type: "send_message", data: { role: "system", text: pendingLocationText, trigger_response: false } });
+      pendingLocationText = null;
+    }
+  }).catch((error) => {
+    console.error("[concierge] init failed", error);
+    showError("The concierge could not start. Reload the page to try again.");
+  });
+</script>
+</body>
+</html>

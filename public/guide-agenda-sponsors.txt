@@ -1,0 +1,224 @@
+# AWS re:Invent 2026 — Official Program Facts (Concierge Knowledge Base)
+
+- **Researched:** November 25, 2026 (pages crawled late Nov 25 US time / Nov 26 UTC)
+- **Event:** AWS re:Invent 2026, Las Vegas, NV — Monday, November 30 to Friday, December 4, 2026, with badge pickup and kickoff activities starting Sunday, November 29
+- **Venues (campus):** Caesars Forum, Caesars Palace, Encore, MGM Grand, The Venetian, and Wynn
+- **Times:** All times below are Pacific Time as listed by AWS. The official agenda page states times are subject to change.
+- **Primary sources used:**
+  - Official agenda: https://aws.amazon.com/events/reinvent/agenda/
+  - Official keynotes page: https://aws.amazon.com/events/reinvent/sessions/keynotes/
+  - Official Expo page: https://aws.amazon.com/events/reinvent/experiences/expo/
+  - Official experiences page: https://aws.amazon.com/events/reinvent/experiences/uniquely-reinvent/
+  - Official homepage: https://aws.amazon.com/events/reinvent/
+  - Official session-types page: https://aws.amazon.com/events/reinvent/sessions/how-youll-learn/
+  - AWS blog (serverless attendee guide, session types): https://aws.amazon.com/blogs/compute/your-serverless-attendees-guide-to-aws-reinvent-2026/
+  - AWS Builder Center (attendee tips incl. re:Play performers): https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+  - AWS Builder Center Attendee Playbook series (agenda fixed points): https://builder.aws.com/content/3M1jaspZoTns1i16WgWGvGtrMPy/aws-reinvent-2026-the-attendee-playbook-series-index-start-here
+  - About Amazon (keynote lineup): https://www.aboutamazon.com/news/aws/what-is-aws-reinvent
+  - Fractivo re:Invent 2026 guide (agenda labels, partner hubs): https://www.fractivo.com/reinvent?src=home-footer
+  - Official sponsor catalog as captured Nov 15, 2026 (tier counts and Emerald list): https://data-conference-database.com/editions/aws-reinvent-2026
+
+---
+
+## 1. Keynotes
+
+All five keynotes are held at **The Venetian** and streamed online (the official agenda lists each keynote slot as "The Venetian and virtual"). Source: https://aws.amazon.com/events/reinvent/agenda/ and https://aws.amazon.com/events/reinvent/sessions/keynotes/
+
+### Developer Keynote
+- **When:** Monday, November 30, 7:30 PM – 8:45 PM
+- **Venue:** The Venetian (and virtual)
+- **Speakers:** Clare Liguori (Sr. Principal Software Engineer, AWS), Eric Johnson (Principal Developer Advocate, AWS), Marc Brooker (VP and Distinguished Engineer, AWS), Neha Rungta (Director, Applied Science, AWS)
+- **Theme:** Go from idea to live app in minutes, build agents that work, and trust the code AI writes.
+- Source: https://aws.amazon.com/events/reinvent/sessions/keynotes/
+
+### CEO Keynote
+- **When:** Tuesday, December 1, 8:30 AM – 10:45 AM (per the official keynotes page and the official agenda; some third-party coverage lists 10:30 AM)
+- **Venue:** The Venetian (and virtual)
+- **Speakers:** Matt Garman (CEO, AWS), Peter DeSantis (SVP, Foundational AI, Custom Silicon, and Quantum Computing, AWS), Barbara Karuth-Zelle (COO and Member of the Board, Allianz SE), Tony Xu (Co-Founder and CEO, DoorDash), Sam Altman (Co-Founder and CEO, OpenAI)
+- **Theme:** New launches and the innovations powering the agentic era, from AI infrastructure to agents.
+- Source: https://aws.amazon.com/events/reinvent/sessions/keynotes/
+
+### Data & AI Keynote
+- **When:** Wednesday, December 2, 8:30 AM – 10:00 AM
+- **Venue:** The Venetian (and virtual)
+- **Speakers:** Dr. Swami Sivasubramanian (VP, Agentic AI and Emerging Technologies, AWS), Andy Warfield (VP and Distinguished Engineer, AWS), Francessca Vasquez (VP, Frontier AI Engineering and Services, AWS), Hannes Mühleisen (VP and Distinguished Engineer, AWS), Brittany Doncaster (Chief Architect and Distinguished Engineer, Delta Air Lines), Marianne Johnson (EVP and Chief Product Officer, Cox Automotive)
+- **Theme:** Getting agents into production with rethought databases and analytics, plus a new building block called context.
+- Source: https://aws.amazon.com/events/reinvent/sessions/keynotes/
+
+### Partner Keynote
+- **When:** Wednesday, December 2, 3:00 PM – 4:00 PM
+- **Venue:** The Venetian (and virtual)
+- **Speakers:** Dr. Ruba Borno (VP, Global Specialists and Partners, AWS), Matt Garman (CEO, AWS), Matt Yanchyshyn (VP, Marketplace and Partner Services, AWS), Bob Cagnazzi (CEO, Presidio), Drew Pinto (EVP, CRO and CTO, Marriott International)
+- **Theme:** Where partners should invest and how to win in the agentic era, with simpler ways to co-sell and go to market.
+- Source: https://aws.amazon.com/events/reinvent/sessions/keynotes/
+
+### Technical Innovations Keynote
+- **When:** Thursday, December 3, 8:30 AM – 10:00 AM
+- **Venue:** The Venetian (and virtual)
+- **Speakers:** Matt Wood (Chief AI and Technology Officer, AWS), Amy Herzog (VP and Chief Information Security Officer, AWS), Colm MacCárthaigh (VP and Distinguished Engineer, AWS), Ron Diamant (VP and Chief Trainium Architect, Amazon), Oliver Cameron (CEO, Odyssey)
+- **Theme:** An under-the-hood look at AWS infrastructure, from silicon to storage, built for unpredictable agentic workloads.
+- Source: https://aws.amazon.com/events/reinvent/sessions/keynotes/
+
+Keynotes and breakout sessions are walk-up (no seat reservation needed); interactive formats such as chalk talks, code talks, and workshops use reserved seating via the event catalog / AWS Events app. Source: https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+
+---
+
+## 2. Agenda anchors, day by day
+
+All entries below are from the official agenda page: https://aws.amazon.com/events/reinvent/agenda/
+
+### Sunday, November 29 (kickoff day)
+- **Badge pickup and help desk:** 7:00 AM – 11:59 PM, Harry Reid International Airport, Terminals 1 and 3; 10:00 AM – 8:00 PM, MGM Grand and The Venetian
+- **Help desk:** 10:00 AM – 6:00 PM, Caesars Forum
+- **Sunday kickoff activities:** 10:00 AM – 6:00 PM, Caesars Forum and The Venetian ("Pick up your badge, grab your SWAG, plan your week")
+- **Customer Showcase:** 11:30 AM – 6:00 PM, Caesars Forum
+- **Shuttle service:** 9:30 AM – 8:30 PM, limited service (Caesars Forum, MGM Grand, and The Venetian)
+- **Road to re:Invent hackathon (Sunday experience):** live coding competition finals; the official experiences page invites attendees to stop by between 12:00 PM and 5:00 PM PT to pick up a /builder/quest card. An AWS Builder Center post places the six finalist teams building live in Summit 216 at Caesars Forum, competing for a $100,000 prize. Sources: https://aws.amazon.com/events/reinvent/experiences/uniquely-reinvent/ and https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+
+### Monday, November 30
+- **Badge pickup and help desk:** 6:30 AM – 5:30 PM, The Venetian; 6:30 AM – 9:00 PM, MGM Grand; 7:00 AM – 11:59 PM, Harry Reid International Airport, Terminals 1 and 3
+- **Help desk:** 6:30 AM – 8:00 PM, Caesars Forum, Caesars Palace, and Wynn | Encore
+- **Sessions:** 8:00 AM – 5:30 PM, all venues (Caesars Forum, Caesars Palace, MGM Grand, The Venetian, Wynn | Encore)
+- **Drop-in hands-on labs** ("test how tools perform against a realistic workload at your own pace"): 8:00 AM – 5:30 PM, Caesars Forum, Caesars Palace, and The Venetian
+- **Expo Welcome Reception:** 4:00 PM – 7:00 PM, The Venetian (Expo) — first chance to engage with the sponsors and booths
+- **Developer Keynote:** 7:30 PM – 8:45 PM, The Venetian and virtual
+- **Shuttle service:** 6:00 AM – 9:15 PM
+
+### Tuesday, December 1
+- **Badge pickup and help desk:** 6:30 AM – 8:00 PM, MGM Grand and The Venetian
+- **Help desk:** 6:30 AM – 7:00 PM, Caesars Forum, Caesars Palace, and Wynn | Encore
+- **CEO Keynote:** 8:30 AM – 10:45 AM, The Venetian and virtual
+- **Expo:** 10:00 AM – 6:00 PM, The Venetian
+- **Sessions:** 11:30 AM – 5:30 PM, all venues (Tuesday sessions start after the CEO Keynote)
+- **Drop-in hands-on labs:** 11:30 AM – 5:30 PM, Caesars Forum, Caesars Palace, and The Venetian
+- **Networking reception:** 6:00 PM – 8:00 PM, Caesars Palace and The Venetian ("Connect with peers and AWS Partners over food and drinks")
+- **Shuttle service:** 6:00 AM – 8:30 PM
+
+### Wednesday, December 2
+- **Badge pickup and help desk:** 6:30 AM – 8:00 PM, MGM Grand and The Venetian
+- **Help desk:** 6:30 AM – 7:00 PM, Caesars Forum, Caesars Palace, and Wynn | Encore
+- **re:Invent 5K Run:** Wednesday morning at Allegiant Stadium, supporting the Michael J. Fox Foundation for Parkinson's Research; free, but sign-up and packet pickup must be completed by Tuesday at the Attendee Experience Desk in the Venetian Artist Foyer. Start time: not listed on the pages opened. Sources: https://aws.amazon.com/events/reinvent/experiences/uniquely-reinvent/ and https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+- **Data & AI Keynote:** 8:30 AM – 10:00 AM, The Venetian and virtual
+- **Sessions:** 8:00 AM – 5:30 PM, all venues
+- **Drop-in hands-on labs:** 8:00 AM – 5:30 PM, Caesars Forum, Caesars Palace, and The Venetian
+- **Expo:** 10:00 AM – 6:00 PM, The Venetian
+- **Partner Keynote:** 3:00 PM – 4:00 PM, The Venetian and virtual
+- **Expo Happy Hour:** 4:30 PM – 6:00 PM, The Venetian (Expo)
+- **Networking reception:** 6:00 PM – 8:00 PM, Caesars Palace, The Venetian, and Wynn | Encore
+- **Shuttle service:** 6:00 AM – 8:30 PM
+
+### Thursday, December 3
+- **Badge pickup and help desk:** 6:30 AM – 8:00 PM, MGM Grand and The Venetian
+- **Help desk:** 6:30 AM – 7:00 PM, Caesars Forum, Caesars Palace, and Wynn | Encore
+- **Technical Innovations Keynote:** 8:30 AM – 10:00 AM, The Venetian and virtual
+- **Sessions:** 8:00 AM – 5:30 PM, all venues
+- **Security focus day:** 8:00 AM – 5:30 PM, Wynn — security sessions run all week, but Thursday is the focus day with advanced workshops and security cohort activities
+- **Drop-in hands-on labs:** 8:00 AM – 5:30 PM, Caesars Forum, Caesars Palace, and The Venetian
+- **Expo (final day):** 10:00 AM – 4:00 PM, The Venetian
+- **re:Play:** 6:30 PM – 10:30 PM, Allegiant Stadium (see Section 4)
+- **Shuttle service:** 6:00 AM – 5:45 PM; dedicated re:Play shuttle service 6:15 PM – 11:00 PM
+
+### Friday, December 4 (closing half day)
+- **Sessions (final):** 8:00 AM – 12:30 PM, The Venetian and Wynn | Encore only
+- **Shuttle service:** 6:30 AM – 1:00 PM, limited service (The Venetian and Wynn | Encore)
+- There is no separate closing keynote or closing ceremony on the official agenda; the week closes with Friday morning sessions. The official re:Invent store at The Venetian closes at noon on Friday. Source: https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+
+---
+
+## 3. Expo
+
+- **Location:** The Venetian
+- **Opens:** Monday, November 30 at 4:00 PM (during the Expo Welcome Reception, Mon 4:00 PM – 7:00 PM)
+- **Hours by day:** Mon Nov 30, 4:00 PM – 7:00 PM (Welcome Reception); Tue Dec 1, 10:00 AM – 6:00 PM; Wed Dec 2, 10:00 AM – 6:00 PM (plus Expo Happy Hour 4:30 PM – 6:00 PM); Thu Dec 3, 10:00 AM – 4:00 PM (final day). No Expo on Friday.
+- **Scale:** The official agenda describes "more than 420 sponsors and booths" in the Expo; the official Expo page highlights "450+ AWS Experts and Partners."
+- Sources: https://aws.amazon.com/events/reinvent/agenda/ and https://aws.amazon.com/events/reinvent/experiences/expo/
+
+### AWS-managed zones on the Expo floor
+Source: https://aws.amazon.com/events/reinvent/experiences/expo/
+- **AWS Village** — New launches land here first; hands-on with agentic AI and the latest AWS innovations, with direct time with the experts building them.
+- **Lightning Talks** — 20-minute stories of real-world implementations; no reservations required.
+- **Industry Zone** — Hands-on demos across 10 industries, commercial and public sector.
+- **Builder Zone** — Developer-focused: emerging tech, hands-on challenges, community. Also a pickup point for /builder/quest cards from Monday.
+- **Global Impact Zone** — Social impact through AI and cloud; nonprofit initiatives and Build and Give Back activities.
+- **Partner Advantage Zone** — AWS Partner Network, Marketplace, Specialized Solutions, New to AWS, and Partners LIVE in one destination; real-world integrations and gamified SWAG challenges.
+
+### Partner hubs inside the Partner Advantage Zone
+- The APN booth, the AWS Marketplace booth, and the Specialized Partner Solutions booth sit in the Partner Advantage Zone. Partners LIVE! runs security and AI sessions at booth 1686-E, Tuesday to Thursday.
+- Source (third-party guide, checked Oct 28, 2026): https://www.fractivo.com/reinvent?src=home-footer
+
+---
+
+## 4. Official evening events and re:Play
+
+### Networking receptions (official agenda)
+- **Tue Dec 1, 6:00 PM – 8:00 PM:** Caesars Palace and The Venetian
+- **Wed Dec 2, 6:00 PM – 8:00 PM:** Caesars Palace, The Venetian, and Wynn | Encore
+- Described by AWS as a chance to "Connect with peers and AWS Partners over food and drinks." The official experiences page describes the Tue/Wed evening events as networking cocktail hours sponsored by AWS Partners, hosted at three Las Vegas hotels.
+- Sources: https://aws.amazon.com/events/reinvent/agenda/ and https://aws.amazon.com/events/reinvent/experiences/uniquely-reinvent/
+
+### Other official evening experiences
+Source: https://aws.amazon.com/events/reinvent/experiences/uniquely-reinvent/ (specific times/venues for these social events: not listed on that page)
+- **Tuesday:** Dungeons and Dragons: Miniature Mixer (miniature painting, drinks and light fare, no experience required); Game Night (tabletop games, no registration — just show up); Trivia Night with Jeff Barr (AWS trivia)
+- **Wednesday:** Magic: The Gathering Night, in collaboration with Wizards of the Coast (sealed play event plus a "Learn to Play" session with decks and instruction); Expo Happy Hour (in the Expo, 4:30 PM – 6:00 PM per the agenda)
+- **Monday – Thursday:** /builder/quest (multi-day gamified journey, formerly /dev/quest; pick up a card Sunday at Road to re:Invent or from Monday at the AWS Builder Loft and Builder Zone) and Byte Club (three-hole mini golf)
+
+### re:Play — the official closing party
+- **When:** Thursday, December 3, 6:30 PM – 10:30 PM
+- **Venue:** Allegiant Stadium (3333 Al Davis Way, Las Vegas)
+- **What:** "A one-night-only party for all re:Invent attendees, featuring live music, curated food, interactive games, and surprises."
+- **Performers:** St. Vincent (plays at 8:00 PM) and Calvin Harris (plays at 9:30 PM), per an AWS Builder Center attendee post; both performers are also featured in AWS Events' official re:Play promotional video. Sources: https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX and https://www.instagram.com/reel/DfncqW6AL1n/
+- **Getting there:** Complimentary shuttles from re:Invent hotels; dedicated re:Play shuttle service runs 6:15 PM – 11:00 PM.
+- **Admission:** Included with a full conference pass (bring your badge). A re:Play guest pass costs $350. Sources: https://www.watchpreviously.com/news/aws-reinvent-2026-las-vegas-guide/ and https://echelonai.com/reinvent/planner/aws-replay
+- **Bag policy:** Stadium bag rules are strict — ideally bring no bag; a clear bag up to 12 × 6 × 12 inches is allowed, other bags go to bag check. Source: https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+- Agenda source: https://aws.amazon.com/events/reinvent/agenda/
+
+---
+
+## 5. Session types overview
+
+re:Invent 2026 has 2,200+ sessions, about 70% of them interactive, across twelve session formats. The core formats a concierge will be asked about:
+
+- **Breakout sessions** — Lecture-style 60-minute presentations on architecture, best practices, and deep dives, led by AWS experts, customers, and partners. Recorded and posted to the AWS Events YouTube channel a few days later; walk-up seating.
+- **Chalk talks** — Highly interactive 60-minute sessions with smaller audiences; technical deep dives with whiteboard architecture discussions and audience questions. Not recorded; reserve early — popular ones book out fast.
+- **Workshops** — Two-hour hands-on sessions where you work through tasks in live AWS accounts in a small team; bring a laptop. Not recorded.
+- **Builders' sessions** — 60-minute small-group sessions where an AWS expert guides you through building a solution to a technical problem. Not recorded.
+- **Code talks** — 60-minute live-coding sessions where AWS experts build solutions in real time.
+- **Lightning talks** — 20-minute talks on a single focused idea or demo, held in the Venetian Expo Hall and the Wynn/Encore Upper Convention Promenade; walk-up only, no reservations.
+
+Other formats in the catalog include self-paced labs, gamified learning, exam prep sessions, and bootcamps (certification prep; registered attendees get 50% off AWS Certification exams). Sources: https://aws.amazon.com/blogs/compute/your-serverless-attendees-guide-to-aws-reinvent-2026/, https://aws.amazon.com/blogs/networking-and-content-delivery/your-aws-networking-and-content-delivery-guide-to-reinvent-2026/, and https://aws.amazon.com/events/reinvent/sessions/how-youll-learn/
+
+---
+
+## 6. Sponsors
+
+- **Where:** Sponsor booths fill the Expo at The Venetian (see Section 3). The official agenda counts "more than 420 sponsors and booths."
+- **Sponsor tiers:** Emerald, Diamond, Platinum, Gold, Bronze, and Showcase. The official sponsor catalog (registration.awsevents.com) as captured on Nov 15, 2026 lists 433 companies: 11 Emerald, 30 Diamond, 49 Platinum, 99 Gold, 134 Bronze, and 110 Showcase. Source: https://data-conference-database.com/editions/aws-reinvent-2026
+- **Emerald sponsors (top tier, 11):** Accenture, Anthropic, Capgemini, Datadog, Deloitte, IBM, MongoDB, NVIDIA, OpenAI, PwC, and Splunk (listed as "Splunk, by Cisco" in the catalog capture). The AWS re:Invent homepage highlights the Emerald tier ("Meet our Emerald sponsors") and links to the full sponsor catalog. Sources: https://aws.amazon.com/events/reinvent/ and https://data-conference-database.com/editions/aws-reinvent-2026
+- **Diamond sponsors include (from the same catalog capture):** AMD, Atlassian, Baseten, Boomi, Capital One, Cloudera, Cognizant, Coralogix, CrowdStrike, Databricks, Dynatrace, Elastic, Glean, Intel, Kyndryl, LaunchDarkly, Oracle, PagerDuty, Redis, ResolveAI, Rubrik, Salesforce, SAP, ServiceNow, Snowflake, SpaceXSI (xAI), Traversal, TrendAI™, Vercel, and Zscaler. Source: https://data-conference-database.com/editions/aws-reinvent-2026
+- **Sponsor-hosted official experiences:** The Partner Advantage Zone in the Expo (AWS Partner Network, Marketplace, Specialized Solutions, New to AWS, Partners LIVE) is the main partner-hosted experience; AWS Partners also sponsor the Tuesday and Wednesday evening networking cocktail hours. Sources: https://aws.amazon.com/events/reinvent/experiences/expo/ and https://aws.amazon.com/events/reinvent/experiences/uniquely-reinvent/
+
+---
+
+## 7. Practical facts a concierge gets asked
+
+- **Pass:** Full conference pass $2,499 (includes keynotes, sessions, workshops, labs, the Expo, and re:Play); 10% off when buying 10 or more passes in one transaction. An AWS Builder ID is required to register. Source: https://agentconfs.com/articles/aws-reinvent-2026-guide (checked against aws.amazon.com/events/reinvent on Nov 5, 2026)
+- **Virtual:** Keynotes stream free online; 50+ sessions are also streamed with free livestream registration. Source: https://agentconfs.com/articles/aws-reinvent-2026-guide
+- **Badge pickup tip:** Pick up at the airport on arrival (Terminals 1 and 3, open until 11:59 PM Sunday and Monday); bring your registration QR code and photo ID. Source: https://builder.aws.com/content/3MVzlWfFKrdSe2Gjc8eoxmQsUGX
+- **Getting around:** Free conference shuttles link the venues during conference hours (live times and stops in the AWS Events app); the Las Vegas Monorail is free with an attendee badge. Allow 30–45 minutes between activities at different venues. Sources: https://aws.amazon.com/events/reinvent/agenda/ and https://www.fractivo.com/reinvent?src=home-footer
+- **AWS Events app:** Carries your schedule, reserved seating, indoor maps/wayfinding, and shuttle details; sign in with your Builder ID. Source: https://www.watchpreviously.com/news/aws-reinvent-2026-las-vegas-guide/
+- **Meals:** Breakfast and lunch are served on full conference days; the Tuesday/Wednesday networking receptions and re:Play include food and drinks. Sources: https://builder.aws.com/content/3M1bvIGN9QJ3dxY4T2RSsDaB9EL/aws-reinvent-the-attendee-playbook-ai-track-ai-economics and https://www.fractivo.com/reinvent?src=home-footer
+- **Caesars Forum extras:** Caesars Forum hosts a help desk, the Customer Showcase, and the AWS Certification Lounge. A recurring daily agenda block runs 8:30 AM – 5:30 PM at Caesars Forum (Mon–Thu); the agenda page's text listing did not capture that block's title. Source: https://www.fractivo.com/reinvent?src=home-footer and https://aws.amazon.com/events/reinvent/agenda/
+- **Thursday security focus:** re:Inforce, the former standalone AWS security conference, is integrated into re:Invent for 2026, with Thursday as the security focus day at Wynn. Sources: https://aws.amazon.com/events/reinvent/agenda/ and https://lasvegaswonders.com/aws-reinvent-las-vegas/
+
+---
+
+## 8. Not verified / not listed
+
+- **Keynote venue on the keynotes page itself:** The official keynotes page does not print a venue per keynote in its text; The Venetian is confirmed via the official agenda page ("The Venetian and virtual" for every keynote slot).
+- **CEO Keynote end time:** Official keynotes page and official agenda say 8:30 AM – 10:45 AM; some third-party coverage (About Amazon, Fractivo) says 8:30 AM – 10:30 AM. The official pages were used here.
+- **re:Play performer set times:** St. Vincent 8:00 PM and Calvin Harris 9:30 PM come from an AWS Builder Center attendee post, not from the agenda page (the agenda lists only the party's 6:30 PM – 10:30 PM window and "live music"). One AWS blog post (gametech) said re:Play starts at 8:00 PM, which conflicts with the agenda's 6:30 PM start; the agenda was used here.
+- **5K Run start time:** not listed on the pages opened (only the day, venue, and Tuesday packet-pickup deadline).
+- **Evening social event times/venues** (D&D Miniature Mixer, Game Night, Trivia Night, Magic: The Gathering Night): the official experiences page names the days but does not list times or venues.
+- **Friday 7:00 AM – 12:30 PM agenda block** at Wynn | Encore and The Venetian: present on the official agenda, but its label was not captured in the page's text extraction (it appears alongside the final sessions and limited shuttle service).
+- **Headline sponsor names on AWS's own pages:** The AWS homepage names only the Emerald tier in text (the sponsor names render as logos); the Emerald and Diamond name lists above come from the official sponsor catalog as captured by data-conference-database (Nov 15, 2026), cross-checked against confhunt.com's Emerald list.
+- **Individual session listings:** Out of scope by design; see the event catalog at registration.awsevents.com.
