@@ -583,7 +583,9 @@ function findEvent(query) {
   const q = String(query || "").toLowerCase().trim();
   if (!q) return null;
   const evs = state.catalog ? state.events.concat(state.catalog) : state.events;
-  let hit = evs.find((e) => e.name.toLowerCase() === q);
+  let hit = evs.find((e) => e.code && e.code.toLowerCase() === q);
+  if (hit) return hit;
+  hit = evs.find((e) => e.name.toLowerCase() === q);
   if (hit) return hit;
   hit = evs.find((e) => e.name.toLowerCase().includes(q) || q.includes(e.name.toLowerCase()));
   if (hit) return hit;
@@ -783,9 +785,16 @@ window.napsterCompanionApiSDK.init(getToken, {
 (async function boot() {
   try {
     const res = await fetch("events.json");
+    if (!res.ok) throw new Error("events " + res.status);
     state.events = await res.json();
   } catch {
-    state.events = [];
+    try {
+      await new Promise((r) => setTimeout(r, 1500));
+      const res = await fetch("events.json");
+      state.events = await res.json();
+    } catch {
+      state.events = [];
+    }
   }
   let debounce = null;
   document.getElementById("catalog-q").addEventListener("input", () => {
