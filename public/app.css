@@ -144,3 +144,55 @@ a { color: #9fd8ff; }
 @media (max-width: 1023px) {
   .brand-sub { display: none; }
 }
+
+/* ---------- Alex panel: minimize / restore ----------------------------- */
+.omniagent-panel { transition: width 220ms ease; }
+.omniagent-header { justify-content: flex-start; }
+.omniagent-status { margin-left: auto; }
+.omniagent-min-btn {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 999px; cursor: pointer;
+  background: rgba(255, 255, 255, 0.08); color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.omniagent-min-btn:hover { background: rgba(255, 255, 255, 0.18); }
+.omniagent-min-btn svg { width: 16px; height: 16px; display: block; }
+.omniagent-min-btn .ic-max { display: none; }
+.omniagent-panel.is-minimized .omniagent-min-btn .ic-min { display: none; }
+.omniagent-panel.is-minimized .omniagent-min-btn .ic-max { display: block; }
+.omniagent-panel.is-minimized { width: 148px; height: auto; }
+.omniagent-panel.is-minimized .omniagent-header { height: 38px; padding: 0 6px 0 12px; }
+.omniagent-panel.is-minimized .omniagent-title {
+  font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.omniagent-panel.is-minimized .omniagent-status { display: none; }
+.omniagent-panel.is-minimized .omniagent-min-btn { margin-left: auto; }
+.omniagent-panel.is-minimized .omniagent-mount { flex: none; height: 148px; }
+.omniagent-panel.is-minimized .omniagent-footer { display: none; }
+
+/* ---------- Bottom-anchored tab bar + floating Alex on mobile -------- */
+@media (max-width: 1023px) {
+  .view-nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 600;
+    flex-wrap: nowrap; justify-content: space-around; gap: 2px;
+    padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(13, 16, 34, 0.95);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--panel-border);
+  }
+  .view-btn {
+    flex: 1 1 0; flex-direction: column; justify-content: center; gap: 3px;
+    background: transparent; border-color: transparent; border-radius: 12px;
+    padding: 6px 2px; font-size: 0.7rem; white-space: nowrap;
+  }
+  .view-btn svg { width: 1.25rem; height: 1.25rem; }
+  .view-btn.is-active {
+    background: rgba(216, 242, 75, 0.12); color: var(--accent); border-color: transparent;
+  }
+  .app-footer { padding-bottom: 112px; }
+  /* The panel is fixed, so keep it (and only it) on screen in other views */
+  .view-talk:not(.is-active) { display: block; }
+  .view-talk:not(.is-active) > :not(.omniagent-panel) { display: none !important; }
+  /* Panel clears the tab bar, expanded and minimized */
+  .omniagent-panel { bottom: calc(76px + env(safe-area-inset-bottom)); }
+}

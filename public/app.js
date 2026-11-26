@@ -92,9 +92,27 @@ function switchView(name) {
     v.classList.toggle("is-active", on);
   });
   if (name === "map") { initMap(); setTimeout(() => map && map.invalidateSize(), 60); }
+  if (name !== "talk" && !isDesktop()) setAlexMinimized(true, false);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 document.querySelectorAll(".view-btn").forEach((b) => b.addEventListener("click", () => switchView(b.dataset.view)));
+
+// ------------------------------------------- Alex panel minimize --------
+const alexPanel = document.getElementById("omniagent-panel");
+const alexMinBtn = document.getElementById("alex-min-btn");
+function setAlexMinimized(min, save = true) {
+  if (!alexPanel) return;
+  alexPanel.classList.toggle("is-minimized", min);
+  if (alexMinBtn) {
+    alexMinBtn.setAttribute("aria-expanded", String(!min));
+    alexMinBtn.setAttribute("aria-label", min ? "Expand Alex video" : "Minimize Alex video");
+  }
+  if (save) { try { localStorage.setItem("pc-alex-min", min ? "1" : "0"); } catch {} }
+}
+if (alexMinBtn && alexPanel) {
+  alexMinBtn.addEventListener("click", () => setAlexMinimized(!alexPanel.classList.contains("is-minimized")));
+  try { if (localStorage.getItem("pc-alex-min") === "1") setAlexMinimized(true, false); } catch {}
+}
 
 // ------------------------------------------------------------ agenda ------
 function dayTabs(el, current, onPick) {
