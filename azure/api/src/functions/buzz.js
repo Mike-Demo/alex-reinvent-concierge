@@ -39,7 +39,7 @@ async function xPosts(token) {
   try {
     const params = new URLSearchParams({
       query: "(#AWSreInvent OR #reInvent) -is:retweet",
-      max_results: "6",
+      max_results: "10", // X recent search only accepts 10-100
       "tweet.fields": "created_at",
       expansions: "author_id",
       "user.fields": "name,username",
@@ -50,7 +50,7 @@ async function xPosts(token) {
     if (!res.ok) return [];
     const data = await res.json();
     const users = new Map((data.includes?.users ?? []).map((u) => [String(u.id), u]));
-    return (data.data ?? []).map((t) => {
+    return (data.data ?? []).slice(0, 6).map((t) => {
       const u = users.get(String(t.author_id)) ?? {};
       return {
         author: String(u.name ?? u.username ?? "X user"),
