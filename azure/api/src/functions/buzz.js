@@ -109,7 +109,7 @@ app.http("buzz", {
         awsNews: news,
         fetchedAt: new Date().toISOString(),
       },
-      headers: { "Cache-Control": "public, max-age=120" },
+      headers: { "Cache-Control": "public, max-age=120, stale-while-revalidate=600" },
     };
   },
 });

@@ -114,6 +114,11 @@ a { color: #9fd8ff; }
 .event-item .ev-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .ev-dist { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
 
+/* ---------- Venue picker (Near view) ------------------------------------ */
+.venue-pick-card { display: block; margin-bottom: 14px; }
+.venue-pick-card h3 { margin: 0 0 6px; font-size: 1rem; }
+.venue-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
 /* ---------- Upgrade guards: no unstyled flash, no layout shift --------- */
 wa-card:not(:defined), wa-button:not(:defined),
 wa-switch:not(:defined), wa-details:not(:defined) { visibility: hidden; }

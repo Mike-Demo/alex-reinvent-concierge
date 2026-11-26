@@ -82,7 +82,7 @@
     <dl class="stack-list">
       <div>
         <dt>SpaceFast</dt>
-        <dd>Primary hosting for the live demo, including the static app and the serverless functions that mint Napster tokens and proxy the social feeds.
+        <dd>Primary hosting for the live demo, including the static app and the serverless functions that mint Napster tokens and proxy the social feeds. A service worker in the app caches the shell, the UI kits, and feed data so repeat visits stay fast and keep working on congested venue WiFi.
           <span class="license-note">Commercial hosting service, used under the author's account.</span></dd>
       </div>
       <div>
@@ -162,6 +162,11 @@
         <dt>X API</dt>
         <dd>Live posts from X in the Social view, using recent search, plus geo search for posts near the visitor when they share their location.
           <span class="license-note">Developer tier access under the author's X developer account. Posts remain the property of their authors.</span></dd>
+      </div>
+      <div>
+        <dt>IP geolocation (ip-api.com, ipapi.co fallback)</dt>
+        <dd>A coarse, city-level location hint from the visitor's connection, used only when GPS is unavailable or declined. The app pairs it with a manual venue picker and never treats it as an exact location; nothing is stored.
+          <span class="license-note">Free lookup services, queried server-side per request.</span></dd>
       </div>
     </dl>
   </section>

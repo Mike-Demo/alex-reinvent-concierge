@@ -167,6 +167,12 @@
 
   <!-- NEAR VIEW -->
   <section class="view view-near" data-view-panel="near">
+    <wa-card class="venue-pick-card" id="venue-pick-card">
+      <h3><i class="fa-sharp-duotone fa-solid fa-map-pin"></i> Pick your venue</h3>
+      <p class="muted">Deep inside a casino, GPS can be hundreds of meters off. Tap where you are and Near me, distances, and Alex all work from there. No permission prompt, nothing stored.</p>
+      <div class="venue-chips" id="venue-chips"></div>
+      <p class="muted" id="ip-hint" hidden></p>
+    </wa-card>
     <wa-callout variant="neutral" id="near-noloc">
       <i class="fa-sharp-duotone fa-solid fa-location-dot" slot="icon"></i>
       Share your location to see what's closest to you right now, sorted by distance.

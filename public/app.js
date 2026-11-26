@@ -236,9 +236,11 @@ function renderNear() {
   dayTabs(document.getElementById("near-day-tabs"), state.nearDay, (d) => { state.nearDay = d; renderNear(); });
   const list = document.getElementById("near-list");
   const note = document.getElementById("near-noloc");
+  const pick = document.getElementById("venue-pick-card");
   list.innerHTML = "";
-  if (!state.userLoc) { note.hidden = false; return; }
+  if (!state.userLoc) { note.hidden = false; if (pick) pick.hidden = false; return; }
   note.hidden = true;
+  if (pick) pick.hidden = true;
   const items = state.events
     .filter((e) => e.date === state.nearDay && e.lat != null)
     .map((e) => ({ e, d: distanceMiles(state.userLoc.lat, state.userLoc.lng, e.lat, e.lng) }))
@@ -471,13 +473,103 @@ function shareLocation() {
       renderNear();
       loadFeeds();
     },
-    () => {
-      status.textContent = "Location wasn't shared. No problem — just tell Alex which venue or hotel you're at.";
-    },
+    () => { ipFallback(); },
     { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
   );
 }
 document.getElementById("share-location").addEventListener("click", shareLocation);
+
+// ------------------------------------------- venue picker + IP hint -----
+// GPS is unreliable deep inside the casino venues, so the app offers two
+// fallbacks: a one-tap venue picker (exact, no permission, nothing
+// stored) and a coarse IP-based city hint from /api/geo (never treated
+// as an exact location, by the UI or by Alex).
+function renderVenueChips() {
+  const box = document.getElementById("venue-chips");
+  if (!box || box.childElementCount) return;
+  for (const v of VENUES) {
+    const b = document.createElement("wa-button");
+    b.setAttribute("size", "small");
+    b.setAttribute("variant", "neutral");
+    b.textContent = v.name.split(" (")[0];
+    b.addEventListener("click", () => setVenueLocation(v));
+    box.appendChild(b);
+  }
+}
+function setVenueLocation(v) {
+  state.userLoc = { lat: v.lat, lng: v.lng, accuracy: null, source: "venue" };
+  const short = v.name.split(" (")[0];
+  const list = VENUES
+    .map((x) => `${x.name}: ${distanceMiles(v.lat, v.lng, x.lat, x.lng).toFixed(2)} mi`)
+    .join("; ");
+  sendLocationContext(
+    `Visitor location context: the visitor picked their current venue in the app instead of sharing GPS. ` +
+    `They say they are at ${v.name}. Treat that venue as their location for "near me", distance, and walking-direction questions. ` +
+    `Straight-line distances to campus venues: ${list}. Do not read raw coordinates aloud unless the visitor asks.`
+  );
+  const status = document.getElementById("location-status");
+  if (status) status.textContent = `Location set to ${short}. Alex and Near me now work from there.`;
+  const chip = document.getElementById("loc-chip");
+  chip.hidden = false;
+  document.getElementById("loc-chip-text").textContent = `At ${short}`;
+  markUser();
+  renderAgenda();
+  renderNear();
+  loadFeeds();
+}
+async function ipHint() {
+  try {
+    const r = await fetch("/api/geo");
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+function coarseContext(g) {
+  return (
+    `Visitor location context (coarse, from their internet connection — NOT GPS): they appear to be in ${g.city}, ${g.region}. ` +
+    `Do not treat this as an exact location. If they ask what is near them, ask which venue they are at, or use the venue they pick in the app.`
+  );
+}
+async function ipFallback() {
+  const status = document.getElementById("location-status");
+  status.textContent = "Location wasn't shared. Checking your connection for a rough area…";
+  const g = await ipHint();
+  if (g && g.found && g.nearVegas) {
+    status.textContent = `No GPS, but your connection looks like ${g.city || "Las Vegas"} — open Near me and tap your venue for exact distances from there.`;
+    const hint = document.getElementById("ip-hint");
+    if (hint) {
+      hint.hidden = false;
+      hint.textContent = `Your connection suggests ${g.city}, ${g.region}. IP location is city-level only, so pick your venue for exact distances.`;
+    }
+    sendLocationContext(coarseContext(g));
+  } else {
+    status.textContent = "Location wasn't shared. No problem — just tell Alex which venue or hotel you're at, or pick your venue in Near me.";
+  }
+}
+renderVenueChips();
+ipHint().then((g) => {
+  if (!g || !g.found || state.userLoc) return;
+  const hint = document.getElementById("ip-hint");
+  if (g.nearVegas) {
+    if (hint) {
+      hint.hidden = false;
+      hint.textContent = `Your connection looks like ${g.city}, ${g.region} — pick your venue and Near me sorts everything from there.`;
+    }
+    sendLocationContext(coarseContext(g));
+  } else if (hint) {
+    hint.hidden = false;
+    hint.textContent = `Your connection looks like ${g.city}, ${g.region} — if you're actually in Las Vegas, pick your venue above. Venue WiFi and VPNs can point elsewhere.`;
+  }
+});
+
+// ------------------------------------------------------- service worker ---
+// Caches the shell, the CDN kits, and feed data so repeat visits are
+// fast and the app keeps working on congested venue WiFi.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  });
+}
 
 // ------------------------------------------------------------ Napster -----
 const IDENTITY_KEY = "pc-identity";
