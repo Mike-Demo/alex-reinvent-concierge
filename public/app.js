@@ -384,6 +384,73 @@ function handleIntroRequest(args) {
   list.appendChild(li);
   return { ok: true, recorded: true, message: "Introduction request recorded. Demo will follow up personally." };
 }
+function findEvent(query) {
+  const q = String(query || "").toLowerCase().trim();
+  if (!q) return null;
+  const evs = state.events;
+  let hit = evs.find((e) => e.name.toLowerCase() === q);
+  if (hit) return hit;
+  hit = evs.find((e) => e.name.toLowerCase().includes(q) || q.includes(e.name.toLowerCase()));
+  if (hit) return hit;
+  hit = evs.find((e) => e.venue.toLowerCase().includes(q));
+  if (hit) return hit;
+  const words = q.split(/\s+/).filter((w) => w.length > 2);
+  let best = null, bestScore = 0;
+  for (const e of evs) {
+    const hay = (e.name + " " + e.venue).toLowerCase();
+    const score = words.filter((w) => hay.includes(w)).length;
+    if (score > bestScore) { bestScore = score; best = e; }
+  }
+  return bestScore ? best : null;
+}
+function handleNavigateView(args) {
+  const view = ["talk", "map", "agenda", "near", "social"].includes(args.view) ? args.view : "talk";
+  switchView(view);
+  if (view === "near" && !state.userLoc) {
+    return { ok: true, view, message: "Near view opened, but the visitor has not shared their location yet. Remind them to tap the Share my location button so the list can sort by distance." };
+  }
+  return { ok: true, view, message: `The ${view} view is now on the visitor's screen.` };
+}
+function handleShowEvent(args) {
+  const e = findEvent(args.event_name);
+  if (!e) return { ok: false, error: "not_found", message: `No event matched "${args.event_name}". Offer the agenda view instead.` };
+  const dayName = (DAYS.find((d) => d.date === e.date) || {}).name || e.date;
+  const when = `${dayName}${e.start ? " at " + fmtTime(e.start) : ""}`;
+  if (e.lat == null) {
+    state.day = e.date; renderAgenda(); switchView("agenda");
+    return { ok: true, event: e.name, venue: e.venue, when, message: `${e.name} has no fixed map location, so the agenda for ${dayName} is on screen instead.` };
+  }
+  state.day = e.date;
+  switchView("map");
+  refreshMap();
+  selectEvent(e);
+  return { ok: true, event: e.name, venue: e.venue, when, message: `${e.name} is now highlighted on the map.` };
+}
+async function handleWalkingDirections(args) {
+  const e = findEvent(args.destination);
+  if (!e) return { ok: false, error: "not_found", message: `No event or venue matched "${args.destination}".` };
+  if (e.lat == null) return { ok: false, error: "no_location", message: `${e.name} has no fixed location to route to.` };
+  if (!state.userLoc) {
+    shareLocation();
+    return { ok: false, error: "needs_location", message: "The visitor has not shared their location yet; the location prompt was just triggered. Ask them to allow location sharing, then ask for directions again." };
+  }
+  state.day = e.date;
+  switchView("map");
+  refreshMap();
+  selectEvent(e);
+  await walkTo(e);
+  const summary = document.getElementById("route-summary").textContent;
+  return { ok: true, destination: e.name, summary, message: `Walking directions to ${e.name} are on the map. ${summary}` };
+}
+function handleFilterAgenda(args) {
+  if (DAYS.some((d) => d.date === args.day)) state.day = args.day;
+  state.type = typeof args.type === "string" ? args.type : "";
+  renderAgenda();
+  switchView("agenda");
+  const count = state.events.filter((e) => e.date === state.day && (!state.type || e.type === state.type)).length;
+  const dayName = (DAYS.find((d) => d.date === state.day) || {}).name || state.day;
+  return { ok: true, day: dayName, count, message: `The agenda on screen shows ${count} item(s) for ${dayName}${state.type ? " of type " + state.type : ""}.` };
+}
 async function handleData(msg) {
   const ev = msg.event ?? msg.type;
   if (ev === "function_call_timeout") { console.warn("tool timeout", msg.data); return; }
@@ -394,6 +461,14 @@ async function handleData(msg) {
   let result;
   if (name === "capture_intro_request") {
     result = handleIntroRequest(args || {});
+  } else if (name === "navigate_view") {
+    result = handleNavigateView(args || {});
+  } else if (name === "show_event_on_map") {
+    result = handleShowEvent(args || {});
+  } else if (name === "start_walking_directions") {
+    result = await handleWalkingDirections(args || {});
+  } else if (name === "filter_agenda") {
+    result = handleFilterAgenda(args || {});
   } else {
     result = { ok: false, error: "unknown_function" };
   }
