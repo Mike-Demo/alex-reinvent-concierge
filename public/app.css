@@ -114,6 +114,11 @@ a { color: #9fd8ff; }
 .event-item .ev-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .ev-dist { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
 
+/* ---------- Upgrade guards: no unstyled flash, no layout shift --------- */
+wa-card:not(:defined), wa-button:not(:defined),
+wa-switch:not(:defined), wa-details:not(:defined) { visibility: hidden; }
+.switch-row { min-height: 30px; display: flex; align-items: center; }
+
 /* ---------- Highlight flash (Alex points at content) -------------------- */
 .is-highlighted { animation: highlight-pulse 1.05s ease-in-out 3; }
 @keyframes highlight-pulse {
