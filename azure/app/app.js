@@ -357,20 +357,40 @@ async function walkTo(e) {
 }
 
 // ------------------------------------------------------------- feeds ------
+function feedPostHtml(p) {
+  return `
+        <div class="feed-post">
+          <div class="fp-head"><b>${esc(p.author)}</b> @${esc(p.handle)}${p.place ? ` · <i class="fa-solid fa-location-dot"></i> ${esc(p.place)}` : ""}</div>
+          <p>${esc(p.text)}</p>
+          <div class="fp-head"><a href="${esc(p.url)}" target="_blank" rel="noopener">View post</a></div>
+        </div>`;
+}
 async function loadFeeds() {
   try {
-    const res = await fetch("api/feed");
+    const loc = state.userLoc ? `?lat=${state.userLoc.lat}&lng=${state.userLoc.lng}` : "";
+    const res = await fetch("api/feed" + loc);
     const data = await res.json();
     const bs = document.getElementById("feed-bluesky");
     if (data.bluesky && data.bluesky.length) {
-      bs.innerHTML = data.bluesky.map((p) => `
-        <div class="feed-post">
-          <div class="fp-head"><b>${esc(p.author)}</b> @${esc(p.handle)}</div>
-          <p>${esc(p.text)}</p>
-          <div class="fp-head"><a href="${esc(p.url)}" target="_blank" rel="noopener">View post</a></div>
-        </div>`).join("");
+      bs.innerHTML = data.bluesky.map(feedPostHtml).join("");
     } else {
       bs.innerHTML = `<p class="muted">The live Bluesky feed didn't answer. <a href="https://bsky.app/search?q=%23AWSreInvent" target="_blank" rel="noopener">Open Bluesky search</a>.</p>`;
+    }
+    const xf = document.getElementById("feed-x");
+    if (xf) {
+      if (data.x && data.x.length) {
+        xf.innerHTML = data.x.map(feedPostHtml).join("");
+      } else if (data.xConfigured === false) {
+        xf.innerHTML = `<p class="muted">The X feed is being connected — check back shortly. <a href="https://x.com/search?q=%23AWSreInvent" target="_blank" rel="noopener">Open X search</a>.</p>`;
+      } else {
+        xf.innerHTML = `<p class="muted">No X posts came back just now. <a href="https://x.com/search?q=%23AWSreInvent" target="_blank" rel="noopener">Open X search</a>.</p>`;
+      }
+    }
+    const xn = document.getElementById("feed-x-near");
+    if (xn && state.userLoc) {
+      xn.innerHTML = data.xNear && data.xNear.length
+        ? data.xNear.map(feedPostHtml).join("")
+        : `<p class="muted">No geo-tagged posts near you right now — only a small share of posts carry location. The main X feed above has the full stream.</p>`;
     }
     const aw = document.getElementById("feed-aws");
     if (data.awsNews && data.awsNews.length) {
@@ -427,6 +447,7 @@ function shareLocation() {
       markUser();
       renderAgenda();
       renderNear();
+      loadFeeds();
     },
     () => {
       status.textContent = "Location wasn't shared. No problem — just tell Alex which venue or hotel you're at.";

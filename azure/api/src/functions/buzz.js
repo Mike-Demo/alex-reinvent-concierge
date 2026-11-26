@@ -34,6 +34,35 @@ async function bluesky() {
   }
 }
 
+async function xPosts(token) {
+  if (!token) return [];
+  try {
+    const params = new URLSearchParams({
+      query: "(#AWSreInvent OR #reInvent) -is:retweet",
+      max_results: "6",
+      "tweet.fields": "created_at",
+      expansions: "author_id",
+      "user.fields": "name,username",
+    });
+    const res = await fetch(`https://api.x.com/2/tweets/search/recent?${params.toString()}`, {
+      headers: { Authorization: `Bearer ${token}`, "User-Agent": UA, Accept: "application/json" },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const users = new Map((data.includes?.users ?? []).map((u) => [String(u.id), u]));
+    return (data.data ?? []).map((t) => {
+      const u = users.get(String(t.author_id)) ?? {};
+      return {
+        author: String(u.name ?? u.username ?? "X user"),
+        text: String(t.text ?? "").slice(0, 200),
+        at: String(t.created_at ?? ""),
+      };
+    });
+  } catch {
+    return [];
+  }
+}
+
 function deTag(s) {
   return s
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
@@ -69,11 +98,13 @@ app.http("buzz", {
   authLevel: "anonymous",
   route: "buzz",
   handler: async () => {
-    const [posts, news] = await Promise.all([bluesky(), awsNews()]);
+    const token = process.env.X_BEARER_TOKEN || "";
+    const [x, posts, news] = await Promise.all([xPosts(token), bluesky(), awsNews()]);
     return {
       jsonBody: {
         about:
-          "Live conference buzz for AWS re:Invent 2026: the latest Bluesky posts about the event and the newest AWS News Blog headlines. Summarize the freshest 2-3 items briefly and name the source.",
+          "Live conference buzz for AWS re:Invent 2026: the latest X and Bluesky posts about the event and the newest AWS News Blog headlines. Summarize the freshest 2-3 items briefly and name the source (X, Bluesky, or AWS News).",
+        x,
         bluesky: posts,
         awsNews: news,
         fetchedAt: new Date().toISOString(),

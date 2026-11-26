@@ -4,9 +4,10 @@
  * this endpoint directly mid-conversation; the JSON returned here is
  * what Alex summarizes for the visitor.
  *
- * Sources (public, no keys): Bluesky search for re:Invent posts and the
- * AWS News Blog RSS — same upstreams as /api/feed, trimmed for a tool
- * result. Failures degrade to empty lists.
+ * Sources: X (Twitter) API v2 recent search (app-only Bearer token in
+ * the space env var X_BEARER_TOKEN), Bluesky search for re:Invent posts
+ * and the AWS News Blog RSS — same upstreams as /api/feed, trimmed for
+ * a tool result. Failures degrade to empty lists.
  */
 
 const UA =
@@ -33,6 +34,38 @@ async function bluesky(): Promise<Array<{ author: string; text: string; at: stri
       });
     }
     return out;
+  } catch {
+    return [];
+  }
+}
+
+async function xPosts(token: string): Promise<Array<{ author: string; text: string; at: string }>> {
+  if (!token) return [];
+  try {
+    const params = new URLSearchParams({
+      query: "(#AWSreInvent OR #reInvent) -is:retweet",
+      max_results: "6",
+      "tweet.fields": "created_at",
+      expansions: "author_id",
+      "user.fields": "name,username",
+    });
+    const res = await fetch(`https://api.x.com/2/tweets/search/recent?${params.toString()}`, {
+      headers: { Authorization: `Bearer ${token}`, "User-Agent": UA, Accept: "application/json" },
+    });
+    if (!res.ok) return [];
+    const data = (await res.json()) as {
+      data?: Array<Record<string, unknown>>;
+      includes?: { users?: Array<Record<string, unknown>> };
+    };
+    const users = new Map((data.includes?.users ?? []).map((u) => [String(u.id), u]));
+    return (data.data ?? []).map((t) => {
+      const u = users.get(String(t.author_id)) ?? {};
+      return {
+        author: String(u.name ?? u.username ?? "X user"),
+        text: String(t.text ?? "").slice(0, 200),
+        at: String(t.created_at ?? ""),
+      };
+    });
   } catch {
     return [];
   }
@@ -68,12 +101,18 @@ async function awsNews(): Promise<Array<{ title: string; published: string }>> {
   }
 }
 
-const handler = async (): Promise<Response> => {
-  const [posts, news] = await Promise.all([bluesky(), awsNews()]);
+const handler = async (
+  _request: Request,
+  context: { env: Record<string, unknown> },
+): Promise<Response> => {
+  const env = context?.env ?? {};
+  const token = typeof env.X_BEARER_TOKEN === "string" ? env.X_BEARER_TOKEN : "";
+  const [x, posts, news] = await Promise.all([xPosts(token), bluesky(), awsNews()]);
   return Response.json(
     {
       about:
-        "Live conference buzz for AWS re:Invent 2026: the latest Bluesky posts about the event and the newest AWS News Blog headlines. Summarize the freshest 2-3 items briefly and name the source.",
+        "Live conference buzz for AWS re:Invent 2026: the latest X and Bluesky posts about the event and the newest AWS News Blog headlines. Summarize the freshest 2-3 items briefly and name the source (X, Bluesky, or AWS News).",
+      x,
       bluesky: posts,
       awsNews: news,
       fetchedAt: new Date().toISOString(),

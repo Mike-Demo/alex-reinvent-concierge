@@ -1,8 +1,14 @@
 /**
  * GET /api/feed — live social + news feeds for the concierge app.
  *
- * Sources (both public, no keys):
- * - Bluesky public AppView search for re:Invent posts.
+ * Sources:
+ * - Bluesky public AppView search for re:Invent posts (no key).
+ * - X (Twitter) API v2 recent search for re:Invent posts, using the
+ *   app-only Bearer token in the space env var X_BEARER_TOKEN. When
+ *   ?lat=&lng= are supplied (the visitor shared their location), a
+ *   second X query returns geo-tagged posts near them via the
+ *   point_radius operator (25 mi cap; only a small share of posts
+ *   carry geo, so this slice can legitimately be empty).
  * - AWS News Blog RSS.
  * Failures degrade to empty lists; the client shows link-outs instead.
  */
@@ -13,6 +19,7 @@ type FeedPost = {
   text: string;
   url: string;
   createdAt: string;
+  place?: string;
 };
 
 type NewsItem = { title: string; url: string; published: string };
@@ -43,6 +50,47 @@ async function bluesky(): Promise<FeedPost[]> {
         text: String(record.text ?? "").slice(0, 280),
         url: handle && rkey ? `https://bsky.app/profile/${handle}/post/${rkey}` : "https://bsky.app/search?q=%23AWSreInvent",
         createdAt: String(record.createdAt ?? p.indexedAt ?? ""),
+      });
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+async function xSearch(token: string, query: string, max: number): Promise<FeedPost[]> {
+  try {
+    const params = new URLSearchParams({
+      query,
+      max_results: String(max),
+      "tweet.fields": "created_at,geo",
+      expansions: "author_id,geo.place_id",
+      "user.fields": "name,username",
+      "place.fields": "full_name",
+    });
+    const res = await fetch(`https://api.x.com/2/tweets/search/recent?${params.toString()}`, {
+      headers: { Authorization: `Bearer ${token}`, "User-Agent": UA, Accept: "application/json" },
+    });
+    if (!res.ok) return [];
+    const data = (await res.json()) as {
+      data?: Array<Record<string, unknown>>;
+      includes?: { users?: Array<Record<string, unknown>>; places?: Array<Record<string, unknown>> };
+    };
+    const users = new Map((data.includes?.users ?? []).map((u) => [String(u.id), u]));
+    const places = new Map((data.includes?.places ?? []).map((p) => [String(p.id), p]));
+    const out: FeedPost[] = [];
+    for (const t of data.data ?? []) {
+      const u = users.get(String(t.author_id)) ?? {};
+      const geo = (t.geo ?? {}) as Record<string, unknown>;
+      const place = geo.place_id ? places.get(String(geo.place_id)) : undefined;
+      const username = String(u.username ?? "");
+      out.push({
+        author: String(u.name ?? username ?? "X user"),
+        handle: username,
+        text: String(t.text ?? "").slice(0, 280),
+        url: username ? `https://x.com/${username}/status/${String(t.id)}` : "https://x.com/search?q=%23AWSreInvent",
+        createdAt: String(t.created_at ?? ""),
+        ...(place?.full_name ? { place: String(place.full_name) } : {}),
       });
     }
     return out;
@@ -83,11 +131,32 @@ async function awsNews(): Promise<NewsItem[]> {
   }
 }
 
-const handler = async (): Promise<Response> => {
-  const [posts, news] = await Promise.all([bluesky(), awsNews()]);
+const X_QUERY = "(#AWSreInvent OR #reInvent) -is:retweet";
+
+const handler = async (
+  request: Request,
+  context: { env: Record<string, unknown> },
+): Promise<Response> => {
+  const env = context?.env ?? {};
+  const token = typeof env.X_BEARER_TOKEN === "string" ? env.X_BEARER_TOKEN : "";
+  const url = new URL(request.url);
+  const lat = Number(url.searchParams.get("lat"));
+  const lng = Number(url.searchParams.get("lng"));
+  const hasLoc =
+    Number.isFinite(lat) && Number.isFinite(lng) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180 && (lat !== 0 || lng !== 0);
+
+  const jobs: [Promise<FeedPost[]>, Promise<NewsItem[]>, Promise<FeedPost[]>, Promise<FeedPost[]>] = [
+    bluesky(),
+    awsNews(),
+    token ? xSearch(token, X_QUERY, 12) : Promise.resolve([]),
+    token && hasLoc
+      ? xSearch(token, `${X_QUERY} point_radius:[${lng.toFixed(5)} ${lat.toFixed(5)} 25mi]`, 10)
+      : Promise.resolve([]),
+  ];
+  const [posts, news, x, xNear] = await Promise.all(jobs);
   return Response.json(
-    { bluesky: posts, awsNews: news, fetchedAt: new Date().toISOString() },
-    { headers: { "Cache-Control": "public, max-age=300" } },
+    { bluesky: posts, awsNews: news, x, xNear, xConfigured: Boolean(token), fetchedAt: new Date().toISOString() },
+    { headers: { "Cache-Control": "public, max-age=120" } },
   );
 };
 
