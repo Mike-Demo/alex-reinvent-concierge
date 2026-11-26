@@ -69,14 +69,13 @@ a { color: #9fd8ff; }
 }
 .ext-btn:hover { border-color: var(--accent); }
 
-.omniagent-panel { overflow: hidden; background: rgba(5, 5, 15, 0.55); }
-.panel-bg {
+.omniagent-panel { overflow: hidden; }
+.omniagent-mount { background: transparent; }
+.mount-bg {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; z-index: 0; opacity: 0.85;
-  pointer-events: none; filter: brightness(0.9) saturate(1.1);
+  object-fit: cover; z-index: 0; pointer-events: none;
 }
-.omniagent-panel > *:not(.panel-bg) { position: relative; z-index: 1; }
-.omniagent-mount { margin: 12px; border-radius: 14px; }
+.omniagent-sdk-root { z-index: 1; }
 .catalog-search {
   display: flex; align-items: center; gap: 10px; margin: 4px 0 6px;
   background: var(--panel); border: 1px solid var(--panel-border); border-radius: 10px; padding: 10px 12px;

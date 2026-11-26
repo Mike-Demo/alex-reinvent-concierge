@@ -555,7 +555,7 @@ async function handleData(msg) {
 }
 window.napsterCompanionApiSDK.init(getToken, {
   layout: { type: "inline", mountContainer: "#omniagent-mount" },
-  style: { view: "rectangle", className: "omniagent-sdk-root" },
+  style: { view: "silhouette", className: "omniagent-sdk-root" },
   onData: handleData,
   onAvatarReady: (isReady) => { if (isReady) console.log("[concierge] session live"); },
   onError: (error) => {
@@ -587,7 +587,7 @@ window.napsterCompanionApiSDK.init(getToken, {
     clearTimeout(debounce);
     debounce = setTimeout(renderCatalogSearch, 250);
   });
-  const bgv = document.querySelector(".panel-bg");
+  const bgv = document.querySelector(".mount-bg");
   if (bgv && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     bgv.removeAttribute("autoplay");
     bgv.pause();
