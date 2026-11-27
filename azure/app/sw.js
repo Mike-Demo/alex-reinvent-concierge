@@ -13,7 +13,7 @@
  *
  * IMPORTANT: bump VERSION on every publish, or returning visitors keep
  * the previous build's cache-first assets. */
-const VERSION = "pc-20261126-4";
+const VERSION = "pc-20261126-5";
 const SHELL = `${VERSION}-shell`;
 const RUNTIME = `${VERSION}-runtime`;
 const TILES = `${VERSION}-tiles`;
